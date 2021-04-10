@@ -30,9 +30,7 @@
                 </svg>
             </div>
         </div>
-        <!--Shape End-->
 
-        <!-- Blog Start -->
         <section class="section">
             <div class="container">
                 <div class="row">

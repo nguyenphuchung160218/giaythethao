@@ -4,6 +4,7 @@ namespace Modules\Admin\Http\Controllers;
 
 use App\Http\Requests\RequestArticle;
 use App\Models\Article;
+use App\Models\CategoryArticlec;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -19,6 +20,7 @@ class AdminArticleController extends Controller
     public function index()
     {
         $articles = Article::all();
+        // $categories = CategoryArticlec::all();
         return view('admin::article.index',compact('articles'));
     }
 
@@ -28,7 +30,8 @@ class AdminArticleController extends Controller
      */
     public function create()
     {
-        return view('admin::article.create');
+         $categories= $this->getCategories();
+        return view('admin::article.create',compact('categories'));
     }
 
     /**
@@ -41,7 +44,10 @@ class AdminArticleController extends Controller
         $this->insertOrUpdate($requestArticle);
         return redirect()->back();
     }
-
+    public function getCategories()
+    {
+        return CategoryArticlec::all();
+    }
     /**
      * Show the form for editing the specified resource.
      * @param int $id
@@ -49,8 +55,10 @@ class AdminArticleController extends Controller
      */
     public function edit($id)
     {
+        $categories= $this->getCategories();
         $article = Article::find($id);
-        return view('admin::article.update',compact('article'));
+        
+        return view('admin::article.update',compact('article','categories'));
     }
 
     /**
@@ -77,6 +85,7 @@ class AdminArticleController extends Controller
         $article->a_name = $requestArticle->a_name;
         $article->a_slug = Str::slug($requestArticle->a_name);
         $article->a_content = $requestArticle->a_content;
+        $article->a_category_id = $requestArticle->a_category_id;
         $article->a_title_seo = $requestArticle->a_title_seo;
         $article->a_description =  $requestArticle->a_description;
 

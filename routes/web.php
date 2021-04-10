@@ -38,6 +38,7 @@ Route::get('san-pham1/{slug}', 'App\Http\Controllers\ProductDetailController@vie
 //article
 Route::get('bai-viet','App\Http\Controllers\ArticleController@getArticle')->name('get.list.article');
 Route::get('bai-viet/{slug}','App\Http\Controllers\ArticleController@getDetail')->name('get.detail.article');
+Route::get('danh-muc/bai-viet/{slug}','App\Http\Controllers\ArticleController@getArticleCategory')->name('get.article.category');
 
 //info
 // Route::get('lien-he','ContactController@getContact')->name('get.contact');

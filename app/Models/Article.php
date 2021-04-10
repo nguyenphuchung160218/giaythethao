@@ -10,6 +10,8 @@ class Article extends Model
     use HasFactory;
     protected $table ='articles';
     const HOT = 1;
+    const STATUS_PUBLIC =1;
+    const STATUS_PRIVATE = 0;
     protected $status = [
         1=>[
             'name'=>'Public',
@@ -37,5 +39,9 @@ class Article extends Model
     public function getHot()
     {
         return data_get($this->hot,$this->a_hot,'[N\A]');
+    }
+    public function CategoryArticle()
+    {
+      return $this->belongsTo(CategoryArticle::class,'id');
     }
 }

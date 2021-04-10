@@ -113,12 +113,19 @@
                                 <div class="d-flex justify-content-md-end align-items-center">
                                     <div class="form custom-form">
                                         <div class="form-group mb-0">
-                                            <select class="form-control custom-select" id="Sortbylist-job">
+                                            <!-- <select class="form-control custom-select" id="Sortbylist-job">
                                                 <option>Sản phẩm mới nhất</option>
                                                 <option>Sản phẩm phổ biến</option>
                                                 <option>Giá thấp nhất</option>
                                                 <option>Giá cao nhất</option>
-                                            </select>
+                                            </select> -->
+                                            <select class="form-control custom-select" id="Sortbylist-job" name="orderby" class="orderby">
+                                            <option {{ Request::get('orderby') == 'md' || !Request::get('orderby') ? 'selected="selected"' : '' }} value="md" selected="selected">Mặc định</option>
+                                            <option {{ Request::get('orderby') == 'desc' ? 'selected="selected"' : '' }} value="desc">Mới nhất</option>
+                                            <option {{ Request::get('orderby') == 'asc' ? 'selected="selected"' : '' }} value="asc">Sản phẩm cũ</option>
+                                            <option {{ Request::get('orderby') == 'price_max' ? 'selected="selected"' : '' }} value="price_max">Giá tăng dần</option>
+                                            <option {{ Request::get('orderby') == 'price_min' ? 'selected="selected"' : '' }} value="price_min">Giá giảm dần</option>
+                                        </select>
                                         </div>
                                     </div>
                                 </div>

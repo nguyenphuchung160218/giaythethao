@@ -15,7 +15,7 @@ class RatingController extends FrontendController
     }
     public function saveRating(Request $request,$id)
     {
-        dd($request);
+        // dd($request);
         Rating::insert([
             'ra_product_id' => $id,
             'ra_number' => 5,

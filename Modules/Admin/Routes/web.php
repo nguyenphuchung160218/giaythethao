@@ -48,6 +48,14 @@ Route::prefix('admin')->middleware('App\Http\Middleware\CheckLoginAdmin')->group
         Route::post('/update/{id}','AdminArticleController@update');
         Route::get('/{action}/{id}','AdminArticleController@action')->name('admin.action.article');
     });
+    Route::group(['prefix'=>'categoryarticle'], function (){
+        Route::get('/', 'AdminCategoryArticle@index')->name('admin.list.categoryarticle');
+        Route::get('/create','AdminCategoryArticle@create')->name('admin.create.categoryarticle');
+        Route::post('/create','AdminCategoryArticle@store');
+        Route::get('/update/{id}','AdminCategoryArticle@edit')->name('admin.edit.categoryarticle');
+        Route::post('/update/{id}','AdminCategoryArticle@update');
+        Route::get('/{action}/{id}','AdminCategoryArticle@action')->name('admin.action.categoryarticle');
+    });
     Route::group(['prefix'=>'rating'], function (){
         Route::get('/', 'AdminRatingController@index')->name('admin.list.rating');
     });

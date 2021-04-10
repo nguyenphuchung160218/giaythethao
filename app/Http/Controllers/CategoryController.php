@@ -14,6 +14,8 @@ class CategoryController extends FrontendController
         if($url!=null)
         {
             $id = Category::where('c_name',$url)->select('id')->first();
+
+            dd($id);
             $products->where('pro_category_id',$id->id)->get();
         }
     	if($request->search)
