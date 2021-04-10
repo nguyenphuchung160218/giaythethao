@@ -56,6 +56,11 @@ Route::prefix('admin')->middleware('App\Http\Middleware\CheckLoginAdmin')->group
         Route::post('/update/{id}','AdminCategoryArticle@update');
         Route::get('/{action}/{id}','AdminCategoryArticle@action')->name('admin.action.categoryarticle');
     });
+    //lien he
+     Route::group(['prefix' => 'contact'],function (){
+        Route::get('/','AdminContactController@index')->name('admin.get.list.contact');
+        Route::get('/{action}/{id}','AdminContactController@action')->name('admin.action.contact');
+    });
     Route::group(['prefix'=>'rating'], function (){
         Route::get('/', 'AdminRatingController@index')->name('admin.list.rating');
     });

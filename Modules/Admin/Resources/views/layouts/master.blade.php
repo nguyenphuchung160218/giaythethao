@@ -76,6 +76,9 @@
                     <li class="{{ \Request::route()->getName() == 'admin.list.article' ? 'active' : '' }}">
                         <a href="{{ route('admin.list.article') }}"><i class="fa fa-fw fa-bar-chart-o"></i> Bài Viết</a>
                     </li>
+                     <li class="{{ \Request::route()->getName() == 'admin.get.list.contact' ? 'active' : '' }}">
+                        <a href="{{ route('admin.get.list.contact') }}"><i class="fa fa-fw fa-bar-chart-o"></i> Liên hệ</a>
+                    </li>
                     <li class="{{ \Request::route()->getName() == 'admin.list.rating' ? 'active' : '' }}">
                         <a href="{{ route('admin.list.rating') }}"><i class="fa fa-fw fa-bar-chart-o"></i> Đánh Giá</a>
                     </li>

@@ -43,6 +43,7 @@ class ArticleController extends FrontendController
         $url = $request->segment(3);
 
         $articles = Article::where('a_active',Article::STATUS_PUBLIC);
+        $articlesHot =Article::where('a_hot',1)->limit(3)->get();
         // $c_articles = CategoryArticlec::where('c_hot_article',CategoryArticlec::HOME_PUBLIC)->leftjoin('articles',' categoryarticles.id','=','articles.a_category_id')->select('
         //     categoryarticles.c_name_article as name','count(articles.a_category_id) as solan');
         $c_articles = CategoryArticlec::where('c_hot_article',CategoryArticlec::HOME_PUBLIC)->get();
@@ -56,6 +57,7 @@ class ArticleController extends FrontendController
         $viewData = [
             'articles' => $articles,
             'c_articles'=>$c_articles,
+            'articlesHot'=>$articlesHot,
             'query' => $request->query()
         ];
         return view('article.cate',$viewData);

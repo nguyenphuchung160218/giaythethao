@@ -43,7 +43,6 @@ Route::get('danh-muc/bai-viet/{slug}','App\Http\Controllers\ArticleController@ge
 //info
 // Route::get('lien-he','ContactController@getContact')->name('get.contact');
 // Route::post('lien-he','ContactController@saveContact');
-Route::view('/lien-he', 'info.contact')->name('get.contact');
 Route::view('/ve-chung-toi', 'info.aboutUs')->name('get.aboutUs');
 Route::view('/ho-tro-khach-hang', 'info.support')->name('get.support');
 
@@ -59,8 +58,12 @@ Route::group(['prefix'=>'gio-hang','middleware'=>'App\Http\Middleware\CheckLogin
     Route::post('/thanh-toan','App\Http\Controllers\ShoppingCartController@savePayment')->name('save.form.pay');
     // Route::get('/thanh-toan-online','ShoppingCartController@getFormPayOnline')->name('get.form.pay.online');
     // Route::post('/thanh-toan-online','ShoppingCartController@savePayOnline');
-});
 
+});
+//lien he
+
+Route::get('lien-he','App\Http\Controllers\ContactController@getContact')->name('get.contact');
+    Route::post('lien-he','App\Http\Controllers\ContactController@saveContact');
 //rating
 Route::group(['prefix'=>'rating'],function (){
     Route::post('/danh-gia/{id}','App\Http\Controllers\RatingController@saveRating')->name('save.form.rating');

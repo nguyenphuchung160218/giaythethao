@@ -44,6 +44,7 @@
                                     <a href="https://goo.gl/maps/c2P7mZKUY8iYkkZt6" class="video-play-icon text-primary">Xem trên bản đồ Google</a>
                                 </div>
                             </div>
+                         
                             <ul class="list-unstyled social-icon mb-0 mt-4">
                                 <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="facebook" class="fea icon-sm fea-social"></i></a></li>
                                 <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="instagram" class="fea icon-sm fea-social"></i></a></li>
@@ -55,8 +56,55 @@
                             </ul><!--end icon-->
                         </div>
                     </div><!--end col-->
+                    
                 </div><!--end row-->
             </div><!--end container--> 
-        </section><!--end section-->
+        </section>
+         <section class="vh-100 d-flex align-items-center">
+            <div class="bg-overlay bg-overlay-white"></div>
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-sm-12">
+                    <div class="contact-us-form">
+                            <div class="contact-form">
+                                <form action="" method="post">
+                                    @csrf
+                                    <p>Mời bạn điền thông tin liên hệ:</p>
+                                    <div class="form-top">
+                                        <div class="form-group col-sm-6 col-md-6 col-lg-5">
+                                            <label>Họ tên <sup>*</sup></label>
+                                            <input type="text" name="c_name" class="form-control" required>
+                                        </div>
+                                        <div class="form-group col-sm-6 col-md-6 col-lg-5">
+                                            <label>Email <sup>*</sup></label>
+                                            <input type="email" name="c_email" class="form-control" required>
+                                        </div>
+                                        <div class="form-group col-sm-6 col-md-6 col-lg-5">
+                                            <label>Tiêu đề<sup>*</sup></label>
+                                            <input type="text" name="c_title" class="form-control" required>
+                                        </div>
+                                        <div class="form-group col-sm-6 col-md-6 col-lg-5">
+                                            <label>SĐT <sup>*</sup></label>
+                                            <input type="number" name="c_phone" class="form-control" required>
+                                        </div>
+                                        <div class="form-group col-sm-12 col-md-12 col-lg-10">
+                                            <label>Nội dung <sup>*</sup></label>
+                                            <textarea class="yourmessage" name="c_content" required></textarea >
+                                        </div>
+                                        <div class="submit-form form-group col-sm-12 submit-review">
+                                            <button type="submit" class="btn btn-success pull-left">Gửi thông tin</button>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                   
+                </div><!--end row-->
+            </div><!--end container--> 
+        </section>
+        <!--end section-->
         <!-- Hero End -->
 @stop
