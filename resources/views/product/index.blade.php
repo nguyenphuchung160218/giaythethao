@@ -39,9 +39,9 @@
                                 <!-- SEARCH -->
                                 <div class="widget">
                                     <div id="search2" class="widget-search mb-0">
-                                        <form role="search" method="get" id="searchform" class="searchform">
+                                        <form role="search" method="get" id="searchform" class="searchform" action="{{ route('get.search.product')}}">
                                             <div>
-                                                <input type="text" class="border rounded" name="s" id="s" placeholder="Tìm Kiếm...">
+                                                <input type="text" class="border rounded" name="search" id="s" placeholder="Tìm Kiếm...">
                                                 <input type="submit" id="searchsubmit" value="Search">
                                             </div>
                                         </form>
@@ -119,7 +119,7 @@
                                                 <option>Giá thấp nhất</option>
                                                 <option>Giá cao nhất</option>
                                             </select> -->
-                                            <select class="form-control custom-select" id="Sortbylist-job" name="orderby" class="orderby">
+                                            <select class="form-control custom-select" id="Sortbylist-job" name="orderby" class="orderby" id="form_order">
                                             <option {{ Request::get('orderby') == 'md' || !Request::get('orderby') ? 'selected="selected"' : '' }} value="md" selected="selected">Mặc định</option>
                                             <option {{ Request::get('orderby') == 'desc' ? 'selected="selected"' : '' }} value="desc">Mới nhất</option>
                                             <option {{ Request::get('orderby') == 'asc' ? 'selected="selected"' : '' }} value="asc">Sản phẩm cũ</option>
@@ -181,4 +181,14 @@
             </div><!--end container-->
         </section><!--end section-->
         <!-- End Products -->
+@stop
+
+@section('script')
+    <script>
+        $(function (){
+            $('.orderby').change(function (){
+                $("#form_order").submit();
+            })
+        })
+    </script>
 @stop

@@ -389,6 +389,7 @@ a.text-footer:hover, a.text-footer:focus {
 
 .card .card-body {
   padding: 1.5rem;
+  width: 400px;
 }
 
 .component-wrapper .title {
@@ -5316,3 +5317,9 @@ p {
   display: -webkit-box;
 }
 /*# sourceMappingURL=style.css.map */
+.form-message{
+   text-color:red;
+}
+.login-form{
+   width: 400px;
+}

@@ -20,6 +20,9 @@ Route::group(['namespace'=>''],function (){
     Route::get('dang-nhap','App\Http\Controllers\Auth\LoginController@getLogin')->name('get.login');
     Route::post('dang-nhap','App\Http\Controllers\Auth\LoginController@postLogin')->name('post.login');
     Route::get('dang-xuat','App\Http\Controllers\Auth\LoginController@getLogout')->name('get.logout');  
+    Route::get('auth/social', 'App\Http\Controllers\Auth\LoginController@show')->name('social.login');
+    Route::get('oauth/{driver}', 'App\Http\Controllers\Auth\LoginController@redirectToProvider')->name('social.oauth');
+    Route::get('oauth/{driver}/callback', 'App\Http\Controllers\Auth\LoginController@handleProviderCallback')->name('social.callback');
 });
 
 //user

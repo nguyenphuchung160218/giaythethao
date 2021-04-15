@@ -250,5 +250,6 @@
         <script src="{{ asset('') }}js/app.js"></script>
         <!-- Load Facebook SDK for JavaScript -->
         @yield('script')
+        
     </body>
 </html>

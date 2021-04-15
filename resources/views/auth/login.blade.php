@@ -17,7 +17,7 @@
                         <div class="card login-page bg-white shadow rounded border-0">
                             <div class="card-body">
                                 <h4 class="card-title text-center">Đăng nhập</h4>  
-                                <form method="post" action="{{ route('post.login') }}" class="login-form mt-4">
+                                <form method="post" action="{{ route('post.login') }}" class="login-form mt-4" id="form-login">
                                     @csrf
                                     <div class="row">
                                         <div class="col-lg-12">
@@ -25,7 +25,7 @@
                                                 <label>Email <span class="text-danger">*</span></label>
                                                 <div class="position-relative">
                                                     <i data-feather="user" class="fea icon-sm icons"></i>
-                                                    <input type="email" class="form-control pl-5" placeholder="Email" name="email" required="">
+                                                    <input type="email" class="form-control pl-5" placeholder="Email" name="email" id='email' required="">
                                                 </div>
                                             </div>
                                         </div><!--end col-->
@@ -35,7 +35,7 @@
                                                 <label>Mật khẩu <span class="text-danger">*</span></label>
                                                 <div class="position-relative">
                                                     <i data-feather="key" class="fea icon-sm icons"></i>
-                                                    <input type="password" class="form-control pl-5" placeholder="Password" name="password" required="">
+                                                    <input type="password" class="form-control pl-5" placeholder="Password" name="password" required="" id="password">
                                                 </div>
                                             </div>
                                         </div><!--end col-->
@@ -60,11 +60,11 @@
                                             <h6>Đăng Nhập Bằng</h6>
                                             <div class="row">
                                                 <div class="col-6 mt-3">
-                                                    <a href="javascript:void(0)" class="btn btn-block btn-light"><i class="mdi mdi-facebook text-primary"></i> Facebook</a>
+                                                    <a href="{{ route('social.oauth', 'facebook') }}" class="btn btn-block btn-light"><i class="mdi mdi-facebook text-primary"></i> Facebook</a>
                                                 </div><!--end col-->
                                                 
                                                 <div class="col-6 mt-3">
-                                                    <a href="javascript:void(0)" class="btn btn-block btn-light"><i class="mdi mdi-google text-danger"></i> Google</a>
+                                                    <a href="{{ route('social.oauth', 'google') }}" class="btn btn-block btn-light"><i class="mdi mdi-google text-danger"></i> Google</a>
                                                 </div><!--end col-->
                                             </div>
                                         </div><!--end col-->
@@ -81,4 +81,10 @@
             </div> <!--end container-->
         </section><!--end section-->
         <!-- Hero End -->
+@stop
+@section('script')
+<script type="text/javascript">
+    
+
+</script>
 @stop

@@ -10,18 +10,20 @@ class CategoryController extends FrontendController
     public function getProduct(Request $request)
     {
     	$url = $request->segment(2);
+        // $url = preg_split('/(-)/i',$url);
+
         $products = Product::where('pro_active',Product::STATUS_PUBLIC);
+        if($request->search)
+        {
+            $products->orWhere('pro_name','like','%'.$request->search.'%');
+
+        }
         if($url!=null)
         {
             $id = Category::where('c_name',$url)->select('id')->first();
-
-            dd($id);
             $products->where('pro_category_id',$id->id)->get();
         }
-    	if($request->search)
-        {
-            $products->orWhere('pro_name','like','%'.$request->search.'%');
-        }
+    	
 
         if($request->price)
         {
