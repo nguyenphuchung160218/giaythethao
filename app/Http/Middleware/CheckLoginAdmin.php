@@ -13,6 +13,5 @@ class CheckLoginAdmin
             return redirect()->route('admin.login');
         }
         return $next($request);
-
     }
 }
