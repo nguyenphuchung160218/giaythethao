@@ -38,7 +38,7 @@
                             <div class="card-body p-0">
                                 <!-- SEARCH -->
                                 <div class="widget">
-                                    <div id="search2" class="widget-search mb-0">
+                                    <div id="search2" class="widget-search mb-0" style="width: 250px">
                                         <form role="search" method="get" id="searchform" class="searchform" action="{{ route('get.search.product')}}">
                                             <div>
                                                 <input type="text" class="border rounded" name="search" id="s" placeholder="Tìm Kiếm...">
@@ -113,19 +113,15 @@
                                 <div class="d-flex justify-content-md-end align-items-center">
                                     <div class="form custom-form">
                                         <div class="form-group mb-0">
-                                            <!-- <select class="form-control custom-select" id="Sortbylist-job">
-                                                <option>Sản phẩm mới nhất</option>
-                                                <option>Sản phẩm phổ biến</option>
-                                                <option>Giá thấp nhất</option>
-                                                <option>Giá cao nhất</option>
-                                            </select> -->
-                                            <select class="form-control custom-select" id="Sortbylist-job" name="orderby" class="orderby" id="form_order">
-                                            <option {{ Request::get('orderby') == 'md' || !Request::get('orderby') ? 'selected="selected"' : '' }} value="md" selected="selected">Mặc định</option>
-                                            <option {{ Request::get('orderby') == 'desc' ? 'selected="selected"' : '' }} value="desc">Mới nhất</option>
-                                            <option {{ Request::get('orderby') == 'asc' ? 'selected="selected"' : '' }} value="asc">Sản phẩm cũ</option>
-                                            <option {{ Request::get('orderby') == 'price_max' ? 'selected="selected"' : '' }} value="price_max">Giá tăng dần</option>
-                                            <option {{ Request::get('orderby') == 'price_min' ? 'selected="selected"' : '' }} value="price_min">Giá giảm dần</option>
-                                        </select>
+                                          <form id="form_order">
+                                            <select class="form-control custom-select" id="Sortbylist-job" name="orderby" class="orderby" >
+                                            <option {{ Request::get("orderby") == "md"|| !Request::get('orderby') ? 'selected="selected"' : '' }} value="md" selected="selected">Mặc định</option> 
+                                            <option {{ Request::get("orderby") == "desc" ? "selected='selected'" : "" }} value="desc">Mới nhất</option>
+                                            <option {{ Request::get('orderby') == "asc" ? "selected='selected'" : "" }} value="asc">Sản phẩm cũ</option>
+                                            <option {{ Request::get('orderby') == "price_max" ? "selected='selected'":"" }} value="price_max">Giá tăng dần</option>
+                                            <option {{ Request::get('orderby') == "price_min" ? "selected='selected'":"" }} value="price_min">Giá giảm dần</option>
+                                             </select>
+                                          </form>
                                         </div>
                                     </div>
                                 </div>
@@ -185,10 +181,11 @@
 
 @section('script')
     <script>
-        $(function (){
-            $('.orderby').change(function (){
+         $(function (){
+             $(".orderby").change(function (){
                 $("#form_order").submit();
             })
-        })
+         })
+       
     </script>
 @stop

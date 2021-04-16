@@ -55,7 +55,7 @@
                                     </a>
                                     <ul class="list-unstyled shop-icons">
                                         <li><a href="javascript:void(0)" class="btn btn-icon btn-pills btn-soft-danger"><i data-feather="heart" class="icons"></i></a></li>
-                                        <li class="mt-2 list-inline-item"><a href="{{ route('get.view.product',$product->pro_slug) }}" data-toggle="modal" data-target="#productview" class="btn btn-icon btn-pills btn-soft-primary"><i data-feather="eye" class="icons"></i></a></li>
+                                        <li class="mt-2 list-inline-item"><a href="{{ route('get.view.product',[$product->pro_slug,$product->id]) }}" data-toggle="modal" data-target="#productview" class="btn btn-icon btn-pills btn-soft-primary"><i data-feather="eye" class="icons"></i></a></li>
                                         <li class="mt-2"><a href="{{ route('add.cart',$product->id) }}" class="btn btn-icon btn-pills btn-soft-warning"><i data-feather="shopping-cart" class="icons"></i></a></li>
                                     </ul>
                                 </div>

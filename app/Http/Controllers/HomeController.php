@@ -13,12 +13,16 @@ class HomeController extends FrontendController
     	$products = Product::where('pro_active',Product::STATUS_PUBLIC)->get();
     	return view('home',compact('products'));
     }
-    public function viewProduct($slug)
+    public function viewProduct($slug,$id)
     {
-        $viewProduct = Product::where([
+        $product = Product::where([
             'pro_active' => Product::STATUS_PUBLIC,
             'pro_slug' => $slug,
-        ])->first();
-        View::share('viewProduct',$viewProduct);
+            'id' =>$id,
+        ])->first()->get();
+        $viewData = [
+            'product' => $product
+        ];
+        return view('layout.viewproduct',$viewData);
     }
 }

@@ -33,10 +33,10 @@ Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');
 
 //product
 Route::get('danh-muc/{slug}','App\Http\Controllers\CategoryController@getProduct')->name('get.product.category');
-Route::get('san-pham/search', 'App\Http\Controllers\CategoryController@getProduct')->name('get.search.product');
+Route::get('san-pham/search', 'App\Http\Controllers\CategoryController@getSearch')->name('get.search.product');
 Route::get('san-pham', 'App\Http\Controllers\CategoryController@getProduct')->name('get.list.product');
 Route::get('san-pham/{slug}', 'App\Http\Controllers\ProductDetailController@productDetail')->name('get.detail.product');
-Route::get('san-pham1/{slug}', 'App\Http\Controllers\ProductDetailController@viewProduct')->name('get.view.product');
+Route::get('view-san-pham/{slug}/{id}', 'App\Http\Controllers\ProductDetailController@viewProduct')->name('get.view.product');
 
 //article
 Route::get('bai-viet','App\Http\Controllers\ArticleController@getArticle')->name('get.list.article');

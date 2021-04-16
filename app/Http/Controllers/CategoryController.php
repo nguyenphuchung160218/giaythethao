@@ -7,70 +7,56 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 class CategoryController extends FrontendController
 {
-    public function getProduct(Request $request)
+    public function getSearch(Request $request)
     {
-    	$url = $request->segment(2);
-        // $url = preg_split('/(-)/i',$url);
-
+     
         $products = Product::where('pro_active',Product::STATUS_PUBLIC);
         if($request->search)
         {
-            $products->orWhere('pro_name','like','%'.$request->search.'%');
-
-        }
-        if($url!=null)
-        {
-            $id = Category::where('c_name',$url)->select('id')->first();
-            $products->where('pro_category_id',$id->id)->get();
-        }
-    	
-
-        if($request->price)
-        {
-            $price = $request->price;
-            switch ($price)
-            {
-                case '1';
-                    $products->where('pro_price','<',1000000);
-                    break;
-                case '2';
-                    $products->whereBetween('pro_price',[1000000,3000000]);
-                    break;
-                case '3';
-                    $products->whereBetween('pro_price',[3000000,5000000]);
-                    break;
-                case '4';
-                    $products->whereBetween('pro_price',[500000,7000000]);
-                    break;
-                case '5';
-                    $products->whereBetween('pro_price',[7000000,10000000]);
-                    break;
-                case '6';
-                    $products->where('pro_price','>',10000000);
-                    break;
-            }
+            $products->Where('pro_name','like','%'.$request->search.'%');
         }
         if ($request->orderby)
         {
             $orderby = $request->orderby;
+            
             switch ($orderby)
             {
                 case 'desc':
                     $products->orderBy('id','DESC');
                     break;
                 case 'asc':
-                    $products->orderBy('id','ASC');
+                    $products->orderBy('id','ASC')->get();
                     break;
                 case 'price_max':
-                    $products->orderBy('pro_price','ASC');
+                    $products->orderBy('pro_price','ASC')->get();
                     break;
                 case 'price_min':
-                    $products->orderBy('pro_price','DESC');
+                    $products->orderBy('pro_price','DESC')->get();
                     break;
                 default:
-                    $products->orderBy('id','DESC');
+                    $products->orderBy('id','DESC')->get();
             }
         }
+        $products=$products->paginate(6);
+        $viewData = [
+            'products' => $products,
+            'query' => $request->query(),
+        ];
+        return view('product.index',$viewData);
+    }
+    public function getProduct(Request $request)
+    {
+    	
+         // $url = preg_split('/(-)/i',$url);
+         
+        $products = Product::where('pro_active',Product::STATUS_PUBLIC);
+         $url = $request->segment(2);
+        if($url!='')
+        {
+            $id = Category::where('c_name',$url)->select('id')->first();
+            $products->where('pro_category_id',$id->id)->get();
+        }
+
         $products=$products->paginate(6);
         $viewData = [
             'products' => $products,
