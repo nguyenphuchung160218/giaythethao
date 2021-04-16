@@ -40,7 +40,7 @@
             <div class="container mt-100 mt-60">
                 <div class="row">
                     <div class="col-12">
-                        <h5 class="mb-0">Related Products</h5>
+                        <h5 class="mb-0">Sản Phẩm Nổi Bật</h5>
                     </div><!--end col-->
 
                     <div class="col-12 mt-4">
@@ -88,7 +88,7 @@
             <div class="container mt-100 mt-60">
                 <div class="row">
                     <div class="col-12">
-                        <h5 class="mb-0">Top Categories</h5>
+                        <h5 class="mb-0">Các Danh Mục Nổi Bật</h5>
                     </div><!--end col-->
                 </div><!--end row-->
 
@@ -115,7 +115,7 @@
             <div class="container mt-100 mt-60">
                 <div class="row">
                     <div class="col-12">
-                        <h5 class="mb-0">Popular Products</h5>
+                        <h5 class="mb-0">Sản Phẩm Bán Chạy</h5>
                     </div><!--end col-->
                 </div><!--end row-->
 

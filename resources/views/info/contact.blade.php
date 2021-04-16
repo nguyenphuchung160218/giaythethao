@@ -1,20 +1,95 @@
 @extends('layout.app')
 @section('content')
-<!-- Hero Start -->
-        <section class="vh-100 d-flex align-items-center" style="background: url('images/contact-detail.jpg') center center;">
-            <div class="bg-overlay bg-overlay-white"></div>
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-6">
-                        <div class="mt-5 pt-4">
-                            <iframe class="rounded border p-3" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3834.0625531045985!2d108.15732981490079!3d16.062243443891475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3142195ec1905d0b%3A0xc77c1f75ef8af137!2zxJDhuqFpIEjhu41jIFPGsCBQaOG6oW0gxJDDoCBO4bq1bmc!5e0!3m2!1svi!2s!4v1603688467495!5m2!1svi!2s" width="100%" height="500" frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-                        </div>                      
+<!-- Start Contact -->
+        <section class="section pt-5 mt-4">
+            <div class="container mt-100 mt-60">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <div class="section-title mb-4 pb-2">
+                            <h4 class="title mb-4">Our Trusted Clients</h4>
+                            <p class="text-muted para-desc mx-auto mb-0">Start working with <span class="text-primary font-weight-bold">Landrick</span> that can provide everything you need to generate awareness, drive traffic, connect.</p>
+                        </div>
                     </div>
-                    <div class="col-lg-6">
-                        <div class="title-heading mt-5 pt-4">
-                            <h1 class="heading">Gửi thắc mắc cho chúng tôi</h1>
-                            <p class="text-dark">Nói bất cứ điều về <span class="text-primary font-weight-bold">ShoesShop</span> chúng tôi sẽ cố gắng giải thích cho bạn trong thời gian sớm nhất.</p>
-                            
+                    <div class="col-12 p-0">
+                        <div class="card map border-0">
+                            <div class="card-body p-0">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3834.0625531045985!2d108.15732981490079!3d16.062243443891475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3142195ec1905d0b%3A0xc77c1f75ef8af137!2zxJDhuqFpIEjhu41jIFPGsCBQaOG6oW0gxJDDoCBO4bq1bmc!5e0!3m2!1svi!2s!4v1618583334528!5m2!1svi!2s" style="border:0;border-radius:15px;" allowfullscreen="" loading="lazy"></iframe>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+                </div><!--end row-->
+            </div><!--end container-->
+
+            <div class="container mt-100 mt-60">
+                <div class="row align-items-center">
+                    <div class="col-lg-5 col-md-6 mt-4 mt-sm-0 pt-2 pt-sm-0 order-2 order-md-1">
+                        <div class="card custom-form rounded shadow border-0">
+                            <div class="card-body">
+                                <div id="message"></div>
+                                <form method="post" action="" name="contact-form" id="contact-form">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <label>Họ Tên <span class="text-danger">*</span></label>
+                                                <div class="position-relative">
+                                                    <i data-feather="user" class="fea icon-sm icons"></i>
+                                                    <input name="c_name" id="name" type="text" class="form-control pl-5" placeholder="First Name :">
+                                                </div>
+                                            </div>
+                                        </div><!--end col-->
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label>Email <span class="text-danger">*</span></label>
+                                                <div class="position-relative">
+                                                    <i data-feather="mail" class="fea icon-sm icons"></i>
+                                                    <input name="c_email" id="email" type="email" class="form-control pl-5" placeholder="Your Email :">
+                                                </div>
+                                            </div> 
+                                        </div><!--end col-->
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label>Số Điện Thoại <span class="text-danger">*</span></label>
+                                                <div class="position-relative">
+                                                    <i data-feather="user" class="fea icon-sm icons"></i>
+                                                    <input name="c_phone" id="name" type="text" class="form-control pl-5" placeholder="Your Phone :">
+                                                </div>
+                                            </div>
+                                        </div><!--end col-->
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <label>Tiêu Đề <span class="text-danger">*</span></label>
+                                                <div class="position-relative">
+                                                    <i data-feather="user" class="fea icon-sm icons"></i>
+                                                    <input name="c_title" id="name" type="text" class="form-control pl-5" placeholder="Title :">
+                                                </div>
+                                            </div>
+                                        </div><!--end col-->
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <label>Nội Dung</label>
+                                                <div class="position-relative">
+                                                    <i data-feather="message-circle" class="fea icon-sm icons"></i>
+                                                    <textarea name="c_content" id="comments" rows="4" class="form-control pl-5" placeholder="Your Message :"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!--end row-->
+                                    <div class="row">
+                                        <div class="col-sm-12 text-center">
+                                            <input type="submit" id="submit" class="submitBnt btn btn-primary btn-block" value="Gửi Phản Hồi">
+                                            <div id="simple-msg"></div>
+                                        </div><!--end col-->
+                                    </div><!--end row-->
+                                </form><!--end form--> 
+                            </div>
+                        </div><!--end custom-form-->
+                    </div><!--end col-->
+
+                    <div class="col-lg-7 col-md-6 order-1 order-md-2">
+                        <div class="title-heading ml-lg-4">
+                            <h4 class="mb-4">Gửi thắc mắc cho chúng tôi</h4>
+                            <p class="text-muted">Nói bất cứ điều về <span class="text-primary font-weight-bold">ShoesShop </span> chúng tôi sẽ cố gắng giải thích cho bạn trong thời gian sớm nhất.</p>
                             <div class="media contact-detail align-items-center mt-3">
                                 <div class="icon">
                                     <i data-feather="mail" class="fea icon-m-md text-dark mr-3"></i>
@@ -40,71 +115,14 @@
                                     <i data-feather="map-pin" class="fea icon-m-md text-dark mr-3"></i>
                                 </div>
                                 <div class="media-body content">
-                                    <h5 class="title font-weight-bold mb-0">Vị Trí </h5>
-                                    <a href="https://goo.gl/maps/c2P7mZKUY8iYkkZt6" class="video-play-icon text-primary">Xem trên bản đồ Google</a>
+                                    <h5 class="title font-weight-bold mb-0">Vị Trí</h5>
+                                    <a href="https://goo.gl/maps/sWN8LCX43WVaaTPg7" class="video-play-icon text-primary">Xem trên bản đồ Google</a>
                                 </div>
                             </div>
-                         
-                            <ul class="list-unstyled social-icon mb-0 mt-4">
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="facebook" class="fea icon-sm fea-social"></i></a></li>
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="instagram" class="fea icon-sm fea-social"></i></a></li>
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="twitter" class="fea icon-sm fea-social"></i></a></li>
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="linkedin" class="fea icon-sm fea-social"></i></a></li>
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="github" class="fea icon-sm fea-social"></i></a></li>
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="youtube" class="fea icon-sm fea-social"></i></a></li>
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="gitlab" class="fea icon-sm fea-social"></i></a></li>
-                            </ul><!--end icon-->
                         </div>
                     </div><!--end col-->
-                    
                 </div><!--end row-->
-            </div><!--end container--> 
-        </section>
-         <section class="vh-100 d-flex align-items-center">
-            <div class="bg-overlay bg-overlay-white"></div>
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-sm-12">
-                    <div class="contact-us-form">
-                            <div class="contact-form">
-                                <form action="" method="post">
-                                    @csrf
-                                    <p>Mời bạn điền thông tin liên hệ:</p>
-                                    <div class="form-top">
-                                        <div class="form-group col-sm-6 col-md-6 col-lg-5">
-                                            <label>Họ tên <sup>*</sup></label>
-                                            <input type="text" name="c_name" class="form-control" required>
-                                        </div>
-                                        <div class="form-group col-sm-6 col-md-6 col-lg-5">
-                                            <label>Email <sup>*</sup></label>
-                                            <input type="email" name="c_email" class="form-control" required>
-                                        </div>
-                                        <div class="form-group col-sm-6 col-md-6 col-lg-5">
-                                            <label>Tiêu đề<sup>*</sup></label>
-                                            <input type="text" name="c_title" class="form-control" required>
-                                        </div>
-                                        <div class="form-group col-sm-6 col-md-6 col-lg-5">
-                                            <label>SĐT <sup>*</sup></label>
-                                            <input type="number" name="c_phone" class="form-control" required>
-                                        </div>
-                                        <div class="form-group col-sm-12 col-md-12 col-lg-10">
-                                            <label>Nội dung <sup>*</sup></label>
-                                            <textarea class="yourmessage" name="c_content" required></textarea >
-                                        </div>
-                                        <div class="submit-form form-group col-sm-12 submit-review">
-                                            <button type="submit" class="btn btn-success pull-left">Gửi thông tin</button>
-                                        </div>
-                                    </div>
-
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
-                   
-                </div><!--end row-->
-            </div><!--end container--> 
-        </section>
-        <!--end section-->
-        <!-- Hero End -->
+            </div><!--end container-->
+        </section><!--end section-->
+        <!-- End contact -->
 @stop
