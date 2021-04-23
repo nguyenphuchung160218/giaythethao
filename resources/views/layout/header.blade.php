@@ -8,18 +8,18 @@
                     </a>
                 </div>                 
                 <ul class="buy-button list-inline mb-0">
-                    <li class="list-inline-item mb-0">
+                    <!-- <li class="list-inline-item mb-0">
                         <div class="dropdown">
+                            <form action="{{ route('get.search.product') }}">
                             <button type="submit" class="btn btn-link text-decoration-none dropdown-toggle p-0 pr-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="mdi mdi-magnify h4 text-muted"></i>
                             </button>
                             <div class="dropdown-menu dropdown-menu-right bg-white shadow rounded border-0 mt-3 py-0" style="width: 300px;">
-                                <form action="{{ route('get.search.product') }}">
-                                    <input type="text" id="text" name="search" class="form-control border bg-white" placeholder="Search...">
+                                    <input type="text" id="text" name="search" class="form-control border bg-white" placeholder="Search..." id='s'>
                                 </form>
                             </div>
                         </div>
-                    </li>
+                    </li> -->
                     <li class="list-inline-item mb-0 pr-1">
                         <div class="dropdown">
                             <button type="button" class="btn btn-icon btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="uil uil-shopping-cart align-middle icons"></i></button>

@@ -9,16 +9,14 @@ class CategoryController extends FrontendController
 {
     public function getSearch(Request $request)
     {
-     
-        $products = Product::where('pro_active',Product::STATUS_PUBLIC);
+        $products = Product::where('pro_active',Product::STATUS_PUBLIC)->inRandomOrder();
         if($request->search)
         {
-            $products->Where('pro_name','like','%'.$request->search.'%');
+            $products->where('pro_name','like','%'.$request->search.'%');
         }
         if ($request->orderby)
         {
             $orderby = $request->orderby;
-            
             switch ($orderby)
             {
                 case 'desc':
@@ -37,20 +35,62 @@ class CategoryController extends FrontendController
                     $products->orderBy('id','DESC')->get();
             }
         }
+       
         $products=$products->paginate(6);
-        $viewData = [
+        $viewData=[
             'products' => $products,
             'query' => $request->query(),
         ];
         return view('product.index',$viewData);
     }
+    public function getSold(Request $request)
+    {
+      
+        $products= Product::where(
+            'pro_buy','>',0 
+            )->inRandomOrder();
+           $products=$products->paginate(6);
+           $viewData =[
+              'products'=>$products,
+              'query' =>$request->query()
+           ];
+           return view('product.index',$viewData);
+           
+    }
+     public function getHot(Request $request)
+    {
+      
+            $products= Product::where([
+               'pro_hot' => Product::HOT_ON,
+               'pro_active' => Product::STATUS_PUBLIC
+                 ])->inRandomOrder();
+          $products=$products->paginate(6);
+           $viewData =[
+              'products'=>$products,
+              'query' =>$request->query()
+           ];
+           return view('product.index',$viewData);
+     
+    }
+     public function getNew(Request $request)
+    {
+           
+        $products= Product::where(
+            'pro_sale','>',0 
+            )->inRandomOrder();
+            $products=$products->paginate(6);
+           $viewData =[
+              'products'=>$products,
+              'query' =>$request->query()
+           ];
+           return view('product.index',$viewData);
+    }
     public function getProduct(Request $request)
     {
     	
          // $url = preg_split('/(-)/i',$url);
-         
-        $products = Product::where('pro_active',Product::STATUS_PUBLIC);
-         $url = $request->segment(2);
+        $products = Product::where('pro_active',Product::STATUS_PUBLIC)->inRandomOrder();
+        $url = $request->segment(2);
         if($url!='')
         {
             $id = Category::where('c_name',$url)->select('id')->first();

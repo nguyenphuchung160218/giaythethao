@@ -13,21 +13,14 @@ use Illuminate\Support\Str;
 
 class AdminArticleController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     * @return Renderable
-     */
+
     public function index()
     {
         $articles = Article::all();
-        // $categories = CategoryArticlec::all();
         return view('admin::article.index',compact('articles'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     * @return Renderable
-     */
+
     public function create()
     {
          $categories= $this->getCategories();

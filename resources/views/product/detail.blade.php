@@ -311,14 +311,39 @@
             <div class="container mt-100 mt-60">
                 <div class="row">
                     <div class="col-12">
-                        <h5 class="mb-0">Sản Phẩm Nổi Bật</h5>
+                        <h5 class="mb-0">Sản Phẩm cùng danh mục</h5>
                     </div><!--end col-->
 
                     <div class="col-12 mt-4">
                         <div id="client-four" class="owl-carousel owl-theme">
                             @foreach($products as $product)
                             <div class="card shop-list border-0 position-relative m-2">
-                                <div class="ribbon ribbon-left ribbon-danger overflow-hidden"><span class="text-center d-block shadow small h6">Hot</span></div>
+                                @if($product->pro_hot==1)
+                                      <div class="ribbon ribbon-left ribbon-danger overflow-hidden">
+                                         <span class="text-center d-block shadow small h6">
+                                          Hot
+                                         </span>
+                                       </div>
+                                      @elseif($product->pro_buy > 0)
+                                      <div class="ribbon ribbon-left ribbon-primary overflow-hidden">
+                                        <span class="text-center d-block shadow small h6">
+                                       Sold
+                                       </span>
+                                       </div>
+                                      @elseif($product->pro_sale >0)
+                                      <div class="ribbon ribbon-left ribbon-success overflow-hidden">
+                                        <span class="text-center d-block shadow small h6">
+                                       Sale
+                                      </span>
+                                       </div>
+                                       @else
+                                       <div class="ribbon ribbon-left ribbon-warning overflow-hidden">
+                                        <span class="text-center d-block shadow small h6">
+                                       Feature
+                                      </span>
+                                       </div>
+                                      @endif
+                                 
                                 <div class="shop-image position-relative overflow-hidden rounded shadow">
                                     <a href="{{ route('get.detail.product',$product->pro_slug) }}"><img src="{{ asset(pare_url_file($product->pro_avatar)) }}" class="img-fluid" alt=""></a>
                                     <a href="{{ route('get.detail.product',$product->pro_slug) }}" class="overlay-work">

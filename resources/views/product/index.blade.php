@@ -27,9 +27,7 @@
                 </svg>
             </div>
         </div>
-        <!-- Hero End -->
 
-        <!-- Start Products -->
         <section class="section">
             <div class="container">
                 <div class="row">
@@ -64,12 +62,11 @@
                                 <div class="widget mt-4 pt-2">
                                     <h5 class="widget-title">Color</h5>
                                     <ul class="list-unstyled mt-4 mb-0">
-                                        <li class="list-inline-item"><a href="jvascript:void(0)" class="px-3 py-1 rounded-pill bg-primary"></a></li>
-                                        <li class="list-inline-item"><a href="jvascript:void(0)" class="px-3 py-1 rounded-pill bg-danger"></a></li>
-                                        <li class="list-inline-item"><a href="jvascript:void(0)" class="px-3 py-1 rounded-pill bg-success"></a></li>
-                                        <li class="list-inline-item"><a href="jvascript:void(0)" class="px-3 py-1 rounded-pill bg-info"></a></li>
-                                        <li class="list-inline-item"><a href="jvascript:void(0)" class="px-3 py-1 rounded-pill bg-secondary"></a></li>
-                                        <li class="list-inline-item"><a href="jvascript:void(0)" class="px-3 py-1 rounded-pill bg-warning"></a></li>
+                                        <li class="list-inline-item"><a href="{{ route('get.color.blue.product')}}" class="px-3 py-1 rounded-pill bg-primary" title="Sold"></a></li>
+                                        <li class="list-inline-item"><a href="{{ route('get.color.red.product')}}" class="px-3 py-1 rounded-pill bg-danger" title="Hot"></a></li>
+                                        <li class="list-inline-item"><a href="{{ route('get.color.green.product')}} " class="px-3 py-1 rounded-pill bg-success" title="Sale"></a></li>
+                                         <li class="list-inline-item"><a href="} " class="px-3 py-1 rounded-pill bg-warning" title="Feature"></a></li>
+                                    
                                     </ul>
                                 </div>
                                 <!-- COlor -->
@@ -107,21 +104,25 @@
                                 <div class="section-title">
                                     <h5 class="mb-0">Showing 1–15 of 47 results</h5>
                                 </div>
-                            </div><!--end col-->
+                            </div>
         
                             <div class="col-lg-4 col-md-5 mt-4 mt-sm-0 pt-2 pt-sm-0">
                                 <div class="d-flex justify-content-md-end align-items-center">
                                     <div class="form custom-form">
                                         <div class="form-group mb-0">
-                                          <form id="form_order">
-                                            <select class="form-control custom-select" id="Sortbylist-job" name="orderby" class="orderby" >
-                                            <option {{ Request::get("orderby") == "md"|| !Request::get('orderby') ? 'selected="selected"' : '' }} value="md" selected="selected">Mặc định</option> 
-                                            <option {{ Request::get("orderby") == "desc" ? "selected='selected'" : "" }} value="desc">Mới nhất</option>
-                                            <option {{ Request::get('orderby') == "asc" ? "selected='selected'" : "" }} value="asc">Sản phẩm cũ</option>
-                                            <option {{ Request::get('orderby') == "price_max" ? "selected='selected'":"" }} value="price_max">Giá tăng dần</option>
-                                            <option {{ Request::get('orderby') == "price_min" ? "selected='selected'":"" }} value="price_min">Giá giảm dần</option>
-                                             </select>
-                                          </form>
+                                          
+                                          <form class="tree-most" method="get" id="form_order">
+                                            <div class="orderby-wrapper pull-right">
+                                              
+                                                <select name="orderby" class="orderby">
+                                                    <option {{ Request::get('orderby') == 'md' || !Request::get('orderby') ? 'selected="selected"' : '' }} value="md" selected="selected">Mặc định</option>
+                                                    <option {{ Request::get('orderby') == 'desc' ? 'selected="selected"' : '' }} value="desc">Mới nhất</option>
+                                                    <option {{ Request::get('orderby') == 'asc' ? 'selected="selected"' : '' }} value="asc">Sản phẩm cũ</option>
+                                                    <option {{ Request::get('orderby') == 'price_max' ? 'selected="selected"' : '' }} value="price_max">Giá tăng dần</option>
+                                                    <option {{ Request::get('orderby') == 'price_min' ? 'selected="selected"' : '' }} value="price_min">Giá giảm dần</option>
+                                                </select>
+                                            </div>
+                                        </form>
                                         </div>
                                     </div>
                                 </div>
@@ -132,7 +133,33 @@
                             @foreach($products as $product)
                             <div class="col-lg-4 col-md-6 col-12 mt-4 pt-2">
                                 <div class="card shop-list border-0 position-relative">
-                                    <div class="ribbon ribbon-left ribbon-success overflow-hidden"><span class="text-center d-block shadow small h6">Featured</span></div>
+                                      @if($product->pro_hot==1)
+                                      <div class="ribbon ribbon-left ribbon-danger overflow-hidden">
+                                         <span class="text-center d-block shadow small h6">
+                                          Hot
+                                         </span>
+                                       </div>
+                                      @elseif($product->pro_buy > 0)
+                                      <div class="ribbon ribbon-left ribbon-primary overflow-hidden">
+                                        <span class="text-center d-block shadow small h6">
+                                       Sold
+                                       </span>
+                                       </div>
+                                      @elseif($product->pro_sale >0)
+                                      <div class="ribbon ribbon-left ribbon-success overflow-hidden">
+                                        <span class="text-center d-block shadow small h6">
+                                       Sale
+                                      </span>
+                                       </div>
+                                       @else
+                                       <div class="ribbon ribbon-left ribbon-warning overflow-hidden">
+                                        <span class="text-center d-block shadow small h6">
+                                       Feature
+                                      </span>
+                                       </div>
+                                      @endif
+                                 
+
                                     <div class="shop-image position-relative overflow-hidden rounded shadow">
                                         <a href="{{ route('get.detail.product',$product->pro_slug) }}"><img src="{{ asset(pare_url_file($product->pro_avatar)) }}" class="img-fluid" alt=""></a>
                                         <a href="{{ route('get.detail.product',$product->pro_slug) }}" class="overlay-work">
@@ -176,7 +203,6 @@
                 </div><!--end row-->
             </div><!--end container-->
         </section><!--end section-->
-        <!-- End Products -->
 @stop
 
 @section('script')
@@ -184,8 +210,7 @@
          $(function (){
              $(".orderby").change(function (){
                 $("#form_order").submit();
-            })
-         })
-       
+            });
+         });
     </script>
 @stop

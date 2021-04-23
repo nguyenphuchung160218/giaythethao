@@ -28,6 +28,6 @@ class CategoryArticlec extends Model
     }
       public function articles()
     {
-        return $this->hasMany(Article::class,'a_category_id');
+        return $this->hasMany(Article::class);
     }
 }

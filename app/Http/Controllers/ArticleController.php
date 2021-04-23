@@ -14,7 +14,7 @@ class ArticleController extends FrontendController
     public function getArticle(Request $request)
     {
     	$articles = Article::paginate(1);
-         $c_articles = CategoryArticlec::where('c_hot_article',CategoryArticlec::HOME_PUBLIC)->get();
+        $c_articles = CategoryArticlec::where('c_hot_article',CategoryArticlec::HOME_PUBLIC)->get();
         // $c_articles = CategoryArticlec::where('c_hot_article',CategoryArticlec::HOME_PUBLIC)->leftjoin('articles',' categoryarticles.id','=','articles.a_category_id')->select('
         //   categoryarticles.c_name_article as name','count(articles.a_category_id) as solan')->orderBy('categoryarticles.id');
     	$articlesHot =Article::where('a_hot',1)->limit(3)->get();
