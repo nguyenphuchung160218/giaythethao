@@ -10,8 +10,13 @@ class HomeController extends FrontendController
 {
     public function index()
     {
-    	$products = Product::where('pro_active',Product::STATUS_PUBLIC)->get();
-    	return view('home',compact('products'));
+    	$productsHot = Product::where(['pro_active'=>Product::STATUS_PUBLIC,'pro_hot'=>1])->inRandomOrder()->get();
+        $productsSell = Product::where(['pro_active'=>Product::STATUS_PUBLIC,['pro_buy','>','0']])->limit(4)->orderBy('pro_buy','desc')->get();
+        $viewData=[
+            'productsHot'=>$productsHot,
+            'productsSell'=>$productsSell
+        ];
+    	return view('home',$viewData);
     }
     public function viewProduct($slug,$id)
     {

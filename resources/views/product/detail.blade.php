@@ -213,7 +213,9 @@
                                                 </div>
                                                 <div class="col-12 mt-4">
                                                     <h6 class="small font-weight-bold">Mời Đánh Giá:</h6>
-                                                    <a href="javascript:void(0)" class="d-inline-block mr-3">
+                                                    
+                                                    <label for="star1" class="d-inline-block mr-3">
+                                                        <div class="text-center"><input type="radio" id="star1" name="star" value="1"></div>
                                                         <ul class="list-unstyled mb-0 small">
                                                             <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
                                                             <li class="list-inline-item"><i class="mdi mdi-star-outline text-warning"></i></li>
@@ -221,9 +223,11 @@
                                                             <li class="list-inline-item"><i class="mdi mdi-star-outline text-warning"></i></li>
                                                             <li class="list-inline-item"><i class="mdi mdi-star-outline text-warning"></i></li>
                                                         </ul>
-                                                    </a>
+                                                    </label>
 
-                                                    <a href="javascript:void(0)" class="d-inline-block mr-3">
+                                                    
+                                                    <label for="star2" class="d-inline-block mr-3">     
+                                                        <div class="text-center"><input type="radio" id="star2" name="star" value="2"></div>
                                                         <ul class="list-unstyled mb-0 small">
                                                             <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
                                                             <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
@@ -231,9 +235,9 @@
                                                             <li class="list-inline-item"><i class="mdi mdi-star-outline text-warning"></i></li>
                                                             <li class="list-inline-item"><i class="mdi mdi-star-outline text-warning"></i></li>
                                                         </ul>
-                                                    </a>
-
-                                                    <a href="javascript:void(0)" class="d-inline-block mr-3">
+                                                    </label>
+                                                    <label for="star3" class="d-inline-block mr-3">
+                                                        <div class="text-center"><input type="radio" id="star3" name="star" value="3"></div>
                                                         <ul class="list-unstyled mb-0 small">
                                                             <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
                                                             <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
@@ -241,9 +245,9 @@
                                                             <li class="list-inline-item"><i class="mdi mdi-star-outline text-warning"></i></li>
                                                             <li class="list-inline-item"><i class="mdi mdi-star-outline text-warning"></i></li>
                                                         </ul>
-                                                    </a>
-
-                                                    <a href="javascript:void(0)" class="d-inline-block mr-3">
+                                                    </label>
+                                                    <label for="star4" class="d-inline-block mr-3">
+                                                        <div class="text-center"><input type="radio" id="star4" name="star" value="4"></div>
                                                         <ul class="list-unstyled mb-0 small">
                                                             <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
                                                             <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
@@ -251,9 +255,9 @@
                                                             <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
                                                             <li class="list-inline-item"><i class="mdi mdi-star-outline text-warning"></i></li>
                                                         </ul>
-                                                    </a>
-
-                                                    <a href="javascript:void(0)" class="d-inline-block">
+                                                    </label>
+                                                    <label for="star5" class="d-inline-block">
+                                                        <div class="text-center"><input type="radio" id="star5" name="star" value="5"></div>
                                                         <ul class="list-unstyled mb-0 small">
                                                             <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
                                                             <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
@@ -261,7 +265,7 @@
                                                             <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
                                                             <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
                                                         </ul>
-                                                    </a>
+                                                    </label>
                                                 </div>
                                                 <div class="col-md-12 mt-3">
                                                     <div class="form-group">

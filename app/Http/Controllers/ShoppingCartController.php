@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\Mail;
 
 class ShoppingCartController extends FrontendController
 {
+    private $vnp_TmnCode = "UDOPNWS1"; //Mã website tại VNPAY
+    private $vnp_HashSecret = "EBAHADUGCOEWYXCMYZRMTMLSHGKNRPBN"; //Chuỗi bí mật
+    private $vnp_Url = "http://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
+    private $vnp_Returnurl = "http://localhost:81/giaythethao/public/gio-hang/thanh-toan-online";
+
     //them gio hang
     public function addProduct(Request $request,$id)
     {
@@ -117,5 +122,103 @@ class ShoppingCartController extends FrontendController
         //     });
         \Cart::destroy();
         return redirect('/')->with('success','Mua hàng thành công! Mời bạn kiểm tra mail, chúng tôi sẽ liên hệ với bạn sớm nhất');
+    }
+    public function getFormPayOnline(Request $request)
+    {
+        if($request->vnp_ResponseCode=='00')
+        {
+            $email = get_data_user('web','email');
+            $transaction=[
+                'tr_user_id' => get_data_user('web'),
+                'tr_total' => $request->vnp_Amount/100,
+                'tr_note' => $request->vnp_OrderInfo,
+                'tr_address' => get_data_user('web','address'),
+                'tr_phone' => get_data_user('web','phone'),
+                'tr_type' => 1,
+                'vnp_BankTranNo' =>$request->vnp_BankTranNo,
+                'vnp_BankCode' =>$request->vnp_BankCode,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ];
+            $transactionId = Transaction::insertGetId($transaction);
+            if ($transactionId)
+            {
+                $products =\Cart::content();
+                foreach ($products as $product)
+                {
+                    Order::insert([
+                        'or_transaction_id' => $transactionId,
+                        'or_product_id' => $product->id,
+                        'or_qty' => $product->qty,
+                        'or_price' => $product->options->price_old,
+                        'or_sale' => $product->options->sale,
+                        'or_size' => $product->options->size,
+                    ]);
+                }
+                // $data=[
+                //     'transactionId' => $transactionId,
+                //     'transaction' => $transaction,
+                //     'products' => $products, 
+                //     'email' => $email,   
+                //     'userName' => get_data_user('web','name'),      
+                // ];
+                // Mail::send('shopping.sendMail',$data, function($message) use ($email){
+                //     $message->to($email,'Xác nhận đơn hàng ')->subject('Xác nhận đơn hàng');
+                // });
+                \Cart::destroy();              
+                return redirect()->to('/')->with('success','Thanh toán thành công! Mời bạn kiểm tra mail, chúng tôi sẽ liên hệ với bạn sớm nhất');
+            }           
+            else{
+                return redirect()->to('/')->with('danger','Thanh toán không thành công');
+            }
+        }              
+        $products= \Cart::content();
+        return view('shopping.payment_online',compact('products'));
+    }
+    public function savePayOnline(Request $request)
+    {
+        $totalMoney = str_replace(',','',\Cart::subtotal(0,3));       
+        error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
+
+        $inputData = array(
+            "vnp_Version" => "2.0.0",
+            "vnp_TmnCode" => $this->vnp_TmnCode,
+            "vnp_Amount" => $totalMoney*100,
+            "vnp_Command" => "pay",
+            "vnp_CreateDate" => date('YmdHis'),
+            "vnp_CurrCode" => "VND",
+            "vnp_IpAddr" => $_SERVER['REMOTE_ADDR'],
+            "vnp_Locale" => $request->language,
+            "vnp_OrderInfo" => $request->note ? $request->note : 'Không',
+            "vnp_ReturnUrl" => $this->vnp_Returnurl,
+            "vnp_TxnRef" => date('YmdHis'),
+        );
+        if ($request->bank_code) {
+            $inputData['vnp_BankCode'] = $request->bank_code;
+        }
+        ksort($inputData);
+        $query = "";
+        $i = 0;
+        $hashdata = "";
+        foreach ($inputData as $key => $value) {
+            if ($i == 1) {
+                $hashdata .= '&' . $key . "=" . $value;
+            } else {
+                $hashdata .= $key . "=" . $value;
+                $i = 1;
+            }
+            $query .= urlencode($key) . "=" . urlencode($value) . '&';
+        }
+
+        $vnp_Url = $this->vnp_Url . "?" . $query;
+        if ($this->vnp_HashSecret) {
+            // $vnpSecureHash = md5($vnp_HashSecret . $hashdata);
+            $vnpSecureHash = hash('sha256', $this->vnp_HashSecret . $hashdata);
+            $vnp_Url .= 'vnp_SecureHashType=SHA256&vnp_SecureHash=' . $vnpSecureHash;
+        }
+        $returnData = array('code' => '00'
+        , 'message' => 'success'
+        , 'data' => $vnp_Url);
+        return redirect()->to($returnData['data']);
     }
 }

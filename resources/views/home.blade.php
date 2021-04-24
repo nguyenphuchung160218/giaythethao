@@ -45,7 +45,7 @@
 
                     <div class="col-12 mt-4">
                         <div id="client-four" class="owl-carousel owl-theme">
-                            @foreach($products as $product)
+                            @foreach($productsHot as $product)
                             <div class="card shop-list border-0 position-relative m-2">
                                 <div class="ribbon ribbon-left ribbon-danger overflow-hidden"><span class="text-center d-block shadow small h6">Hot</span></div>
                                 <div class="shop-image position-relative overflow-hidden rounded shadow">
@@ -120,35 +120,41 @@
                 </div><!--end row-->
 
                 <div class="row">
+                    @foreach($productsSell as $product)
                     <div class="col-lg-3 col-md-6 col-12 mt-4 pt-2">
                         <div class="card shop-list border-0 position-relative">
-                            <div class="ribbon ribbon-left ribbon-primary overflow-hidden"><span class="text-center d-block shadow small h6">Popular</span></div>
+                            <div class="ribbon ribbon-left ribbon-primary overflow-hidden"><span class="text-center d-block shadow small h6">Selling</span></div>
                             <div class="shop-image position-relative overflow-hidden rounded shadow">
-                                <a href="shop-product-detail.html"><img src="images/shop/product/s9.jpg" class="img-fluid" alt=""></a>
-                                <a href="shop-product-detail.html" class="overlay-work">
-                                    <img src="images/shop/product/s-9.jpg" class="img-fluid" alt="">
+                                <a href="{{ route('get.detail.product',$product->pro_slug) }}"><img src="{{ asset(pare_url_file($product->pro_avatar)) }}" class="img-fluid" alt=""></a>
+                                <a href="{{ route('get.detail.product',$product->pro_slug) }}" class="overlay-work">
+                                    <img src="{{ asset(pare_url_file($product->pro_avatar)) }}" class="img-fluid" alt="">
                                 </a>
                                 <ul class="list-unstyled shop-icons">
                                     <li><a href="javascript:void(0)" class="btn btn-icon btn-pills btn-soft-danger"><i data-feather="heart" class="icons"></i></a></li>
                                     <li class="mt-2"><a href="javascript:void(0)" data-toggle="modal" data-target="#productview" class="btn btn-icon btn-pills btn-soft-primary"><i data-feather="eye" class="icons"></i></a></li>
-                                    <li class="mt-2"><a href="shop-cart.html" class="btn btn-icon btn-pills btn-soft-warning"><i data-feather="shopping-cart" class="icons"></i></a></li>
+                                    <li class="mt-2"><a href="{{ route('add.cart',$product->id) }}" class="btn btn-icon btn-pills btn-soft-warning"><i data-feather="shopping-cart" class="icons"></i></a></li>
                                 </ul>
                             </div>
                             <div class="card-body content pt-4 p-2">
-                                <a href="shop-product-detail.html" class="text-dark product-name h6">Coffee Cup / Mug</a>
+                                <a href="{{ route('get.detail.product',$product->pro_slug) }}" class="text-dark product-name h6">{{ $product->pro_name }}</a>
                                 <div class="d-flex justify-content-between mt-1">
-                                    <h6 class="text-muted small font-italic mb-0 mt-1">$16.00 <del class="text-danger ml-2">$21.00</del> </h6>
-                                    <ul class="list-unstyled text-warning mb-0">
-                                        <li class="list-inline-item"><i class="mdi mdi-star"></i></li>
-                                        <li class="list-inline-item"><i class="mdi mdi-star"></i></li>
-                                        <li class="list-inline-item"><i class="mdi mdi-star"></i></li>
-                                        <li class="list-inline-item"><i class="mdi mdi-star"></i></li>
-                                        <li class="list-inline-item"><i class="mdi mdi-star"></i></li>
-                                    </ul>
+                                    @if($product->pro_sale==0)
+                                    <h6 class="text-muted small font-italic mb-0 mt-1">{{ number_format($product->pro_price,0,',','.') }} <span class="price">₫</span></h6>
+                                    @else                                        
+                                    <h6 class="text-muted small font-italic mb-0 mt-1">{{ number_format($product->pro_price*(100-$product->pro_sale)/100,0,',','.') }} <span class="price">₫</span> <del class="text-danger ml-2">{{ number_format($product->pro_price,0,',','.') }} <span class="price">₫</span></del> </h6>
+                                    @endif                                      
                                 </div>
+                                <ul class="list-unstyled text-warning mb-0">
+                                    <li class="list-inline-item"><i class="mdi mdi-star"></i></li>
+                                    <li class="list-inline-item"><i class="mdi mdi-star"></i></li>
+                                    <li class="list-inline-item"><i class="mdi mdi-star"></i></li>
+                                    <li class="list-inline-item"><i class="mdi mdi-star"></i></li>
+                                    <li class="list-inline-item"><i class="mdi mdi-star"></i></li>
+                                </ul>
                             </div>
                         </div>
                     </div><!--end col-->
+                    @endforeach
                 </div><!--end row-->
             </div><!--end container-->
             <!-- End Popular -->

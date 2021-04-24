@@ -71,8 +71,8 @@ Route::prefix('')->group(function (){
 Route::group(['prefix'=>'gio-hang','middleware'=>'App\Http\Middleware\CheckLoginUser'],function (){
     Route::get('/thanh-toan','App\Http\Controllers\ShoppingCartController@getFormPayment')->name('get.form.pay');
     Route::post('/thanh-toan','App\Http\Controllers\ShoppingCartController@savePayment')->name('save.form.pay');
-    // Route::get('/thanh-toan-online','ShoppingCartController@getFormPayOnline')->name('get.form.pay.online');
-    // Route::post('/thanh-toan-online','ShoppingCartController@savePayOnline');
+    Route::get('/thanh-toan-online','App\Http\Controllers\ShoppingCartController@getFormPayOnline')->name('get.form.pay.online');
+    Route::post('/thanh-toan-online','App\Http\Controllers\ShoppingCartController@savePayOnline');
 
 });
 //lien he

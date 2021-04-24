@@ -22,10 +22,10 @@ class ArticleController extends FrontendController
     	return view('article.index',$viewData);
     }
     public function getDetail($slug){
-    	$articles = Article::where('a_slug',$slug)->first();
+    	$article = Article::where('a_slug',$slug)->first();
     	$articlesHot =Article::where('a_hot',1)->limit(3)->get();
     	$viewData=[
-    		'articles' =>$articles,
+    		'article' =>$article,
     		'articlesHot'=>$articlesHot,
     	];
     	return view('article.detail',$viewData);
