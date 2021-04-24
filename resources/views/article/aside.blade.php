@@ -15,19 +15,7 @@
                                 </div>
                                 <!-- SEARCH -->
     
-                                <!-- Categories -->
-                                <div class="widget mb-4 pb-2">
-                                    <h5 class="widget-title">Danh Mục</h5>
-                                    <ul class="list-unstyled mt-4 mb-0 blog-categories">
-                                        @if(isset($c_articles))
-                                        @foreach($c_articles as $c_article)
-                                        <li><a href="{{ route('get.article.category',$c_article->c_slug_article) }}" >{{$c_article->c_name_article}}</a> <span class="float-right">{{$c_article->solan}}</span></li>
-                                        @endforeach
-                                        @endif
-                                        
-                                    </ul>
-                                </div>
-                                <!-- Categories -->
+                               
     
                                 <!-- RECENT POST -->
                                 <div class="widget mb-4 pb-2">

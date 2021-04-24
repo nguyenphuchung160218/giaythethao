@@ -64,9 +64,7 @@
                     <li class="{{ \Request::route()->getName() == 'admin.list.category' ? 'active' : '' }}">
                         <a href="{{ route('admin.list.category') }}"><i class="fa fa-fw fa-bar-chart-o"></i> Danh Mục</a>
                     </li>   
-                     <li class="{{ \Request::route()->getName() == 'admin.list.categoryarticle' ? 'active' : '' }}">
-                        <a href="{{ route('admin.list.categoryarticle') }}"><i class="fa fa-fw fa-bar-chart-o"></i> Danh Mục Bài viết</a>
-                    </li>                                 
+                                                
                     <li class="{{ \Request::route()->getName() == 'admin.list.product' ? 'active' : '' }}">
                         <a href="{{ route('admin.list.product') }}"><i class="fa fa-fw fa-table"></i> Sản Phẩm</a>
                     </li>

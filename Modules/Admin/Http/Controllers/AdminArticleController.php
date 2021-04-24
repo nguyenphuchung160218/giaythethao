@@ -4,7 +4,6 @@ namespace Modules\Admin\Http\Controllers;
 
 use App\Http\Requests\RequestArticle;
 use App\Models\Article;
-use App\Models\CategoryArticlec;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -23,8 +22,8 @@ class AdminArticleController extends Controller
 
     public function create()
     {
-         $categories= $this->getCategories();
-        return view('admin::article.create',compact('categories'));
+       
+        return view('admin::article.create');
     }
 
     /**
@@ -37,10 +36,7 @@ class AdminArticleController extends Controller
         $this->insertOrUpdate($requestArticle);
         return redirect()->back();
     }
-    public function getCategories()
-    {
-        return CategoryArticlec::all();
-    }
+  
     /**
      * Show the form for editing the specified resource.
      * @param int $id
@@ -48,10 +44,10 @@ class AdminArticleController extends Controller
      */
     public function edit($id)
     {
-        $categories= $this->getCategories();
+        
         $article = Article::find($id);
         
-        return view('admin::article.update',compact('article','categories'));
+        return view('admin::article.update',compact('article'));
     }
 
     /**

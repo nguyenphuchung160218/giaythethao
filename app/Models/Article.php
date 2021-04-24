@@ -40,8 +40,5 @@ class Article extends Model
     {
         return data_get($this->hot,$this->a_hot,'[N\A]');
     }
-    public function categoryarticles()
-    {
-      return $this->belongsTo(CategoryArticlec::class,'a_category_id');
-    }
+    
 }

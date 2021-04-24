@@ -28,7 +28,6 @@
                     <th style="width: 20%;">Tên bài viết</th>
                     <th style="width: 100px;">Hình ảnh</th>
                     <th style="width: 300px;">Mô tả</th>
-                     <th style="width: 300px;">Danh mục bài viết</th>
                     <th>Nổi bật</th>
                     <th>Trạng thái</th>
                     <th>Ngày tạo</th>
@@ -45,7 +44,6 @@
                         <img src="{{ asset(pare_url_file($article->a_avatar)) }}" class="img img-responsive" style="width: 100px;height: 80px;">
                     </td>
                     <td><p style="-webkit-line-clamp: 4;-webkit-box-orient: vertical;overflow: hidden;display: -webkit-box;">{{ $article->a_description }}</p></td>
-                    <td>{{ isset($article->categoryArticles->c_name_article) ? $article->categoryArticles->c_name_article : '[N\A]' }}</td>
                     <td>
                         <a href="{{ route('admin.action.article',['hot',$article->id]) }}" class="label {{ $article->getHot($article->a_hot)['class'] }}">{{ $article->getHot($article->a_hot)['name'] }}</a>
                     </td>
