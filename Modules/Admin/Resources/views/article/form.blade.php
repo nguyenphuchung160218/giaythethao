@@ -28,25 +28,6 @@
                 <input type="text" class="form-control" placeholder="Mô tả" value="{{ old('a_description',isset($article->a_description) ? $article->a_description : '') }}" name="a_description" >
             </div>         
         </div>
-         <div class="col-sm-4">   
-            <div class="form-group">
-                <label for="name"> Danh mục bài viết</label>
-                <select name="a_category_id" id="" class="form-control">
-                    <option>--Thuộc danh mục--</option>
-                    @if(isset($categories))
-                        @foreach($categories as $category)
-                            <option value="{{ $category->id }}" {{ old('a_category_id',isset($article->a_category_id) ? $article->a_category_id : '') == $category->id ? "selected='selected'" : "" }}>{{ $category->c_name_article }}</option>
-                        @endforeach
-                    @endif
-                </select>
-
-                @if($errors->has('a_category_id'))
-                    <span class="error-text">
-                        {{ $errors->first('a_category_id') }}
-                    </span>
-                @endif
-            </div>
-        </div>
         <div class="col-sm-4">
             <div class="form-group">
                 <img id="out_img" src="{{ asset('image/unnamed.png') }}" style="height: 300px;width: 100%">
