@@ -35,20 +35,14 @@
                 <div class="row align-items-center">
                     <div class="col-md-5">
                         <div class="slider slider-for">
-                            
-                            <div><img src="{{ asset(pare_url_file($productDetail->pro_avatar)) }}" class="img-fluid rounded" alt=""></div>
-                            <!-- <div><img src="images/shop/product/single-3.jpg" class="img-fluid rounded" alt=""></div>
-                            <div><img src="images/shop/product/single-4.jpg" class="img-fluid rounded" alt=""></div>
-                            <div><img src="images/shop/product/single-5.jpg" class="img-fluid rounded" alt=""></div>
-                            <div><img src="images/shop/product/single-6.jpg" class="img-fluid rounded" alt=""></div> -->
+                            @foreach($productDetail->images as $item)
+                            <div><img src="{{ asset(pare_url_file($item->i_avatar)) }}" class="img-fluid rounded" alt=""></div>
+                            @endforeach       
                         </div>
                         <div class="slider slider-nav">
-                            
-                            <div><img src="{{ asset(pare_url_file($productDetail->pro_avatar)) }}" class="img-fluid" alt=""></div>
-                            <!-- <div><img src="images/shop/product/single-3.jpg" class="img-fluid" alt=""></div>
-                            <div><img src="images/shop/product/single-4.jpg" class="img-fluid" alt=""></div>
-                            <div><img src="images/shop/product/single-5.jpg" class="img-fluid" alt=""></div>
-                            <div><img src="images/shop/product/single-6.jpg" class="img-fluid" alt=""></div> -->
+                            @foreach($productDetail->images as $item)
+                            <div><img src="{{ asset(pare_url_file($item->i_avatar)) }}" class="img-fluid" alt=""></div>
+                            @endforeach
                         </div>
                     </div><!--end col-->
 
@@ -61,11 +55,13 @@
                             <h5 class="text-muted">{{ number_format($productDetail->pro_price*(100-$productDetail->pro_sale)/100,0,',','.') }} <span class="price">₫</span> <del class="text-danger ml-2">{{ number_format($productDetail->pro_price,0,',','.') }} <span class="price">₫</span></del> </h5>
                             @endif 
                             <ul class="list-unstyled text-warning h5 mb-0">
+                                @for($i = 1;$i <=5; $i++)
+                                <li class="list-inline-item"><i class="mdi mdi-star{{ $i > $averageStar ? '-outline' : ''}}"></i></li>
+                                @endfor
+                                <!-- <li class="list-inline-item"><i class="mdi mdi-star"></i></li>
                                 <li class="list-inline-item"><i class="mdi mdi-star"></i></li>
                                 <li class="list-inline-item"><i class="mdi mdi-star"></i></li>
-                                <li class="list-inline-item"><i class="mdi mdi-star"></i></li>
-                                <li class="list-inline-item"><i class="mdi mdi-star"></i></li>
-                                <li class="list-inline-item"><i class="mdi mdi-star"></i></li>
+                                <li class="list-inline-item"><i class="mdi mdi-star"></i></li> -->
                             </ul>
                             
                             <h5 class="mt-4 py-2">Tổng quát :</h5>
@@ -189,11 +185,14 @@
                                                         </div>
                                                     </div>
                                                     <ul class="list-unstyled mb-0">
+                                                        @for($i = 1;$i <=5; $i++)
+                                                        <li class="list-inline-item"><i class="mdi mdi-star{{ $i > $rating->ra_number ? '-outline' : ''}} text-warning"></i></li>
+                                                        @endfor
+                                                        <!-- <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
                                                         <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
                                                         <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
                                                         <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                                        <li class="list-inline-item"><i class="mdi mdi-star-outline text-warning"></i></li>
+                                                        <li class="list-inline-item"><i class="mdi mdi-star-outline text-warning"></i></li> -->
                                                     </ul>
                                                 </div>
                                                 <div class="mt-3">
@@ -257,7 +256,7 @@
                                                         </ul>
                                                     </label>
                                                     <label for="star5" class="d-inline-block">
-                                                        <div class="text-center"><input type="radio" id="star5" name="star" value="5"></div>
+                                                        <div class="text-center"><input type="radio" id="star5" name="star" value="5" checked=""></div>
                                                         <ul class="list-unstyled mb-0 small">
                                                             <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
                                                             <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
@@ -349,9 +348,9 @@
                                       @endif
                                  
                                 <div class="shop-image position-relative overflow-hidden rounded shadow">
-                                    <a href="{{ route('get.detail.product',$product->pro_slug) }}"><img src="{{ asset(pare_url_file($product->pro_avatar)) }}" class="img-fluid" alt=""></a>
+                                    <a href="{{ route('get.detail.product',$product->pro_slug) }}"><img src="{{ asset(pare_url_file($product->images[0]->i_avatar)) }}" class="img-fluid" alt=""></a>
                                     <a href="{{ route('get.detail.product',$product->pro_slug) }}" class="overlay-work">
-                                        <img src="{{ asset(pare_url_file($product->pro_avatar)) }}" class="img-fluid" alt="">
+                                        <img src="{{ asset(pare_url_file($product->images[1]->i_avatar)) }}" class="img-fluid" alt="">
                                     </a>
                                     <ul class="list-unstyled shop-icons">
                                         <li><a href="javascript:void(0)" class="btn btn-icon btn-pills btn-soft-danger"><i data-feather="heart" class="icons"></i></a></li>

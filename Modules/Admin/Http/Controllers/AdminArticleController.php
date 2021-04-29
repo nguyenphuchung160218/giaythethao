@@ -69,12 +69,12 @@ class AdminArticleController extends Controller
      */
     public function insertOrUpdate($requestArticle,$id = '')
     {
+        
         $article= new Article();
         if($id) $article= Article::find($id);
         $article->a_name = $requestArticle->a_name;
         $article->a_slug = Str::slug($requestArticle->a_name);
         $article->a_content = $requestArticle->a_content;
-        $article->a_category_id = $requestArticle->a_category_id;
         $article->a_title_seo = $requestArticle->a_title_seo;
         $article->a_description =  $requestArticle->a_description;
 

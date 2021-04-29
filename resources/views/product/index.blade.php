@@ -78,7 +78,7 @@
                                         @foreach($products as $product)
                                         <li class="media align-items-center mt-2">
                                             <a href="{{ route('get.detail.product',$product->pro_slug) }}">
-                                                <img src="{{ asset(pare_url_file($product->pro_avatar)) }}" class="img-fluid avatar avatar-small rounded shadow" style="height: auto;" alt="">
+                                                <img src="{{ asset(pare_url_file($product->images[0]->i_avatar)) }}" class="img-fluid avatar avatar-small rounded shadow" style="height: auto;" alt="">
                                             </a>
                                             <div class="content ml-3">
                                                 <a href="{{ route('get.detail.product',$product->pro_slug) }}" class="text-dark h6 text-cart" style="width: 164px;">{{ $product->pro_name }}</a>
@@ -161,9 +161,9 @@
                                  
 
                                     <div class="shop-image position-relative overflow-hidden rounded shadow">
-                                        <a href="{{ route('get.detail.product',$product->pro_slug) }}"><img src="{{ asset(pare_url_file($product->pro_avatar)) }}" class="img-fluid" alt=""></a>
+                                        <a href="{{ route('get.detail.product',$product->pro_slug) }}"><img src="{{ asset(pare_url_file($product->images[0]->i_avatar)) }}" class="img-fluid" alt=""></a>
                                         <a href="{{ route('get.detail.product',$product->pro_slug) }}" class="overlay-work">
-                                            <img src="{{ asset(pare_url_file($product->pro_avatar)) }}" class="img-fluid" alt="">
+                                            <img src="{{ asset(pare_url_file($product->images[1]->i_avatar)) }}" class="img-fluid" alt="">
                                         </a>
                                         <ul class="list-unstyled shop-icons">
                                             <li><a href="javascript:void(0)" class="btn btn-icon btn-pills btn-soft-danger"><i data-feather="heart" class="icons"></i></a></li>
@@ -172,7 +172,7 @@
                                         </ul>
                                     </div>
                                     <div class="card-body content pt-4 p-2">
-                                        <a href="shop-product-detail.html" class="text-dark product-name h6">{{ $product->pro_name }}</a>
+                                        <a href="{{ route('get.detail.product',$product->pro_slug) }}" class="text-dark product-name h6">{{ $product->pro_name }}</a>
                                         <div class="d-flex justify-content-between mt-1">
                                             @if($product->pro_sale==0)
                                             <h6 class="text-muted small font-italic mb-0 mt-1">{{ number_format($product->pro_price,0,',','.') }} <span class="price">₫</span></h6>
@@ -181,11 +181,16 @@
                                             @endif                                      
                                         </div>
                                         <ul class="list-unstyled text-warning mb-0">
-                                            <li class="list-inline-item"><i class="mdi mdi-star"></i></li>
-                                            <li class="list-inline-item"><i class="mdi mdi-star"></i></li>
-                                            <li class="list-inline-item"><i class="mdi mdi-star"></i></li>
-                                            <li class="list-inline-item"><i class="mdi mdi-star"></i></li>
-                                            <li class="list-inline-item"><i class="mdi mdi-star"></i></li>
+                                            <?php
+                                                $averageStar=0;
+                                                if($product->pro_total_rating>0)
+                                                {
+                                                    $averageStar = round($product->pro_total_number / $product->pro_total_rating,2);
+                                                }
+                                            ?>
+                                            @for($i = 1;$i <=5; $i++)
+                                            <li class="list-inline-item"><i class="mdi mdi-star{{ $i > $averageStar ? '-outline' : ''}}"></i></li>
+                                            @endfor
                                         </ul>
                                     </div>
                                 </div>

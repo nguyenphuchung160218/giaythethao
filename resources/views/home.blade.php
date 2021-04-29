@@ -8,7 +8,7 @@
                     <div class="py-5 rounded shadow" style="background: url('images/shop/fea1.jpg') top center;">
                         <div class="p-4">
                             <h3>Giày Thể Thao <br> Nữ</h3>
-                            <a href="javascript:void(0)" class="btn btn-sm btn-soft-primary mt-2">Shop Now</a>
+                            <a href="javascript:void(0)" class="btn btn-sm btn-soft-primary mt-2">Xem Ngay</a>
                         </div>
                     </div>
                 </div><!--end col-->
@@ -17,7 +17,7 @@
                     <div class="py-5 rounded shadow" style="background: url('images/shop/fea2.jpg') top center;">
                         <div class="p-4">
                             <h3>Giày Thể Thao <br> Nam</h3>
-                            <a href="javascript:void(0)" class="btn btn-sm btn-soft-primary mt-2">Shop Now</a>
+                            <a href="javascript:void(0)" class="btn btn-sm btn-soft-primary mt-2">Xem Ngay</a>
                         </div>
                     </div>
                 </div><!--end col-->
@@ -26,7 +26,7 @@
                     <div class="py-5 rounded shadow" style="background: url('images/shop/fea3.jpg') top center;">
                         <div class="p-4">
                             <h3>Giày Thể Thao <br> Nam/Nữ</h3>
-                            <a href="javascript:void(0)" class="btn btn-sm btn-soft-primary mt-2">Shop Now</a>
+                            <a href="" class="btn btn-sm btn-soft-primary mt-2">Xem Ngay</a>
                         </div>
                     </div>
                 </div><!--end col-->
@@ -49,9 +49,9 @@
                             <div class="card shop-list border-0 position-relative m-2">
                                 <div class="ribbon ribbon-left ribbon-danger overflow-hidden"><span class="text-center d-block shadow small h6">Hot</span></div>
                                 <div class="shop-image position-relative overflow-hidden rounded shadow">
-                                    <a href="{{ route('get.detail.product',$product->pro_slug) }}"><img src="{{ asset(pare_url_file($product->pro_avatar)) }}" class="img-fluid" alt=""></a>
+                                    <a href="{{ route('get.detail.product',$product->pro_slug) }}"><img src="{{ asset(pare_url_file($product->images[0]->i_avatar)) }}" class="img-fluid" alt=""></a>
                                     <a href="{{ route('get.detail.product',$product->pro_slug) }}" class="overlay-work">
-                                        <img src="{{ asset(pare_url_file($product->pro_avatar)) }}" class="img-fluid" alt="">
+                                        <img src="{{ asset(pare_url_file($product->images[1]->i_avatar)) }}" class="img-fluid" alt="">
                                     </a>
                                     <ul class="list-unstyled shop-icons">
                                         <li><a href="javascript:void(0)" class="btn btn-icon btn-pills btn-soft-danger"><i data-feather="heart" class="icons"></i></a></li>
@@ -69,11 +69,16 @@
                                         @endif                                      
                                     </div>
                                     <ul class="list-unstyled text-warning mb-0">
-                                        <li class="list-inline-item"><i class="mdi mdi-star"></i></li>
-                                        <li class="list-inline-item"><i class="mdi mdi-star"></i></li>
-                                        <li class="list-inline-item"><i class="mdi mdi-star"></i></li>
-                                        <li class="list-inline-item"><i class="mdi mdi-star"></i></li>
-                                        <li class="list-inline-item"><i class="mdi mdi-star"></i></li>
+                                        <?php
+                                            $averageStar=0;
+                                            if($product->pro_total_rating>0)
+                                            {
+                                                $averageStar = round($product->pro_total_number / $product->pro_total_rating,2);
+                                            }
+                                        ?>
+                                        @for($i = 1;$i <=5; $i++)
+                                        <li class="list-inline-item"><i class="mdi mdi-star{{ $i > $averageStar ? '-outline' : ''}}"></i></li>
+                                        @endfor
                                     </ul>
                                 </div>
                             </div>
@@ -125,9 +130,9 @@
                         <div class="card shop-list border-0 position-relative">
                             <div class="ribbon ribbon-left ribbon-primary overflow-hidden"><span class="text-center d-block shadow small h6">Selling</span></div>
                             <div class="shop-image position-relative overflow-hidden rounded shadow">
-                                <a href="{{ route('get.detail.product',$product->pro_slug) }}"><img src="{{ asset(pare_url_file($product->pro_avatar)) }}" class="img-fluid" alt=""></a>
+                                <a href="{{ route('get.detail.product',$product->pro_slug) }}"><img src="{{ asset(pare_url_file($product->images[0]->i_avatar)) }}" class="img-fluid" alt=""></a>
                                 <a href="{{ route('get.detail.product',$product->pro_slug) }}" class="overlay-work">
-                                    <img src="{{ asset(pare_url_file($product->pro_avatar)) }}" class="img-fluid" alt="">
+                                    <img src="{{ asset(pare_url_file($product->images[1]->i_avatar)) }}" class="img-fluid" alt="">
                                 </a>
                                 <ul class="list-unstyled shop-icons">
                                     <li><a href="javascript:void(0)" class="btn btn-icon btn-pills btn-soft-danger"><i data-feather="heart" class="icons"></i></a></li>
@@ -145,11 +150,16 @@
                                     @endif                                      
                                 </div>
                                 <ul class="list-unstyled text-warning mb-0">
-                                    <li class="list-inline-item"><i class="mdi mdi-star"></i></li>
-                                    <li class="list-inline-item"><i class="mdi mdi-star"></i></li>
-                                    <li class="list-inline-item"><i class="mdi mdi-star"></i></li>
-                                    <li class="list-inline-item"><i class="mdi mdi-star"></i></li>
-                                    <li class="list-inline-item"><i class="mdi mdi-star"></i></li>
+                                    <?php
+                                        $averageStar=0;
+                                        if($product->pro_total_rating>0)
+                                        {
+                                            $averageStar = round($product->pro_total_number / $product->pro_total_rating,2);
+                                        }
+                                    ?>
+                                    @for($i = 1;$i <=5; $i++)
+                                    <li class="list-inline-item"><i class="mdi mdi-star{{ $i > $averageStar ? '-outline' : ''}}"></i></li>
+                                    @endfor
                                 </ul>
                             </div>
                         </div>

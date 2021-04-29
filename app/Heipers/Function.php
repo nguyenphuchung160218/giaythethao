@@ -45,6 +45,7 @@ if (!function_exists('upload_image'))// trả về giá trị TRUE nếu hàm đ
 // )
 // thong tin file
         $info = new SplFileInfo($baseFilename);
+        
 // SplFileInfo la class cap cap thong tin cua file nhu ten, duoi mo rong ...
 // duoi file
         $ext = strtolower($info->getExtension());

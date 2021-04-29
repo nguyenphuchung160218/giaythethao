@@ -28,7 +28,7 @@
         <div class="col-sm-4">   
             <div class="form-group">
                 <label for="name"> Loại sản phẩm:</label>
-                <select name="pro_category_id" id="" class="form-control">
+                <select name="pro_category_id" id="" class="form-control" required="">
                     <option>--Chọn loại sản phẩm--</option>
                     @if(isset($categories))
                         @foreach($categories as $category)
@@ -58,14 +58,14 @@
             </div>
             <div class="form-group">
                 <label for="name"> Số lượng sản phẩm:</label>
-                <input type="number" name="pro_number" class="form-control" placeholder="0" value="{{ old('pro_number',isset($product->pro_number) ? $product->pro_number : '0') }}">
+                <input type="number" name="pro_number" class="form-control" placeholder="0" value="{{ old('pro_number',isset($product->pro_number) ? $product->pro_number : '100') }}">
             </div>       
             <div class="form-group">
                 <img id="out_img" src="{{ asset('image/unnamed.png') }}" style="height: 300px;width: 100%">
             </div>
             <div class="form-group">
                 <label for="name"> Hình ảnh:</label>
-                <input type="file" id="input_img" name="avatar" class="form-control">
+                <input type="file" id="input_img" name="avatar[]" class="form-control" multiple>
             </div>
         </div>
 

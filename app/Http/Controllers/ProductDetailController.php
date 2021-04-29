@@ -16,12 +16,20 @@ class ProductDetailController extends FrontendController
         	'pro_active' => Product::STATUS_PUBLIC,
         	'pro_slug' => $slug,
         ])->first();
+        
         $id = $productDetail->pro_category_id;
         $products = Product::where(
             'pro_category_id',$id
            )->get();
+
+        //average star
+        if($productDetail->pro_total_rating>0)
+        {
+            $averageStar = round($productDetail->pro_total_number / $productDetail->pro_total_rating,2);
+        }
         $ratings = Rating::where('ra_product_id',$productDetail->id)->orderBy('id','DESC')->paginate(10);
         $viewData=[
+            'averageStar' => isset($averageStar) ? $averageStar : 0,
         	'productDetail' => $productDetail,
         	'products' => $products,
             'ratings' => $ratings

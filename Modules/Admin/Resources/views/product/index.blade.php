@@ -47,7 +47,7 @@
                             </td>
                             <td>{{ $product->category->c_name }}</td>
                             <td>
-                                <img src="{{ asset(pare_url_file($product->pro_avatar)) }}" class="img img-responsive" style="width: 80px;height: 80px;">
+                                <img src="{{ asset(pare_url_file($product->images[0]->i_avatar)) }}" class="img img-responsive" style="width: 80px;height: 80px;">
                             </td>
                             <td>
                                 <a href="{{ route('admin.action.product',['active',$product->id]) }}" class="label {{ $product->getStatus($product->pro_active)['class'] }}">{{ $product->getStatus($product->pro_active)['name'] }}</a>

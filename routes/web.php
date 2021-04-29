@@ -41,6 +41,10 @@ Route::group(['prefix'=>'user','middleware'=>'App\Http\Middleware\CheckLoginUser
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');
 
 //product
+Route::get('the-loai/giay-nam','App\Http\Controllers\CategoryController@getProduct')->name('get.product.men');
+Route::get('the-loai/giay-nu','App\Http\Controllers\CategoryController@getProduct')->name('get.product.women');
+Route::get('the-loai/giay-nam-nu','App\Http\Controllers\CategoryController@getProduct')->name('get.product.men.women');
+
 Route::get('danh-muc/{slug}','App\Http\Controllers\CategoryController@getProduct')->name('get.product.category');
 Route::get('san-pham/search', 'App\Http\Controllers\CategoryController@getSearch')->name('get.search.product');
 Route::get('san-pham', 'App\Http\Controllers\CategoryController@getProduct')->name('get.list.product');
