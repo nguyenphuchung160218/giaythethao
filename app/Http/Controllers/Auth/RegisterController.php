@@ -9,11 +9,23 @@ use Validator;
 use App\Http\Requests\RequestUser;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Carbon;
+use App\Classes\ActivationService;
+use App\Models\UserAction;
+use Illuminate\Auth\Events\Registered;
+
 class RegisterController extends Controller
 {
+    use RegistersUsers;
+    protected $activationService;
+    protected $redirectTo = 'get.login';
+    // protected $activationService;
+    public function __construct(ActivationService $activationService)
+    {
+        $this->middleware('guest');
+        $this->activationService = $activationService;
+    }
     public function getRegister()
     {
     	return view('auth.register');
@@ -26,43 +38,20 @@ class RegisterController extends Controller
         $user->phone = $request->phone;
         $user->address = $request->address;
         $user->password = bcrypt($request->password);
-        $user->save();
-        if($user->id)
-        {
-            $email = $user->email;
-            $code = bcrypt(md5(time().$email));
-            $url = route('user.verify.account',['id' => $user->id,'code' => $code]);
-
-            $user->code_active = $code;
-            $user->time_active = Carbon::now();
-            $user->save();
-            $data = [
-                'route' => $url
-            ];
-
-            Mail::send('email.verify_account', $data, function($message) use ($email){
-                $message->to($email,'Xác nhận mật khẩu')->subject('Xác nhận mật khẩu');
-            });
-            return redirect()->route('get.login')->with('success','Đăng ký thành công! Mời bạn đăng nhập xac nhan email');
-        }
-       return  redirect()->back();
-         // return redirect()->route('get.login')->with('success','Đăng ký thành công! Mời bạn đăng nhập');         
+         $user->save();
+        // event(new Registered($user));
+        $this->activationService->sendActivationMail($user);
+        return redirect()->route('get.login')->with('success', 'Bạn hãy kiểm tra email và thực hiện xác thực theo hướng dẫn.');
+        
+       // return  redirect()->route('get.login')->with('success','Đăng ký thành công! Mời bạn đăng nhập xac nhan email');
+                 
     }
-     public function verifyAccount(Request $request)
+    public function activateUser($token)
     {
-        $code = $request->code;
-        $id = $request->id;
-        $checkUser = User::where([
-            'code_active' => $code,
-            'id' => $id
-        ])->first();
-        if(!$checkUser)
-        {
-            return redirect('/')->with('danger','Xin lỗi ! Đường dẫn xác nhận tài khoản không tồn tại, bạn vui lòng thử lại sau.');
+        if ($user = $this->activationService->activateUser($token)) {
+            auth()->login($user);
+            return redirect('get.login');
         }
-        $checkUser->active = 2;
-        $checkUser->save();
-        return redirect('/')->with('success','Xác nhận tài khoản thành công');
-
+        abort(404);
     }
 }

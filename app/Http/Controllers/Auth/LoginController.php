@@ -7,17 +7,24 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
+use App\Classes\ActivationService;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+
 
 class LoginController extends Controller
 {
+    use AuthenticatesUsers;
+    protected $redirectTo = '/';
+    protected $activationService;
      public function getLogin()
     {
         return view('auth.login');
     }
     
-     public function __construct()
+    public function __construct(ActivationService $activationService)
     {
-        $this->middleware('guest')->except('logout','getLogout');
+        $this->middleware('guest', ['except' => 'logout']);
+        $this->activationService = $activationService;
     }
 
     protected $providers = [
@@ -125,5 +132,13 @@ class LoginController extends Controller
         return redirect()->route('home');
 
     }
-    
+    protected function authenticated(Request $request, $user)
+    {
+        if (!$user->active) {
+            $this->activationService->sendActivationMail($user);
+            auth()->logout();
+            return back()->with('warning', 'Bạn cần xác thực tài khoản, chúng tôi đã gửi mã xác thực vào email của bạn, hãy kiểm tra và làm theo hướng dẫn.');
+        }
+        return redirect()->intended($this->redirectPath());
+    }
 }

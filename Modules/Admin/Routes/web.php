@@ -18,6 +18,7 @@ Route::prefix('admin')->group(function() {
 
 Route::prefix('admin')->middleware('App\Http\Middleware\CheckLoginAdmin')->group(function() {
     Route::get('/', 'AdminController@index')->name('admin.home');
+    
     Route::group(['prefix' => 'category'],function (){
        Route::get('/','AdminCategoryController@index')->name('admin.list.category');
        Route::get('/create','AdminCategoryController@create')->name('admin.create.category');
