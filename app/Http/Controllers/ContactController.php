@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Contact;
 use Illuminate\Http\Request;
-
-
+use Tintnaingwin\EmailChecker\Facades\EmailChecker;
 class ContactController extends FrontendController
 {
     public function __construct()

@@ -63,14 +63,17 @@
                                         <td class="text-center">{{ $product->price }}</td>
                                         <td class="text-center">                                           
                                             <input type="button" value="-" class="minus btn btn-icon btn-soft-primary font-weight-bold">
-                                            <input type="text" step="1" min="1" name="quantity" value="{{ $product->qty }}" title="Qty" class="btn btn-icon btn-soft-primary font-weight-bold">
+                                            <input type="text" step="1" min="1" name="quantity" value="{{ $product->qty }}" title="Qty" class="btn btn-icon btn-soft-primary font-weight-bold" max="">
+
                                             <input type="button" value="+" class="plus btn btn-icon btn-soft-primary font-weight-bold">
                                         </td>
                                         <td class="text-center font-weight-bold">{{ $product->price*$product->qty }}</td>
                                         <td class="h6"><button style="padding: 0;border: none;background: none" class="text-info" type="submit"><i class="fuil uil-edit"></i></button></td>
                                         <td class="h6"><a href="{{ route('delete.cart',$key) }}" class="text-danger">X</a></td>
                                         </form>
+                                    
                                     </tr>
+
                                     <?php $stt++ ?>
                                     @endforeach                                   
                                 </tbody>

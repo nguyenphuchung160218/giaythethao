@@ -20,14 +20,17 @@ class HomeController extends FrontendController
     }
     public function viewProduct($slug,$id)
     {
-        $product = Product::where([
-            'pro_active' => Product::STATUS_PUBLIC,
-            'pro_slug' => $slug,
-            'id' =>$id,
-        ])->first()->get();
-        $viewData = [
-            'product' => $product
-        ];
-        return view('layout.viewproduct',$viewData);
+        // $product = Product::where([
+        //     'pro_active' => Product::STATUS_PUBLIC,
+        //     'pro_slug' => $slug,
+        //     'id' =>$id,
+        // ])->first()->get();
+        // $viewData = [
+        //     'product' => $product
+        // ];
+        $product = Product::wherSlug([
+            'pro_slug'=>$slug
+        ])->firstOrFail();
+        return view('layout.viewproduct',compact('product'));
     }
 }

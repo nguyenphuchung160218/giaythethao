@@ -53,7 +53,7 @@ Route::get('san-pham/color/blue', 'App\Http\Controllers\CategoryController@getSo
 Route::get('san-pham/color/red', 'App\Http\Controllers\CategoryController@getHot')->name('get.color.red.product');
 Route::get('san-pham/color/green', 'App\Http\Controllers\CategoryController@getNew')->name('get.color.green.product');
 Route::get('san-pham/{slug}', 'App\Http\Controllers\ProductDetailController@productDetail')->name('get.detail.product');
-Route::get('view-san-pham/{slug}/{id}', 'App\Http\Controllers\ProductDetailController@viewProduct')->name('get.view.product');
+Route::get('view-san-pham/{slug}', 'App\Http\Controllers\ProductDetailController@viewProduct')->name('get.view.product');
 
 //article
 Route::get('bai-viet','App\Http\Controllers\ArticleController@getArticle')->name('get.list.article');
@@ -65,6 +65,8 @@ Route::get('danh-muc/bai-viet/{slug}','App\Http\Controllers\ArticleController@ge
 // Route::post('lien-he','ContactController@saveContact');
 Route::view('/ve-chung-toi', 'info.aboutUs')->name('get.aboutUs');
 Route::view('/ho-tro-khach-hang', 'info.support')->name('get.support');
+Route::view('/lien-he', 'info.contact')->name('get.contact');
+
 
 //cart
 Route::prefix('')->group(function (){
@@ -72,7 +74,11 @@ Route::prefix('')->group(function (){
     Route::get('/delete/{id}','App\Http\Controllers\ShoppingCartController@deleteProduct')->name('delete.cart');
     Route::get('/update/{id}','App\Http\Controllers\ShoppingCartController@updateProduct')->name('update.cart');
     Route::get('/gio-hang','App\Http\Controllers\ShoppingCartController@getListShoppingCart')->name('get.list.cart');
-});
+    Route::get('/mua-ngay/{id}/','App\Http\Controllers\ProductDetailController@muaNgay')->name('muangay');
+    
+
+
+   });
 Route::group(['prefix'=>'gio-hang','middleware'=>'App\Http\Middleware\CheckLoginUser'],function (){
     Route::get('/thanh-toan','App\Http\Controllers\ShoppingCartController@getFormPayment')->name('get.form.pay');
     Route::post('/thanh-toan','App\Http\Controllers\ShoppingCartController@savePayment')->name('save.form.pay');

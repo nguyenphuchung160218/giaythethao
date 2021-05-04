@@ -7,6 +7,8 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Rating;
 use Illuminate\Support\Facades\View;
+use Gloudemans\Shoppingcart\Cart;
+
 
 class ProductDetailController extends FrontendController
 {
@@ -36,12 +38,38 @@ class ProductDetailController extends FrontendController
         ];
         return view('product.detail', $viewData);      
     }
-    public function viewProduct($slug)
-    {
-        $viewProduct = Product::where([
-            'pro_active' => Product::STATUS_PUBLIC,
-            'pro_slug' => $slug,
-        ])->first();
-        View::share('viewProduct',$viewProduct);
+    public function muaNgay(Request $request,$id)
+    {            
+        $products = $this->addcart($request,$id);
+        return view('shopping.index',compact('products'));
+    
+    } 
+    public function addcart($request,$id='')
+    {   
+         $product = Product::select('pro_name','id','pro_price','pro_sale','pro_number')->find($id);
+
+            if(!$product) return redirect('/');
+            $price = $product->pro_price;
+            if($product->pro_sale)
+            {
+                $price = $price * (100-$product->pro_sale)/100;
+            }
+            if($product->pro_number == 0)
+            {
+                return redirect()->back()->with('warning','Sản phẩm đã hết hàng');
+            }
+             \Cart::add([
+            'id'=> $id,
+            'name'=> $product->pro_name,
+            'qty'=>1,
+            'price'=> $price,
+            'weight' => 550,          
+            'options'=> [
+                'avatar'=> $product->images[0]->i_avatar,
+                'sale'=> $product->pro_sale,
+                'price_old'=> $product->pro_price,         
+            ],
+            ]);
+           return \Cart::content();
     }
 }

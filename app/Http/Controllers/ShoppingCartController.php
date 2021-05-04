@@ -20,7 +20,9 @@ class ShoppingCartController extends FrontendController
     //them gio hang
     public function addProduct(Request $request,$id)
     {
-        $product = Product::select('pro_name','id','pro_price','pro_sale','pro_avatar','pro_number')->find($id);
+        $product = Product::select('pro_name','id','pro_price','pro_sale','pro_number')->find($id);
+        $number = $product->pro_number;
+
 
         if(!$product) return redirect('/');
 
@@ -33,31 +35,33 @@ class ShoppingCartController extends FrontendController
         {
             return redirect()->back()->with('warning','Sản phẩm đã hết hàng');
         }
-
         \Cart::add([
             'id'=> $id,
             'name'=> $product->pro_name,
             'qty'=> 1,
             'price'=> $price,
+            'so'=>$number,
             'weight' => 550,          
             'options'=> [
-                'avatar'=> $product->pro_avatar,
+                'avatar'=> $product->images[0]->i_avatar,
                 'sale'=> $product->pro_sale,
-                'price_old'=> $product->pro_price,    
-                // 'size' =>0          
+                'price_old'=> $product->pro_price,         
             ],
         ]);
+
+
         return redirect()->back()->with('success','Thêm vào giỏ hàng thành công');
     }
+    
 
     public function updateProduct(Request $request, $id)
     {
-        //$qty = $request->quantity;
-        // $item = \Cart::get($id);
+        //  $qty = $request->quantity;
+        //  $item = \Cart::get($id);
         // $option = $item->options->merge(['size' => $request->size]);
-        // \Cart::update($id,['qty' => $qty,'options' => $option,]);
+        //  \Cart::update($id,['qty' => $qty,'options' => $option,]);
         // return redirect()->back()->with('success','Cập nhật thành công');
-        \Cart::update($id,$request->quantity);
+         \Cart::update($id,$request->quantity);
         return redirect()->back()->with('success','Cập nhật thành công');
     }
 

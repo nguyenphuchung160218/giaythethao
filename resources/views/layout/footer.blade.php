@@ -18,21 +18,27 @@
                     <div class="col-lg-2 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
                         <h5 class="text-light footer-head">Thông tin</h5>
                         <ul class="list-unstyled footer-list mt-4">
-                            <li><a href="page-aboutus.html" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Giới thiệu</a></li>                           
-                            <li><a href="page-team.html" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Liên hệ</a></li>
-                            <li><a href="page-pricing.html" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Tài khoản</a></li>
-                            <li><a href="page-portfolio-modern.html" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Đăng nhập</a></li>
+                            <li><a href="{{route('get.aboutUs')}}" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Giới thiệu</a></li>                           
+                            <li><a href="{{route('get.contact')}}" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Liên hệ</a></li>
+                            <li> 
+                                @if(get_data_user('web'))
+                                <a href="{{route('get.user')}}" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Tài khoản</a>
+                                @else
+                                <a href="#" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Tài khoản</a>
+                                @endif
+                            </li>
+                            <li><a href="{{route('get.login')}}" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Đăng nhập</a></li>
                         </ul>
                     </div><!--end col-->
                     
                     <div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
                         <h5 class="text-light footer-head">Hỗ trợ khách hàng</h5>
                         <ul class="list-unstyled footer-list mt-4">
-                            <li><a href="page-terms.html" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Đặt hàng & Thanh toán</a></li>
-                            <li><a href="page-privacy.html" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Giao hàng & Nhận hàng</a></li>
-                            <li><a href="documentation.html" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Chính sách bảo mật</a></li>
-                            <li><a href="changelog.html" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Điều khoản dịch vụ</a></li>
-                            <li><a href="changelog.html" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Câu hỏi thường gặp</a></li>
+                            <li><a href="{{route('get.aboutUs')}}" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Đặt hàng & Thanh toán</a></li>
+                            <li><a href="{{route('get.aboutUs')}}" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Giao hàng & Nhận hàng</a></li>
+                            <li><a href="{{route('get.aboutUs')}}" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Chính sách bảo mật</a></li>
+                            <li><a href="{{route('get.aboutUs')}}" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Điều khoản dịch vụ</a></li>
+                            <li><a href="{{route('get.aboutUs')}}" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Câu hỏi thường gặp</a></li>
                         </ul>
                     </div><!--end col-->
 

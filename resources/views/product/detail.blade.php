@@ -48,6 +48,7 @@
 
                     <div class="col-md-7 mt-4 mt-sm-0 pt-2 pt-sm-0">
                         <div class="section-title ml-md-4">
+                            <form class="ml-lg-4" method="get" action="{{ route('muangay',$productDetail->id)}}">
                             <h4 class="title">{{ $productDetail->pro_name }}</h4>
                             @if($productDetail->pro_sale==0)
                             <h5 class="text-muted">{{ number_format($productDetail->pro_price,0,',','.') }} <span class="price">₫</span></h5>
@@ -58,10 +59,6 @@
                                 @for($i = 1;$i <=5; $i++)
                                 <li class="list-inline-item"><i class="mdi mdi-star{{ $i > $averageStar ? '-outline' : ''}}"></i></li>
                                 @endfor
-                                <!-- <li class="list-inline-item"><i class="mdi mdi-star"></i></li>
-                                <li class="list-inline-item"><i class="mdi mdi-star"></i></li>
-                                <li class="list-inline-item"><i class="mdi mdi-star"></i></li>
-                                <li class="list-inline-item"><i class="mdi mdi-star"></i></li> -->
                             </ul>
                             
                             <h5 class="mt-4 py-2">Tổng quát :</h5>
@@ -86,21 +83,13 @@
                                     </div>
                                 </div><!--end col-->
 
-                                <div class="col-lg-6 col-12 mt-4 mt-lg-0">
-                                    <div class="d-flex shop-list align-items-center">
-                                        <h6 class="mb-0">Số Lượng:</h6>
-                                        <div class="ml-3">
-                                            <input type="button" value="-" class="minus btn btn-icon btn-soft-primary font-weight-bold">
-                                            <input type="text" step="1" min="1" name="quantity" value="1" title="Qty" class="btn btn-icon btn-soft-primary font-weight-bold">
-                                            <input type="button" value="+" class="plus btn btn-icon btn-soft-primary font-weight-bold">
-                                        </div>
-                                    </div>
-                                </div><!--end col-->
-                            </div><!--end row-->
-
+                                 
+                            </div>
                             <div class="mt-4 pt-2">
-                                <a href="{{ route('add.cart',$productDetail->id) }}" class="btn btn-primary">Mua Ngay</a>
+                                <!-- <a href="{{ route('add.cart',$productDetail->id) }}" class="btn btn-primary">Mua Ngay</a> -->
+                                <button type="submit" class="btn btn-primary">Mua Ngay</button>
                                 <a href="{{ route('add.cart',$productDetail->id) }}" class="btn btn-soft-primary ml-2">Thêm Vào Giỏ</a>
+                                </form>
                             </div>
                         </div>
                     </div><!--end col-->
@@ -321,7 +310,7 @@
                         <div id="client-four" class="owl-carousel owl-theme">
                             @foreach($products as $product)
                             <div class="card shop-list border-0 position-relative m-2">
-                                @if($product->pro_hot==1)
+                                     @if($product->pro_hot==1)
                                       <div class="ribbon ribbon-left ribbon-danger overflow-hidden">
                                          <span class="text-center d-block shadow small h6">
                                           Hot
@@ -382,4 +371,18 @@
                 </div><!--end row-->
             </div><!--end container-->
         </section><!--end section-->
+@stop
+@section('script')
+<script>
+    $('.plus').click(function () {
+        if ($(this).prev().val() < 999) {
+            $(this).prev().val(+$(this).prev().val() + 1);
+        }
+    });
+    $('.minus').click(function () {
+        if ($(this).next().val() > 1) {
+            if ($(this).next().val() > 1) $(this).next().val(+$(this).next().val() - 1);
+        }
+    });
+</script>
 @stop
