@@ -29,6 +29,7 @@
                 <th>Địa chỉ</th>
                 <th>Số điện thoại</th>
                 <th>Tổng tiền</th>
+                <th>Thanh toán</th>
                 <th>Trạng thái</th>
                 <th>Thời gian</th>
                 <th>Thao tác</th>
@@ -42,6 +43,16 @@
                         <td>{{ $order->o_address }}</td>
                         <td>{{ $order->o_phone }}</td>
                         <td>{{ number_format($order->o_total,0,',','.') }} đ</td>
+                        <td>
+                            @if ( $order->o_type == 1)
+                                <p href="" class="label label-success">Online</p>
+                                <span>{{ $order->vnp_BankCode }}</span>
+                                <p style="margin: 0px">{{ $order->vnp_BankTranNo }}</p>
+
+                            @else
+                                <p href="" class="label label-info">Thường</p>
+                            @endif
+                        </td>
                         <td>
                           @if ( $order->o_status == 1)
                               <span href="" class="label label-success">Đã xủ lý</span>

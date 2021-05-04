@@ -21,8 +21,11 @@ class ShoppingCartController extends FrontendController
     public function addProduct(Request $request,$id)
     {
         $product = Product::select('pro_name','id','pro_price','pro_sale','pro_number')->find($id);
+<<<<<<< HEAD
         $number = $product->pro_number;
 
+=======
+>>>>>>> 64074d8b59cb744df97d2c8e67ccf26ab2c9e31b
 
         if(!$product) return redirect('/');
 
@@ -45,7 +48,12 @@ class ShoppingCartController extends FrontendController
             'options'=> [
                 'avatar'=> $product->images[0]->i_avatar,
                 'sale'=> $product->pro_sale,
+<<<<<<< HEAD
                 'price_old'=> $product->pro_price,         
+=======
+                'price_old'=> $product->pro_price,    
+                'size' =>40        
+>>>>>>> 64074d8b59cb744df97d2c8e67ccf26ab2c9e31b
             ],
         ]);
 
@@ -56,12 +64,21 @@ class ShoppingCartController extends FrontendController
 
     public function updateProduct(Request $request, $id)
     {
+<<<<<<< HEAD
         //  $qty = $request->quantity;
         //  $item = \Cart::get($id);
         // $option = $item->options->merge(['size' => $request->size]);
         //  \Cart::update($id,['qty' => $qty,'options' => $option,]);
         // return redirect()->back()->with('success','Cập nhật thành công');
          \Cart::update($id,$request->quantity);
+=======
+        $qty = $request->quantity;
+        $item = \Cart::get($id);
+        $option = $item->options->merge(['size' => $request->size]);
+        \Cart::update($id,['qty' => $qty,'options' => $option,]);
+        return redirect()->back()->with('success','Cập nhật thành công');
+        \Cart::update($id,['qty' => $qty,'options' => $option,]);
+>>>>>>> 64074d8b59cb744df97d2c8e67ccf26ab2c9e31b
         return redirect()->back()->with('success','Cập nhật thành công');
     }
 
@@ -95,7 +112,7 @@ class ShoppingCartController extends FrontendController
             'o_total' => (int)$totalMoney,
             'o_note' => $request->note,
             'o_address' => $request->address,
-            // 'tr_type' => 0,
+            'o_type' => 0,
             'o_phone' => $request->phone,
         ];
         $orderId = Order::insertGetId($order);
@@ -110,20 +127,20 @@ class ShoppingCartController extends FrontendController
                     'od_qty' => $product->qty,
                     'od_price' => $product->options->price_old,
                     'od_sale' => $product->options->sale,
-                    // 'od_size' => $product->options->size,
+                    'od_size' => $product->options->size,
                 ]);
             }
         }
-        // $data=[
-        //     'transactionId' => $transactionId,
-        //     'transaction' => $transaction,
-        //     'products' => $products, 
-        //     'email' => $email,   
-        //     'userName' => get_data_user('web','name'),      
-        // ];
-        // Mail::send('shopping.sendMail',$data, function($message) use ($email){
-        //         $message->to($email,'Xác nhận đơn hàng ')->subject('Xác nhận đơn hàng');
-        //     });
+        $data=[
+            'transactionId' => $orderId,
+            'transaction' => $order,
+            'products' => $products, 
+            'email' => $email,   
+            'userName' => get_data_user('web','name'),      
+        ];
+        Mail::send('shopping.sendMail',$data, function($message) use ($email){
+                $message->to($email,'Xác nhận đơn hàng ')->subject('Xác nhận đơn hàng');
+            });
         \Cart::destroy();
         return redirect('/')->with('success','Mua hàng thành công! Mời bạn kiểm tra mail, chúng tôi sẽ liên hệ với bạn sớm nhất');
     }
@@ -132,43 +149,43 @@ class ShoppingCartController extends FrontendController
         if($request->vnp_ResponseCode=='00')
         {
             $email = get_data_user('web','email');
-            $transaction=[
-                'tr_user_id' => get_data_user('web'),
-                'tr_total' => $request->vnp_Amount/100,
-                'tr_note' => $request->vnp_OrderInfo,
-                'tr_address' => get_data_user('web','address'),
-                'tr_phone' => get_data_user('web','phone'),
-                'tr_type' => 1,
+            $order=[
+                'o_user_id' => get_data_user('web'),
+                'o_total' => $request->vnp_Amount/100,
+                'o_note' => $request->vnp_OrderInfo,
+                'o_address' => get_data_user('web','address'),
+                'o_phone' => get_data_user('web','phone'),
+                'o_type' => 1,
                 'vnp_BankTranNo' =>$request->vnp_BankTranNo,
                 'vnp_BankCode' =>$request->vnp_BankCode,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ];
-            $transactionId = Transaction::insertGetId($transaction);
-            if ($transactionId)
+            $orderId = Transaction::insertGetId($order);
+            if ($orderId)
             {
                 $products =\Cart::content();
                 foreach ($products as $product)
                 {
                     Order::insert([
-                        'or_transaction_id' => $transactionId,
-                        'or_product_id' => $product->id,
-                        'or_qty' => $product->qty,
-                        'or_price' => $product->options->price_old,
-                        'or_sale' => $product->options->sale,
-                        'or_size' => $product->options->size,
+                        'od_transaction_id' => $orderId,
+                        'od_product_id' => $product->id,
+                        'od_qty' => $product->qty,
+                        'od_price' => $product->options->price_old,
+                        'od_sale' => $product->options->sale,
+                        'od_size' => $product->options->size,
                     ]);
                 }
-                // $data=[
-                //     'transactionId' => $transactionId,
-                //     'transaction' => $transaction,
-                //     'products' => $products, 
-                //     'email' => $email,   
-                //     'userName' => get_data_user('web','name'),      
-                // ];
-                // Mail::send('shopping.sendMail',$data, function($message) use ($email){
-                //     $message->to($email,'Xác nhận đơn hàng ')->subject('Xác nhận đơn hàng');
-                // });
+                $data=[
+                    'transactionId' => $orderId,
+                    'transaction' => $order,
+                    'products' => $products, 
+                    'email' => $email,   
+                    'userName' => get_data_user('web','name'),      
+                ];
+                Mail::send('shopping.sendMail',$data, function($message) use ($email){
+                    $message->to($email,'Xác nhận đơn hàng ')->subject('Xác nhận đơn hàng');
+                });
                 \Cart::destroy();              
                 return redirect()->to('/')->with('success','Thanh toán thành công! Mời bạn kiểm tra mail, chúng tôi sẽ liên hệ với bạn sớm nhất');
             }           

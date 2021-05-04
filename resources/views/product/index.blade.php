@@ -62,10 +62,10 @@
                                 <div class="widget mt-4 pt-2">
                                     <h5 class="widget-title">Color</h5>
                                     <ul class="list-unstyled mt-4 mb-0">
-                                        <li class="list-inline-item"><a href="{{ route('get.color.blue.product')}}" class="px-3 py-1 rounded-pill bg-primary" title="Sold"></a></li>
+                                        <li class="list-inline-item"><a href="{{ route('get.color.blue.product')}}" class="px-3 py-1 rounded-pill bg-primary" title="Selling"></a></li>
                                         <li class="list-inline-item"><a href="{{ route('get.color.red.product')}}" class="px-3 py-1 rounded-pill bg-danger" title="Hot"></a></li>
                                         <li class="list-inline-item"><a href="{{ route('get.color.green.product')}} " class="px-3 py-1 rounded-pill bg-success" title="Sale"></a></li>
-                                         <li class="list-inline-item"><a href="} " class="px-3 py-1 rounded-pill bg-warning" title="Feature"></a></li>
+                                         <li class="list-inline-item"><a href="" class="px-3 py-1 rounded-pill bg-warning" title="Feature"></a></li>
                                     
                                     </ul>
                                 </div>
@@ -142,7 +142,7 @@
                                       @elseif($product->pro_buy > 0)
                                       <div class="ribbon ribbon-left ribbon-primary overflow-hidden">
                                         <span class="text-center d-block shadow small h6">
-                                       Sold
+                                       Selling
                                        </span>
                                        </div>
                                       @elseif($product->pro_sale >0)

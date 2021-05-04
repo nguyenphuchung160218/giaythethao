@@ -74,7 +74,6 @@ class CategoryController extends FrontendController
     }
      public function getNew(Request $request)
     {
-           
         $products= Product::where(
             'pro_sale','>',0 
             )->inRandomOrder();
