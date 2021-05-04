@@ -23,6 +23,7 @@ Route::group(['namespace'=>''],function (){
     Route::get('auth/social', 'App\Http\Controllers\Auth\LoginController@show')->name('social.login');
     Route::get('oauth/{driver}', 'App\Http\Controllers\Auth\LoginController@redirectToProvider')->name('social.oauth');
     Route::get('oauth/{driver}/callback', 'App\Http\Controllers\Auth\LoginController@handleProviderCallback')->name('social.callback');
+
     // Route::get('xac-nhan-tai-khoan','App\Http\Controllers\Auth\RegisterController@verifyAccount')->name('user.verify.account');
 });
 

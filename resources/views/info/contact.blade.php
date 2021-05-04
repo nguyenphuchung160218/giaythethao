@@ -34,7 +34,7 @@
                                                 <label>Họ Tên <span class="text-danger">*</span></label>
                                                 <div class="position-relative">
                                                     <i data-feather="user" class="fea icon-sm icons"></i>
-                                                    <input name="c_name" id="name" type="text" class="form-control pl-5" placeholder="First Name :">
+                                                    <input name="c_name" id="name" value="{{get_data_user('web','name')}}" type="text" class="form-control pl-5" placeholder="First Name :">
                                                 </div>
                                             </div>
                                         </div><!--end col-->
@@ -43,7 +43,7 @@
                                                 <label>Email <span class="text-danger">*</span></label>
                                                 <div class="position-relative">
                                                     <i data-feather="mail" class="fea icon-sm icons"></i>
-                                                    <input name="c_email" id="email" type="email" class="form-control pl-5" placeholder="Your Email :">
+                                                    <input name="c_email" id="email" value="{{get_data_user('web','email')}}" type="email" class="form-control pl-5" placeholder="Your Email :">
                                                 </div>
                                             </div> 
                                         </div><!--end col-->
@@ -52,7 +52,7 @@
                                                 <label>Số Điện Thoại <span class="text-danger">*</span></label>
                                                 <div class="position-relative">
                                                     <i data-feather="user" class="fea icon-sm icons"></i>
-                                                    <input name="c_phone" id="name" type="text" class="form-control pl-5" placeholder="Your Phone :">
+                                                    <input name="c_phone" id="name" value="{{get_data_user('web','phone')}}" type="text" class="form-control pl-5" placeholder="Your Phone :">
                                                 </div>
                                             </div>
                                         </div><!--end col-->

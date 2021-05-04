@@ -35,6 +35,7 @@
         @include('layout.header')       
         @yield('content')
         @include('layout.notification')
+        
         @include('layout.footer')
 
         <!-- @if(isset($viewProduct))
