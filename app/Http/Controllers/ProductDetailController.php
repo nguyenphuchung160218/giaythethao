@@ -41,7 +41,7 @@ class ProductDetailController extends FrontendController
     public function muaNgay(Request $request,$id)
     {            
         $products = $this->addcart($request,$id);
-        return view('shopping.index',compact('products'));
+        return redirect()->route('get.list.cart');
     
     } 
     public function addcart($request,$id='')
