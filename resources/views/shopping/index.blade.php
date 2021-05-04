@@ -40,6 +40,7 @@
                                     <tr> 
                                         <th class="py-3" style="min-width:20px ">Stt</th>                                      
                                         <th class="py-3" style="min-width: 300px;">Sản phẩm</th>
+                                        <th class="py-3" style="min-width:20px ">Size</th>
                                         <th class="text-center py-3" style="min-width: 160px;">Giá</th>
                                         <th class="text-center py-3" style="min-width: 160px;">Số lượng</th>
                                         <th class="text-center py-3" style="min-width: 160px;">Tổng</th>
@@ -60,13 +61,20 @@
                                                 <h6 class="mb-0 ml-3">{{ $product->name }}</h6>
                                             </div>
                                         </td>
-                                        <td class="text-center">{{ $product->price }}</td>
+                                        <td>
+                                            <select style="width: 68px;padding: 0px;" class="form-control size" name="size">
+                                            <?php for($i=35;$i<=45;$i++):?>
+                                                <option value="<?php echo $i ?>" {{ $product->options->size==$i ? 'selected':'' }}><?php echo $i ?></option>
+                                              <?php endfor ?>
+                                            </select>
+                                        </td>
+                                        <td class="text-center">{{ number_format($product->price,0,',','.') }}</td>
                                         <td class="text-center">                                           
                                             <input type="button" value="-" class="minus btn btn-icon btn-soft-primary font-weight-bold">
                                             <input type="text" step="1" min="1" name="quantity" value="{{ $product->qty }}" title="Qty" class="btn btn-icon btn-soft-primary font-weight-bold">
                                             <input type="button" value="+" class="plus btn btn-icon btn-soft-primary font-weight-bold">
                                         </td>
-                                        <td class="text-center font-weight-bold">{{ $product->price*$product->qty }}</td>
+                                        <td class="text-center font-weight-bold">{{ number_format($product->qty * $product->price,0,',','.') }} đ</td>
                                         <td class="h6"><button style="padding: 0;border: none;background: none" class="text-info" type="submit"><i class="fuil uil-edit"></i></button></td>
                                         <td class="h6"><a href="{{ route('delete.cart',$key) }}" class="text-danger">X</a></td>
                                         </form>
@@ -96,7 +104,7 @@
                                     </tr> -->
                                     <tr class="bg-light">
                                         <td class="h6">Tổng tiền</td>
-                                        <td class="text-center font-weight-bold">{{ Cart::subtotal(0,3) }}</td>
+                                        <td class="text-center font-weight-bold">{{ Cart::subtotal(0,3) }} đ</td>
                                     </tr>
                                 </tbody>
                             </table>

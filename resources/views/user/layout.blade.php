@@ -9,7 +9,7 @@
                             <div class="card-body">
                                 <div class="row align-items-center">
                                     <div class="col-lg-2 col-md-3 text-md-left text-center">
-                                        <img src="{{ asset(pare_url_file(get_data_user('web','avatar'))) }}" class="avatar avatar-large rounded-circle shadow d-block mx-auto" alt="">
+                                        <img src="{{ get_data_user('web','avatar')!=null ? asset(pare_url_file(get_data_user('web','avatar'))) : asset('image/unnamed.png') }}" class="avatar avatar-large rounded-circle shadow d-block mx-auto" alt="">
                                     </div><!--end col-->
     
                                     <div class="col-lg-10 col-md-9">
