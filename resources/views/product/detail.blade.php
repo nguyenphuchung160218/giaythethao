@@ -48,7 +48,7 @@
 
                     <div class="col-md-7 mt-4 mt-sm-0 pt-2 pt-sm-0">
                         <div class="section-title ml-md-4">
-                            <form class="ml-lg-4" method="get" action="{{ route('muangay',$productDetail->id)}}">
+                            <form class="ml-lg-4" method="get" action="{{ route('get.buy.now',$productDetail->id)}}">
                             <h4 class="title">{{ $productDetail->pro_name }}</h4>
                             @if($productDetail->pro_sale==0)
                             <h5 class="text-muted">{{ number_format($productDetail->pro_price,0,',','.') }} <span class="price">₫</span></h5>

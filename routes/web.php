@@ -74,7 +74,7 @@ Route::prefix('')->group(function (){
     Route::get('/delete/{id}','App\Http\Controllers\ShoppingCartController@deleteProduct')->name('delete.cart');
     Route::get('/update/{id}','App\Http\Controllers\ShoppingCartController@updateProduct')->name('update.cart');
     Route::get('/gio-hang','App\Http\Controllers\ShoppingCartController@getListShoppingCart')->name('get.list.cart');
-    Route::get('/mua-ngay/{id}/','App\Http\Controllers\ProductDetailController@muaNgay')->name('muangay');
+    Route::get('/mua-ngay/{id}/','App\Http\Controllers\ProductDetailController@buyNow')->name('get.buy.now');
     
 
 
