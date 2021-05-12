@@ -55,7 +55,7 @@
                                     </a>
                                     <ul class="list-unstyled shop-icons">
                                         <li><a href="javascript:void(0)" class="btn btn-icon btn-pills btn-soft-danger"><i data-feather="heart" class="icons"></i></a></li>
-                                        <li class="mt-2 list-inline-item"><a href="{{ route('get.view.product',$product->pro_slug) }}" data-toggle="modal" data-target="#productview" class="btn btn-icon btn-pills btn-soft-primary"><i data-feather="eye" class="icons"></i></a></li>
+                                        <li class="mt-2 list-inline-item"><a href="{{ route('get.view.product',$product->id ) }}" data-toggle="modal" data-target="#exampleModalCenter" data-id="{{ $product->id }}" id="productview" class="btn btn-icon btn-pills btn-soft-primary"><i data-feather="eye" class="icons"></i></a></li>
                                         <li class="mt-2"><a href="{{ route('add.cart',$product->id) }}" class="btn btn-icon btn-pills btn-soft-warning"><i data-feather="shopping-cart" class="icons"></i></a></li>
                                     </ul>
                                 </div>
@@ -136,7 +136,7 @@
                                 </a>
                                 <ul class="list-unstyled shop-icons">
                                     <li><a href="javascript:void(0)" class="btn btn-icon btn-pills btn-soft-danger"><i data-feather="heart" class="icons"></i></a></li>
-                                    <li class="mt-2"><a href="javascript:void(0)" data-toggle="modal" data-target="#productview" class="btn btn-icon btn-pills btn-soft-primary"><i data-feather="eye" class="icons"></i></a></li>
+                                    <li class="mt-2"><a href="{{ route('get.view.product',$product->id)}}" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-icon btn-pills btn-soft-primary"><i data-feather="eye" class="icons"></i></a></li>
                                     <li class="mt-2"><a href="{{ route('add.cart',$product->id) }}" class="btn btn-icon btn-pills btn-soft-warning"><i data-feather="shopping-cart" class="icons"></i></a></li>
                                 </ul>
                             </div>
@@ -191,5 +191,44 @@
 
             
         </section><!--end section-->
-        <!-- End -->
+
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Thông tin sản phẩm<b class="transaction_id"></b></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+       
+              </div>
+            </div>
+          </div>
+        </div>
+@stop
+@section('script')
+    <script>
+         $(function (){
+             $(".list-unstyled").change(function (){
+                $("#productview").onclick();
+                
+                let $this = $(this);
+                let url = $this.attr('href');
+                $("#modal-body").html('')
+                $(".transaction_id").text($this.attr('data-id'));
+                $("#exampleModalCenter").modal('show');
+
+                $.ajax({
+                    url: url,
+                }).done(function (result){
+                    if(result)
+                    {
+                        $("#modal-body").html('').append(result);
+                    }
+                });
+            });
+         });
+    </script>
 @stop

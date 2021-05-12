@@ -8,8 +8,11 @@
                                         <form role="search" method="get" id="searchform" class="searchform">
                                             <div>
                                                 <input type="text" class="border rounded" name="s" id="s" placeholder="Tìm Kiếm Từ Khóa...">
+                                                
                                                 <input type="submit" id="searchsubmit" value="Search">
                                             </div>
+                                            <div id="countryList"> </div><br>
+                                            {{ csrf_field() }}
                                         </form>
                                     </div>
                                 </div>
@@ -62,3 +65,34 @@
                             </div>
                         </div>
                     </div>
+
+@section('script')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>
+
+  $(document).ready(function(){
+   $('#s').keyup(function(){ //bắt sự kiện keyup khi người dùng gõ từ khóa tim kiếm
+    var query = $(this).val(); //lấy gía trị ng dùng gõ
+    if(query != '') //kiểm tra khác rỗng thì thực hiện đoạn lệnh bên dưới
+    {
+     var _token = $('input[name="_token"]').val(); // token để mã hóa dữ liệu
+     $.ajax({
+      url:"{{ route('search') }}", // đường dẫn khi gửi dữ liệu đi 'search' là tên route mình đặt bạn mở route lên xem là hiểu nó là cái j.
+      method:"POST", // phương thức gửi dữ liệu.
+      data:{query:query, _token:_token},
+      success:function(data){ //dữ liệu nhận về
+       $('#countryList').fadeIn();  
+       $('#countryList').html(data); //nhận dữ liệu dạng html và gán vào cặp thẻ có id là countryList
+     }
+   });
+   }
+ });
+
+   $(document).on('click', 'li', function(){  
+    $('#s').val($(this).text());  
+    $('#countryList').fadeOut();  
+  });  
+
+ });
+</script>
+@stop
