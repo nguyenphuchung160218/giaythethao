@@ -36,6 +36,7 @@ class AdminOrderController extends Controller
         if($action)
         {
             $orders = Order::find($id);
+
             switch ($action)
             {
                 case 'delete':

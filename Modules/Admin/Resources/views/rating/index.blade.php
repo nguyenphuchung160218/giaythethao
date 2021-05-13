@@ -24,16 +24,13 @@
                 <th class="th-sm">Stt
 
                 </th>
-                <th class="th-sm">Tên danh mục
+                <th class="th-sm">Tên sản phẩm
 
                 </th>
-                <th class="th-sm">Tiêu đề
+                <th class="th-sm">Tên người đánh giá
 
                 </th>           
-                <th class="th-sm">Hiện trang chủ
-
-                </th>
-                <th class="th-sm">Trạng thái
+                <th class="th-sm"> Nội dung đánh giá
 
                 </th>
                 <th class="th-sm">Thao tác
@@ -42,21 +39,19 @@
               </tr>
               </thead>
               <tbody>
-                  <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+              @if(isset($ratings))
+                @foreach($ratings as $rating) 
+                <tr>
+                      <td>{{$rating->id}}</td>
+                      <td>{{isset($rating->product->pro_name) ? $rating->product->pro_name : '[N\A]' }}</td>
+                       <td>{{$rating->ra_name}}</td>
+                      <td>{{$rating->ra_content}}</td>   
                       <td>
-                          <a href=""></a>
-                      </td>
-                      <td>
-                          <a href=""></a>
-                      </td>
-                      <td>
-                          <a class="btn btn-info" style="font-size: 12px;" href=""><i class="fa fa-pencil"></i> Cập nhật</a>
-                          <a class="btn btn-danger" style="font-size: 12px;" href=""><i class="fa fa-trash"></i> Xóa</a>
-                      </td>
-                  </tr>
+                            <a class="btn btn-danger" style="font-size: 12px;" href="{{ route('admin.action.rating',['delete',$rating->id]) }}"><i class="fa fa-pen"></i> Xóa</a>
+                        </td>
+                 </tr>  
+                    @endforeach
+                @endif
               </tbody>
           </table>
       </div>

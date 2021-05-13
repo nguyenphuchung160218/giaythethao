@@ -1,5 +1,11 @@
 @extends('admin::layouts.master')
 @section('content')
+   <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script src="https://code.highcharts.com/modules/drilldown.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <div class="container-fluid">
 
         <!-- Page Heading -->
@@ -120,159 +126,182 @@
                 </div>
             </div>
         </div>
-        <!-- /.row -->
-
+        <div class="row">
+            <div class="col-lg-12">
+                <div id="container"></div>
+            </div>            
+        </div>
+       
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Area Chart</h3>
-                    </div>
-                    <div class="panel-body">
-                        <div id="morris-area-chart"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /.row -->
-
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i> Donut Chart</h3>
-                    </div>
-                    <div class="panel-body">
-                        <div id="morris-donut-chart"></div>
-                        <div class="text-right">
-                            <a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i> Tasks Panel</h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="list-group">
-                            <a href="#" class="list-group-item">
-                                <span class="badge">just now</span>
-                                <i class="fa fa-fw fa-calendar"></i> Calendar updated
-                            </a>
-                            <a href="#" class="list-group-item">
-                                <span class="badge">4 minutes ago</span>
-                                <i class="fa fa-fw fa-comment"></i> Commented on a post
-                            </a>
-                            <a href="#" class="list-group-item">
-                                <span class="badge">23 minutes ago</span>
-                                <i class="fa fa-fw fa-truck"></i> Order 392 shipped
-                            </a>
-                            <a href="#" class="list-group-item">
-                                <span class="badge">46 minutes ago</span>
-                                <i class="fa fa-fw fa-money"></i> Invoice 653 has been paid
-                            </a>
-                            <a href="#" class="list-group-item">
-                                <span class="badge">1 hour ago</span>
-                                <i class="fa fa-fw fa-user"></i> A new user has been added
-                            </a>
-                            <a href="#" class="list-group-item">
-                                <span class="badge">2 hours ago</span>
-                                <i class="fa fa-fw fa-check"></i> Completed task: "pick up dry cleaning"
-                            </a>
-                            <a href="#" class="list-group-item">
-                                <span class="badge">yesterday</span>
-                                <i class="fa fa-fw fa-globe"></i> Saved the world
-                            </a>
-                            <a href="#" class="list-group-item">
-                                <span class="badge">two days ago</span>
-                                <i class="fa fa-fw fa-check"></i> Completed task: "fix error on sales page"
-                            </a>
-                        </div>
-                        <div class="text-right">
-                            <a href="#">View All Activity <i class="fa fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title"><i class="fa fa-money fa-fw"></i> Transactions Panel</h3>
+                        <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Danh sách đơn hàng mới</h3>
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive">
                             <table class="table table-bordered table-hover table-striped">
                                 <thead>
-                                    <tr>
-                                        <th>Order #</th>
-                                        <th>Order Date</th>
-                                        <th>Order Time</th>
-                                        <th>Amount (USD)</th>
-                                    </tr>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Tên khách hàng</th>
+                                    <th>SĐT</th>
+                                    <th>Tổng tiền</th>
+                                    <th>Trạng thái</th>
+                                    <th>Thời gian</th>
+                                </tr>
                                 </thead>
                                 <tbody>
+                                @foreach($transactionNews as $transaction)
                                     <tr>
-                                        <td>3326</td>
-                                        <td>10/21/2013</td>
-                                        <td>3:29 PM</td>
-                                        <td>$321.33</td>
+                                        <td>{{ $transaction->id }}</td>
+                                        <td>{{ isset( $transaction->user->name) ?  $transaction->user->name : '[N\A]' }}</td>
+                                        <td>{{ $transaction->tr_phone }}</td>
+                                        <td>{{ number_format($transaction->tr_total,0,',','.') }} VND</td>
+                                        <td>
+                                            @if ( $transaction->tr_status == 1)
+                                                <a href="" class="label label-success">Đã xủ lý</a>
+                                            @else
+                                                <a href="{{ route('admin.action.order',['status',$transaction->id]) }}" class="label label-default">Chờ xủ lý</a>
+                                            @endif
+                                        </td>
+                                        <td>{{ $transaction->created_at->format('d-m-Y') }}</td>
                                     </tr>
-                                    <tr>
-                                        <td>3325</td>
-                                        <td>10/21/2013</td>
-                                        <td>3:20 PM</td>
-                                        <td>$234.34</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3324</td>
-                                        <td>10/21/2013</td>
-                                        <td>3:03 PM</td>
-                                        <td>$724.17</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3323</td>
-                                        <td>10/21/2013</td>
-                                        <td>3:00 PM</td>
-                                        <td>$23.71</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3322</td>
-                                        <td>10/21/2013</td>
-                                        <td>2:49 PM</td>
-                                        <td>$8345.23</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3321</td>
-                                        <td>10/21/2013</td>
-                                        <td>2:23 PM</td>
-                                        <td>$245.12</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3320</td>
-                                        <td>10/21/2013</td>
-                                        <td>2:15 PM</td>
-                                        <td>$5663.54</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3319</td>
-                                        <td>10/21/2013</td>
-                                        <td>2:13 PM</td>
-                                        <td>$943.45</td>
-                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
-                        </div>
-                        <div class="text-right">
-                            <a href="#">View All Transactions <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Danh sách đánh giá mới</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover table-striped">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Tên thành viên</th>
+                                    <th>Sản phẩm</th>
+                                    <th>Đánh giá</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @if(isset($ratings))
+                                    @foreach($ratings as $rating)
+                                        <tr>
+                                            <td>{{ $rating->id }}</td>
+                                            <td>{{ isset($rating->user->name) ? $rating->user->name : $rating->ra_name }}</td>
+                                            <td><a href="">{{ isset($rating->product->pro_name) ? $rating->product->pro_name : '[N\A]' }}</a></td>
+                                            <td>{{ $rating->ra_number }}</td>
+                                        </tr>
+                                    @endforeach
+                                @endif
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Danh sách liên hệ mới</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover table-striped">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Tiêu đề</th>
+                                    <th>Họ tên</th>
+                                    <th>Nội dung</th>
+                                    <th>Trạng thái</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @if(isset($contacts))
+                                    @foreach($contacts as $contact)
+                                        <tr>
+                                            <td>{{ $contact->id }}</td>
+                                            <td>{{ $contact->c_title }}</td>
+                                            <td>{{ $contact->c_name }}</td>
+                                            <td>{{ $contact->c_content }}</td>
+                                            <td>
+                                                <a href="{{ route('admin.action.contact',['status',$contact->id]) }}" class="label {{ $contact->getStatus($contact->c_status)['class'] }}">{{ $contact->getStatus($contact->c_status)['name'] }}</a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endif
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
-    <!-- /.container-fluid -->
+@stop
+@section('script')
+    <script>
+        // Create the chart
+        let data = "{{ $dataMoney }}";
+        dataChart = JSON.parse(data.replace(/&quot;/g,'"'));
+        console.log(dataChart);
+        Highcharts.chart('container', {
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Biểu đồ doanh thu ngày và tháng'
+            },
+            accessibility: {
+                announceNewData: {
+                    enabled: true
+                }
+            },
+            xAxis: {
+                type: 'category'
+            },
+            yAxis: {
+                title: {
+                    text: 'Mức độ'
+                }
+
+            },
+            legend: {
+                enabled: false
+            },
+            plotOptions: {
+                series: {
+                    borderWidth: 0,
+                    dataLabels: {
+                        enabled: true,
+                        format: '{point.y:.1f} VND'
+                    }
+                }
+            },
+
+            tooltip: {
+                headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+                pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
+            },
+
+            series: [
+                {
+                    name: "Browsers",
+                    colorByPoint: true,
+                    data: dataChart
+                }
+            ],
+        });
+    </script>
 @stop
