@@ -38,7 +38,7 @@ class ProductDetailController extends FrontendController
         ];
         return view('product.detail', $viewData);      
     }
-    public function muaNgay(Request $request,$id)
+    public function buyNow(Request $request,$id)
     {            
         $products = $this->addcart($request,$id);
         return redirect()->route('get.list.cart');

@@ -22,8 +22,6 @@ class ShoppingCartController extends FrontendController
     {
         $product = Product::select('pro_name','id','pro_price','pro_sale','pro_number')->find($id);
         $number = $product->pro_number;
-
-
         if(!$product) return redirect('/');
 
         $price = $product->pro_price;
@@ -45,9 +43,8 @@ class ShoppingCartController extends FrontendController
             'options'=> [
                 'avatar'=> $product->images[0]->i_avatar,
                 'sale'=> $product->pro_sale,
-                'price_old'=> $product->pro_price,         
-                'price_old'=> $product->pro_price,    
-                'size' =>35,        
+                'price_old'=> $product->pro_price, 
+                'size' =>40        
             ],
         ]);
 
@@ -58,21 +55,11 @@ class ShoppingCartController extends FrontendController
 
     public function updateProduct(Request $request, $id)
     {
-
-        //  $qty = $request->quantity;
-        //  $item = \Cart::get($id);
-        // $option = $item->options->merge(['size' => $request->size]);
-        //  \Cart::update($id,['qty' => $qty,'options' => $option,]);
-        // return redirect()->back()->with('success','Cập nhật thành công');
-         \Cart::update($id,$request->quantity);
-
         $qty = $request->quantity;
         $item = \Cart::get($id);
         $option = $item->options->merge(['size' => $request->size]);
         \Cart::update($id,['qty' => $qty,'options' => $option,]);
         return redirect()->back()->with('success','Cập nhật thành công');
-        // \Cart::update($id,['qty' => $qty,'options' => $option,]);
-        // return redirect()->back()->with('success','Cập nhật thành công');
     }
 
     public function deleteProduct($key)
