@@ -82,8 +82,14 @@
                                         </ul>
                                     </div>
                                 </div><!--end col-->
+                                <div class="col-lg-6 col-md-12">
+                                    <input type="button" value="-" class="minus btn btn-icon btn-soft-primary font-weight-bold">
+                                    <input type="text" step="1" min="1" name="quantity" value="1" title="Qty" class="btn btn-icon btn-soft-primary font-weight-bold" max="">
 
+                                    <input type="button" value="+" class="plus btn btn-icon btn-soft-primary font-weight-bold">
                                  
+                                </div>
+                                    
                             </div>
                             <div class="mt-4 pt-2">
                                 <!-- <a href="{{ route('add.cart',$productDetail->id) }}" class="btn btn-primary">Mua Ngay</a> -->

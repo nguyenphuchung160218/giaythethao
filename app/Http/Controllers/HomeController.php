@@ -18,19 +18,14 @@ class HomeController extends FrontendController
         ];
     	return view('home',$viewData);
     }
-    public function viewProduct($slug,$id)
+    public function viewProduct($id)
     {
-        // $product = Product::where([
-        //     'pro_active' => Product::STATUS_PUBLIC,
-        //     'pro_slug' => $slug,
-        //     'id' =>$id,
-        // ])->first()->get();
-        // $viewData = [
-        //     'product' => $product
-        // ];
-        $product = Product::wherSlug([
-            'pro_slug'=>$slug
-        ])->firstOrFail();
-        return view('layout.viewproduct',compact('product'));
+        if ($request->ajax())
+        {
+            $product = Product::where('id','=',$id )->get();
+            $html = view('layout.viewproduct',compact('product'))->render();
+            return \response()->json($html);
+        }
+       
     }
 }

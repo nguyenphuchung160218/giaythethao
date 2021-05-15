@@ -39,7 +39,7 @@
                   @foreach($orders as $order)
                     <tr>
                         <td>{{ $order->id }}</td>
-                        <td>{{ $order->user->name }}</td>
+                        <td>{{ isset($order->user->name) ? $order->user->name : '[N/A]' }}</td>
                         <td>{{ $order->o_address }}</td>
                         <td>{{ $order->o_phone }}</td>
                         <td>{{ number_format($order->o_total,0,',','.') }} đ</td>

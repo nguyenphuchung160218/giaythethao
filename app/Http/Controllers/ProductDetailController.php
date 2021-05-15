@@ -61,7 +61,7 @@ class ProductDetailController extends FrontendController
              \Cart::add([
             'id'=> $id,
             'name'=> $product->pro_name,
-            'qty'=>1,
+            'qty'=>$request->quantity,
             'price'=> $price,
             'weight' => 550,          
             'options'=> [
@@ -70,6 +70,6 @@ class ProductDetailController extends FrontendController
                 'price_old'=> $product->pro_price,         
             ],
             ]);
-           return \Cart::content();
+         return \Cart::content();
     }
 }
