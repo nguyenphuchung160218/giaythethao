@@ -23,6 +23,7 @@ class RequestProduct extends FormRequest
             'pro_price'=>'required',
             'pro_content'=>'required',
             'pro_category_id'=>'required',
+             'pro_gender'=>'required'
         ];
     }
     public function messages()
@@ -33,7 +34,7 @@ class RequestProduct extends FormRequest
             'pro_price.required'=>'Trường này không được để trống',
             'pro_content.required'=>'Trường này không được để trống',
             'pro_category_id.required'=>'Trường này không được để trống',
-
+            'pro_gender.required'=>'Trường này không được để trống'
         ];
     }
 }

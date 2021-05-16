@@ -59,4 +59,8 @@ Route::prefix('admin')->middleware('App\Http\Middleware\CheckLoginAdmin')->group
         Route::get('/', 'AdminRatingController@index')->name('admin.list.rating');
         Route::get('/{action}/{id}','AdminRatingController@action')->name('admin.action.rating');
     });
+    Route::group(['prefix'=>'user'],function(){
+        Route::get('/','AdminUserController@index')->name('admin.list.user');
+        Route::get('/{action}/{id}','AdminUserController@action')->name('admin.action.user');
+    });
 });

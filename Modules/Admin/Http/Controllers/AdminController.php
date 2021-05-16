@@ -8,7 +8,7 @@ use Illuminate\Routing\Controller;
 use App\Models\Rating;
 use App\Models\Contact;
 use App\Models\Order;
-
+use App\Models\User;
 class AdminController extends Controller
 {
  
@@ -45,11 +45,18 @@ class AdminController extends Controller
         //danh sach don hang moi
         $transactionNews = Order::with('user:id,name')
             ->limit(5)->orderByDesc('id')->get();
+
+        $countUser = User::count();
+        $countRating = Rating::count();
+        $countOrder = Order::count();
         $viewData= [
             'ratings' => $ratings,
             'contacts' => $contacts,          
             'dataMoney' => json_encode($dataMoney),
             'transactionNews' => $transactionNews,
+            'countOrder' =>$countOrder,
+            'countRating'=>$countRating,
+            'countUser'=>$countUser
         ];
         return view('admin::index',$viewData);
     }

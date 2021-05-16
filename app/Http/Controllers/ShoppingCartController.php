@@ -111,6 +111,7 @@ class ShoppingCartController extends FrontendController
                 ]);
             }
         }
+        
         $data=[
             'transactionId' => $orderId,
             'transaction' => $order,

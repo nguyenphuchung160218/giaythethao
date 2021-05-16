@@ -9,7 +9,7 @@
                             <div class="card-body">
                                 <div class="row align-items-center">
                                     <div class="col-lg-2 col-md-3 text-md-left text-center">
-                                        <img src="{{ get_data_user('web','avatar')!=null ? asset(pare_url_file(get_data_user('web','avatar'))) : asset('image/unnamed.png') }}" class="avatar avatar-large rounded-circle shadow d-block mx-auto" alt="">
+                                        <img src="{{ asset(pare_url_file(get_data_user('web','avatar'))) ? asset(pare_url_file(get_data_user('web','avatar'))) : asset('image/unnamed.png') }}" class="avatar avatar-large rounded-circle shadow d-block mx-auto" alt="">
                                     </div><!--end col-->
     
                                     <div class="col-lg-10 col-md-9">
@@ -54,7 +54,7 @@
                                     </div><!--end col-->
 
                                     <div class="col-6 mt-4 pt-2">
-                                        <a href="" class="{{ \Request::route()->getName() == 'get.user.post' ? 'active' : '' }} accounts rounded d-block shadow text-center py-3">
+                                        <a href="{{route('get.detail.order')}}" class="{{ \Request::route()->getName() == 'get.detail.order' ? 'active' : '' }} accounts rounded d-block shadow text-center py-3">
                                             <span class="pro-icons h3 text-muted"><i class="uil uil-pen"></i></span>
                                             <h6 class="title text-dark h6 my-0">Sản phẩm đã mua</h6>
                                         </a>

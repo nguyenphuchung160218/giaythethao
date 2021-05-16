@@ -9,6 +9,7 @@ class Product extends Model
 {
     use HasFactory;
     protected $table ='products';
+    
     const STATUS_PUBLIC =1;
     const STATUS_PRIVATE =0;
     const HOT_ON =1;

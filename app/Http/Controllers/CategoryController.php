@@ -9,10 +9,13 @@ class CategoryController extends FrontendController
 {
     public function getSearch(Request $request)
     {
-        $products = Product::where('pro_active',Product::STATUS_PUBLIC)->inRandomOrder();
+       $products = Product::where('pro_active',Product::STATUS_PUBLIC)->inRandomOrder();
+        
         if($request->search)
         {
+            // $products->where('pro_gender','like','%'.$request->search.'%');
             $products->where('pro_name','like','%'.$request->search.'%');
+           
         }
         if ($request->orderby)
         {
@@ -97,6 +100,36 @@ class CategoryController extends FrontendController
         }
 
         $products=$products->paginate(6);
+        $viewData = [
+            'products' => $products,
+            'query' => $request->query(),
+        ];
+        return view('product.index',$viewData);
+    }
+    public function productOther(Request $request)
+    {
+        $products = Product::where('pro_gender','chung')->inRandomOrder();
+        $products=$products->paginate(4);
+        $viewData = [
+            'products' => $products,
+            'query' => $request->query(),
+        ];
+        return view('product.index',$viewData);
+    }
+    public function productMale(Request $request)
+    {
+        $products = Product::where('pro_gender','nam')->inRandomOrder();
+        $products=$products->paginate(4);
+        $viewData = [
+            'products' => $products,
+            'query' => $request->query(),
+        ];
+        return view('product.index',$viewData);
+    }
+    public function productFemale(Request $request)
+    {
+        $products = Product::where('pro_gender','nu')->inRandomOrder();
+        $products=$products->paginate(4);
         $viewData = [
             'products' => $products,
             'query' => $request->query(),

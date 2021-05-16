@@ -43,6 +43,15 @@
                     </span>
                 @endif
             </div>
+
+            <div class="form-group">
+                <label for="name"> Loại giày :</label>
+                <select name="pro_gender" id="" class="form-control" required="">
+                  <option value="chung">chung</option>
+                  <option value="nam">nam</option>
+                  <option value="nu">nữ</option>
+                </select>
+            </div>
             <div class="form-group">
                 <label for="pro_price"> Giá sản phẩm:</label>
                 <input type="number" name="pro_price" class="form-control" placeholder="Giá sản phẩm" value="{{ old('pro_price',isset($product->pro_price) ? $product->pro_price : '') }}">

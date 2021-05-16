@@ -58,8 +58,7 @@
                             @if(get_data_user('web'))                           
                             <div class="dropdown-menu dropdown-menu-right bg-white shadow rounded border-0 mt-3 py-3" style="width: 200px;">
                                 <a class="dropdown-item text-dark" href="{{ route('get.user') }}"><i class="uil uil-user align-middle mr-1"></i> Tài khoản</a>
-                                <!-- <a class="dropdown-item text-dark" href="#"><i class="uil uil-clipboard-notes align-middle mr-1"></i> Order History</a>
-                                <a class="dropdown-item text-dark" href="#"><i class="uil uil-arrow-circle-down align-middle mr-1"></i> Download</a> -->
+    
                                 <div class="dropdown-divider my-3 border-top"></div>
                                 <a class="dropdown-item text-dark" href="{{ route('get.logout') }}"><i class="uil uil-sign-out-alt align-middle mr-1"></i> Đăng xuất</a>
                             </div>

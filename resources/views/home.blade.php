@@ -8,7 +8,7 @@
                     <div class="py-5 rounded shadow" style="background: url('images/shop/fea1.jpg') top center;">
                         <div class="p-4">
                             <h3>Giày Thể Thao <br> Nữ</h3>
-                            <a href="javascript:void(0)" class="btn btn-sm btn-soft-primary mt-2">Xem Ngay</a>
+                            <a href="{{route('get.female.product')}}" class="btn btn-sm btn-soft-primary mt-2">Xem Ngay</a>
                         </div>
                     </div>
                 </div><!--end col-->
@@ -17,7 +17,7 @@
                     <div class="py-5 rounded shadow" style="background: url('images/shop/fea2.jpg') top center;">
                         <div class="p-4">
                             <h3>Giày Thể Thao <br> Nam</h3>
-                            <a href="javascript:void(0)" class="btn btn-sm btn-soft-primary mt-2">Xem Ngay</a>
+                            <a href="{{ route('get.male.product')}}" class="btn btn-sm btn-soft-primary mt-2">Xem Ngay</a>
                         </div>
                     </div>
                 </div><!--end col-->
@@ -26,7 +26,7 @@
                     <div class="py-5 rounded shadow" style="background: url('images/shop/fea3.jpg') top center;">
                         <div class="p-4">
                             <h3>Giày Thể Thao <br> Nam/Nữ</h3>
-                            <a href="" class="btn btn-sm btn-soft-primary mt-2">Xem Ngay</a>
+                            <a href="{{ route('get.other.product')}}" class="btn btn-sm btn-soft-primary mt-2">Xem Ngay</a>
                         </div>
                     </div>
                 </div><!--end col-->

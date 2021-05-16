@@ -45,14 +45,14 @@
                                 <i class="fa fa-comments fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge">26</div>
-                                <div>New Comments!</div>
+                                <div class="huge">{{$countRating}}</div>
+                                <div>Đánh giá mới!</div>
                             </div>
                         </div>
                     </div>
-                    <a href="#">
+                    <a href="{{ route('admin.list.rating')}}">
                         <div class="panel-footer">
-                            <span class="pull-left">View Details</span>
+                            <span class="pull-left">Xem chi tiết</span>
                             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                             <div class="clearfix"></div>
                         </div>
@@ -64,17 +64,17 @@
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-xs-3">
-                                <i class="fa fa-tasks fa-5x"></i>
+                                <i class="fa fa-users fa-5x" aria-hidden="true"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge">12</div>
-                                <div>New Tasks!</div>
+                                <div class="huge">{{$countUser}}</div>
+                                <div>Thành viên!</div>
                             </div>
                         </div>
                     </div>
-                    <a href="#">
+                    <a href="{{ route('admin.list.user')}}">
                         <div class="panel-footer">
-                            <span class="pull-left">View Details</span>
+                            <span class="pull-left">Xem chi tiết</span>
                             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                             <div class="clearfix"></div>
                         </div>
@@ -89,14 +89,14 @@
                                 <i class="fa fa-shopping-cart fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge">124</div>
-                                <div>New Orders!</div>
+                                <div class="huge">{{$countOrder}}</div>
+                                <div>Đơn hàng!</div>
                             </div>
                         </div>
                     </div>
-                    <a href="#">
+                    <a href="{{route('admin.list.order')}}">
                         <div class="panel-footer">
-                            <span class="pull-left">View Details</span>
+                            <span class="pull-left">Xem chi tiết</span>
                             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                             <div class="clearfix"></div>
                         </div>
@@ -111,14 +111,14 @@
                                 <i class="fa fa-support fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge">13</div>
-                                <div>Support Tickets!</div>
+                                <div class="huge"></div>
+                                <div>Hỗ trợ!</div>
                             </div>
                         </div>
                     </div>
-                    <a href="#">
+                    <a href="{{ route('get.support')}}">
                         <div class="panel-footer">
-                            <span class="pull-left">View Details</span>
+                            <span class="pull-left">Xem chi tiết</span>
                             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                             <div class="clearfix"></div>
                         </div>
@@ -156,10 +156,10 @@
                                     <tr>
                                         <td>{{ $transaction->id }}</td>
                                         <td>{{ isset( $transaction->user->name) ?  $transaction->user->name : '[N\A]' }}</td>
-                                        <td>{{ $transaction->tr_phone }}</td>
-                                        <td>{{ number_format($transaction->tr_total,0,',','.') }} VND</td>
+                                        <td>{{ $transaction->o_phone }}</td>
+                                        <td>{{ number_format($transaction->o_total,0,',','.') }} VND</td>
                                         <td>
-                                            @if ( $transaction->tr_status == 1)
+                                            @if ( $transaction->o_status == 1)
                                                 <a href="" class="label label-success">Đã xủ lý</a>
                                             @else
                                                 <a href="{{ route('admin.action.order',['status',$transaction->id]) }}" class="label label-default">Chờ xủ lý</a>

@@ -30,11 +30,12 @@ Route::group(['namespace'=>''],function (){
 //user
 Route::group(['prefix'=>'user','middleware'=>'App\Http\Middleware\CheckLoginUser'],function (){
     Route::get('tai-khoan','App\Http\Controllers\UserController@getUser')->name('get.user');
-    Route::post('tai-khoan','App\Http\Controllers\UserController@postUser');
+    Route::get('tai-khoan/da-mua','App\Http\Controllers\UserController@postUser')->name('get.detail.order');
     Route::get('cai-dat','App\Http\Controllers\UserController@getSetting')->name('get.user.setting');
     Route::post('updateInfo','App\Http\Controllers\UserController@updateInfo')->name('updateInfo');
     Route::post('updatePassword','App\Http\Controllers\UserController@updatePassword')->name('updatePassword');
     Route::get('delete/{id}','App\Http\Controllers\UserController@destroy')->name('get.user.destroy');
+
    
 });
 
@@ -42,9 +43,7 @@ Route::group(['prefix'=>'user','middleware'=>'App\Http\Middleware\CheckLoginUser
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');
 
 //product
-Route::get('the-loai/giay-nam','App\Http\Controllers\CategoryController@getProduct')->name('get.product.men');
-Route::get('the-loai/giay-nu','App\Http\Controllers\CategoryController@getProduct')->name('get.product.women');
-Route::get('the-loai/giay-nam-nu','App\Http\Controllers\CategoryController@getProduct')->name('get.product.men.women');
+
 
 Route::get('danh-muc/{slug}','App\Http\Controllers\CategoryController@getProduct')->name('get.product.category');
 Route::get('san-pham/search', 'App\Http\Controllers\CategoryController@getSearch')->name('get.search.product');
@@ -53,6 +52,10 @@ Route::get('san-pham/color/blue', 'App\Http\Controllers\CategoryController@getSo
 Route::get('san-pham/color/red', 'App\Http\Controllers\CategoryController@getHot')->name('get.color.red.product');
 Route::get('san-pham/color/green', 'App\Http\Controllers\CategoryController@getNew')->name('get.color.green.product');
 Route::get('san-pham/{slug}', 'App\Http\Controllers\ProductDetailController@productDetail')->name('get.detail.product');
+Route::get('san-pham-other', 'App\Http\Controllers\CategoryController@productOther')->name('get.other.product');
+Route::get('san-pham-nam', 'App\Http\Controllers\CategoryController@productMale')->name('get.male.product');
+Route::get('san-pham-nu', 'App\Http\Controllers\CategoryController@productFemale')->name('get.female.product');
+
 Route::get('view-san-pham/{id}', 'App\Http\Controllers\HomeController@viewProduct')->name('get.view.product');
 
 //article
