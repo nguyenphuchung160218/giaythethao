@@ -111,15 +111,16 @@
                                     <div class="form custom-form">
                                         <div class="form-group mb-0">
                                           
-                                          <form class="tree-most" method="get" id="form_order">
+                                          <form class="tree-most" method="get" id="form_order" action="{{ route('get.search.product')}}">
                                             <div class="orderby-wrapper pull-right">
                                               
                                                 <select name="orderby" class="orderby">
-                                                    <option {{ Request::get('orderby') == 'md' || !Request::get('orderby') ? 'selected="selected"' : '' }} value="md" selected="selected">Mặc định</option>
-                                                    <option {{ Request::get('orderby') == 'desc' ? 'selected="selected"' : '' }} value="desc">Mới nhất</option>
-                                                    <option {{ Request::get('orderby') == 'asc' ? 'selected="selected"' : '' }} value="asc">Sản phẩm cũ</option>
-                                                    <option {{ Request::get('orderby') == 'price_max' ? 'selected="selected"' : '' }} value="price_max">Giá tăng dần</option>
-                                                    <option {{ Request::get('orderby') == 'price_min' ? 'selected="selected"' : '' }} value="price_min">Giá giảm dần</option>
+                                                    <option {{ \Request::get('orderby') == 'md' || !Request::get('orderby') ? 'selected="selected"' : '' }} value="md" selected="selected">Mặc định</option>
+                                                    <option {{ \Request::get('orderby') == 'desc' ? 'selected="selected"' : '' }} value="desc">Mới nhất</option>
+                                                    <option {{ \Request::get('orderby') == 'asc' ? 'selected="selected"' : '' }} value="asc">Sản phẩm cũ</option>
+                                                    <option {{ 
+                                                    \Request::get('orderby') == 'price_max' ? 'selected="selected"' : '' }} value="price_max">Giá tăng dần</option>
+                                                    <option {{ \Request::get('orderby') == 'price_min' ? 'selected="selected"' : '' }} value="price_min">Giá giảm dần</option>
                                                 </select>
                                             </div>
                                         </form>

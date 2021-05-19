@@ -67,7 +67,8 @@ class ProductDetailController extends FrontendController
             'options'=> [
                 'avatar'=> $product->images[0]->i_avatar,
                 'sale'=> $product->pro_sale,
-                'price_old'=> $product->pro_price,         
+                'price_old'=> $product->pro_price, 
+                'size' =>40              
             ],
             ]);
          return \Cart::content();
