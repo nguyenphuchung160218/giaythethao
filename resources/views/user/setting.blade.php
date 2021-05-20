@@ -62,7 +62,7 @@
                     </div><!--end row-->
                 </form><!--end form-->
 
-                
+                @if($user->provider==null)
                 <div class="row">                    
                     <div class="col-md-12 mt-4 pt-2"> 
                         <h5>Thay đổi mật khẩu :</h5>
@@ -116,6 +116,7 @@
                 </div><!--end row-->
             </div>
         </div>
+        @endif
 
         <div class="rounded shadow mt-4">
             <div class="p-4 border-bottom">
