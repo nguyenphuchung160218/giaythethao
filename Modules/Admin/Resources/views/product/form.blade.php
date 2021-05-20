@@ -47,9 +47,9 @@
             <div class="form-group">
                 <label for="name"> Loại giày :</label>
                 <select name="pro_gender" id="" class="form-control" required="">
-                  <option value="chung">chung</option>
-                  <option value="nam">nam</option>
-                  <option value="nu">nữ</option>
+                  <option value="chung" {{ old('pro_gender',isset($product->pro_gender) ? $product->pro_gender : '') == 'chung' ?  "selected='selected'" : "" }}>Chung</option>
+                  <option value="nam" {{ old('pro_gender',isset($product->pro_gender) ? $product->pro_gender : '') == 'nam' ?  "selected='selected'" : "" }}>Nam</option>
+                  <option value="nu" {{ old('pro_gender',isset($product->pro_gender) ? $product->pro_gender : '') == 'nu' ?  "selected='selected'" : "" }}>Nữ</option>
                 </select>
             </div>
             <div class="form-group">

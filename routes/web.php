@@ -80,8 +80,7 @@ Route::prefix('')->group(function (){
     Route::get('/update/{id}','App\Http\Controllers\ShoppingCartController@updateProduct')->name('update.cart');
     Route::get('/gio-hang','App\Http\Controllers\ShoppingCartController@getListShoppingCart')->name('get.list.cart');
     Route::get('/mua-ngay/{id}/','App\Http\Controllers\ProductDetailController@buyNow')->name('get.buy.now');
-    
-
+    Route::get('/destroy/','App\Http\Controllers\ShoppingCartController@destroyCart')->name('destroy.cart');
 
    });
 Route::group(['prefix'=>'gio-hang','middleware'=>'App\Http\Middleware\CheckLoginUser'],function (){

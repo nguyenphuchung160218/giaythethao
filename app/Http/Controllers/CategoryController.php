@@ -9,7 +9,7 @@ class CategoryController extends FrontendController
 {
     public function getSearch(Request $request)
     {
-       $products = Product::where('pro_active',Product::STATUS_PUBLIC)->inRandomOrder();
+       $products = Product::where('pro_active',Product::STATUS_PUBLIC);
         
         if($request->search)
         {
@@ -89,7 +89,6 @@ class CategoryController extends FrontendController
     }
     public function getProduct(Request $request)
     {
-    	
          // $url = preg_split('/(-)/i',$url);
         $products = Product::where('pro_active',Product::STATUS_PUBLIC)->inRandomOrder();
         $url = $request->segment(2);

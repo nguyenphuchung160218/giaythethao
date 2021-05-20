@@ -47,9 +47,9 @@
                                             <td>{{ number_format($order->o_total,0,',','.') }} VND</td>
                                             <td>
                                                 @if ( $order->o_status == 1)
-                                                    <a href="" class="label label-success">Đã xủ lý</a>
+                                                    <span href="" class="btn btn-success">Đã xủ lý</span>
                                                 @else
-                                                    <a href="" class="label label-default">Chờ xủ lý</a>
+                                                    <span href="" class="btn btn-danger">Chờ xủ lý</span>
                                                 @endif
                                             </td>
                                             <td>{{ $order->created_at->format('d-m-Y') }}</td>

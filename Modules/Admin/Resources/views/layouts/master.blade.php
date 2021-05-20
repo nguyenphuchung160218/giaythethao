@@ -9,11 +9,11 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>FingerG - Trang quản lý</title>
+    <title>ShoesShop - Trang quản lý</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('') }}theme_admin/css/bootstrap.min.css" rel="stylesheet">
-
+    <link rel="shortcut icon" href="{{ asset('') }}images/logo.png">
     <!-- Custom CSS -->
     <link href="{{ asset('') }}theme_admin/css/sb-admin.css" rel="stylesheet">
 
@@ -38,7 +38,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ route('admin.home') }}">FingerG</a>
+                <a class="navbar-brand" href="{{ route('admin.home') }}">ShoesShop</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">

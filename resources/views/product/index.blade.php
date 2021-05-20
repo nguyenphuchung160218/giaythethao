@@ -111,7 +111,7 @@
                                     <div class="form custom-form">
                                         <div class="form-group mb-0">
                                           
-                                          <form class="tree-most" method="get" id="form_order">
+                                          <form class="tree-most" method="get" id="form_order" action="{{ route('get.search.product')}}">
                                             <div class="orderby-wrapper pull-right">
                                               
                                                 <select name="orderby" class="orderby">

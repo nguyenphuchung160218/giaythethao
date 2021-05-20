@@ -45,7 +45,7 @@
                                         <th class="text-center py-3" style="min-width: 160px;">Số lượng</th>
                                         <th class="text-center py-3" style="min-width: 160px;">Tổng</th>
                                         <th class="py-3" style="min-width:20px "></th>
-                                        <th class="py-3" style="min-width:20px "></th>
+                                        <th class="py-3" style="min-width:20px "><a href="{{ route('destroy.cart') }}" class="text-danger">X</a></th>
                                     </tr>
                                 </thead>
 

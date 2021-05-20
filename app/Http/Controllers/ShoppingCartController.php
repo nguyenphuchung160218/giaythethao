@@ -67,6 +67,11 @@ class ShoppingCartController extends FrontendController
         \Cart::remove($key);
         return redirect()->back()->with('success','Xóa thành công');
     }
+    public function destroyCart()
+    {
+        \Cart::destroy();
+        return redirect()->back()->with('success','Xóa thành công');
+    }
 
     //danh sach gio hang
     public function getListShoppingCart()

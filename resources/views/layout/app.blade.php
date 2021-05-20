@@ -20,7 +20,8 @@
         <!-- Icons -->
         <link href="{{ asset('') }}css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.3/css/line.css">
-        <!-- Slider -->               
+        <!-- Slider -->   
+        <link href="{{ asset('') }}css/flexslider.css" rel="stylesheet" type="text/css" />            
         <link rel="stylesheet" href="{{ asset('') }}css/owl.carousel.min.css"/> 
         <link rel="stylesheet" href="{{ asset('') }}css/owl.theme.default.min.css"/>  
         <link rel="stylesheet" href="{{ asset('') }}css/slick.css"/> 
@@ -69,7 +70,10 @@
         <script src="{{ asset('') }}js/bootstrap.bundle.min.js"></script>
         <script src="{{ asset('') }}js/jquery.easing.min.js"></script>
         <script src="{{ asset('') }}js/scrollspy.min.js"></script>
-        <!-- SLIDER -->
+        <!--FLEX SLIDER-->
+        <script src="{{ asset('') }}js/jquery.flexslider-min.js"></script>
+        <script src="{{ asset('') }}js/flexslider.init.js"></script>
+        <!-- Slider -->
         <script src="{{ asset('') }}js/owl.carousel.min.js "></script>
         <script src="{{ asset('') }}js/owl.init.js "></script>
         <script src="{{ asset('') }}js/slick.min.js"></script>

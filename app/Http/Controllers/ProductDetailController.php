@@ -40,36 +40,33 @@ class ProductDetailController extends FrontendController
     }
     public function buyNow(Request $request,$id)
     {            
-        $products = $this->addcart($request,$id);
-        return redirect()->route('get.list.cart');
-    
-    } 
-    public function addcart($request,$id='')
-    {   
-         $product = Product::select('pro_name','id','pro_price','pro_sale','pro_number')->find($id);
+        $product = Product::select('pro_name','id','pro_price','pro_sale','pro_number')->find($id);
+        $number = $product->pro_number;
+        if(!$product) return redirect('/');
 
-            if(!$product) return redirect('/');
-            $price = $product->pro_price;
-            if($product->pro_sale)
-            {
-                $price = $price * (100-$product->pro_sale)/100;
-            }
-            if($product->pro_number == 0)
-            {
-                return redirect()->back()->with('warning','Sản phẩm đã hết hàng');
-            }
-             \Cart::add([
+        $price = $product->pro_price;
+        if($product->pro_sale)
+        {
+            $price = $price * (100-$product->pro_sale)/100;
+        }
+        if($product->pro_number == 0)
+        {
+            return redirect()->back()->with('warning','Sản phẩm đã hết hàng');
+        }
+        \Cart::add([
             'id'=> $id,
             'name'=> $product->pro_name,
-            'qty'=>$request->quantity,
+            'qty'=> 1,
             'price'=> $price,
+            'so'=>$number,
             'weight' => 550,          
             'options'=> [
                 'avatar'=> $product->images[0]->i_avatar,
                 'sale'=> $product->pro_sale,
-                'price_old'=> $product->pro_price,         
+                'price_old'=> $product->pro_price, 
+                'size' =>40        
             ],
-            ]);
-         return \Cart::content();
-    }
+        ]);
+        return redirect()->route('get.list.cart');
+    } 
 }
