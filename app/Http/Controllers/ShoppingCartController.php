@@ -32,6 +32,11 @@ class ShoppingCartController extends FrontendController
         {
             return redirect()->back()->with('warning','Sản phẩm đã hết hàng');
         }
+        foreach (\Cart::content() as $key => $value) {
+            if($value->id==$id && $value->options->number >= $product->pro_number){
+                return redirect()->back()->with('warning','Sản phẩm đã hết hàng');
+            }
+        }
         \Cart::add([
             'id'=> $id,
             'name'=> $product->pro_name,

@@ -68,7 +68,7 @@
                                               <?php endfor ?>
                                             </select>
                                         </td>
-                                        <td class="text-center">{{ number_format($product->price,0,',','.') }}</td>
+                                        <td class="text-center">{{ number_format($product->price,0,',','.') }} đ</td>
                                         <td class="text-center">                                           
                                             <input type="button" value="-" class="minus btn btn-icon btn-soft-primary font-weight-bold">
                                             <input type="number" id="fafa" step="1" min="1" max="{{$product->options->number}}" name="quantity" value="{{ $product->qty }}" title="Qty" class="btn btn-icon btn-soft-primary font-weight-bold">
@@ -126,6 +126,7 @@
     $('.plus').click(function () {
         var element = document.getElementById('fafa');
         var number = element.getAttribute('max');
+        var number = Number(number);
         console.log(number);
         if ($(this).prev().val() < number) {
             $(this).prev().val(+$(this).prev().val() + 1);
