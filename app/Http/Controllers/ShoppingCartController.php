@@ -21,7 +21,6 @@ class ShoppingCartController extends FrontendController
     public function addProduct(Request $request,$id)
     {
         $product = Product::select('pro_name','id','pro_price','pro_sale','pro_number')->find($id);
-        $number = $product->pro_number;
         if(!$product) return redirect('/');
 
         $price = $product->pro_price;
@@ -38,13 +37,13 @@ class ShoppingCartController extends FrontendController
             'name'=> $product->pro_name,
             'qty'=> 1,
             'price'=> $price,
-            'so'=>$number,
             'weight' => 550,          
             'options'=> [
                 'avatar'=> $product->images[0]->i_avatar,
                 'sale'=> $product->pro_sale,
                 'price_old'=> $product->pro_price, 
-                'size' =>40        
+                'size' =>40, 
+                'number' => $product->pro_number,   
             ],
         ]);
 

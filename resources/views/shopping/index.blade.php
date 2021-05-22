@@ -71,7 +71,7 @@
                                         <td class="text-center">{{ number_format($product->price,0,',','.') }}</td>
                                         <td class="text-center">                                           
                                             <input type="button" value="-" class="minus btn btn-icon btn-soft-primary font-weight-bold">
-                                            <input type="text" step="1" min="1" name="quantity" value="{{ $product->qty }}" title="Qty" class="btn btn-icon btn-soft-primary font-weight-bold" max="">
+                                            <input type="number" id="fafa" step="1" min="1" max="{{$product->options->number}}" name="quantity" value="{{ $product->qty }}" title="Qty" class="btn btn-icon btn-soft-primary font-weight-bold">
 
                                             <input type="button" value="+" class="plus btn btn-icon btn-soft-primary font-weight-bold">
                                         </td>
@@ -124,7 +124,10 @@
 @section('script')
 <script>
     $('.plus').click(function () {
-        if ($(this).prev().val() < 999) {
+        var element = document.getElementById('fafa');
+        var number = element.getAttribute('max');
+        console.log(number);
+        if ($(this).prev().val() < number) {
             $(this).prev().val(+$(this).prev().val() + 1);
         }
     });
