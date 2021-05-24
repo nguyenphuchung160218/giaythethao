@@ -1,11 +1,13 @@
 @extends('admin::layouts.master')
 @section('content')
-   <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/data.js"></script>
     <script src="https://code.highcharts.com/modules/drilldown.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+   
+
     <div class="container-fluid">
 
         <!-- Page Heading -->
@@ -246,11 +248,49 @@
                     </div>
                 </div>
             </div>
+           
         </div>
-
+         
     </div>
+     <div class="container p-5">
+        <h5>Biểu đồ thống kê danh bán chạy</h5>
+
+        <div id="piechart" style="width: 900px; height: 500px;"></div>
+    </div>
+   
+    </div>
+
+
 @stop
 @section('script')
+ <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+            ['Tên sản phẩm', 'Giảm giá', 'Số lượng'],
+
+                @php
+                foreach($products as $product) {
+                    echo '["'.$product->pro_name.'", '.$product->pro_sale.', '.$product->pro_number.'],';
+                }
+                @endphp
+        ]);
+
+          var options = {
+            title: 'Chi tiết sản phẩm',
+            is3D: true,
+          };
+
+          var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+          chart.draw(data, options);
+        }
+      </script>
+
     <script>
         // Create the chart
         let data = "{{ $dataMoney }}";
@@ -304,4 +344,7 @@
             ],
         });
     </script>
+  
+
+
 @stop

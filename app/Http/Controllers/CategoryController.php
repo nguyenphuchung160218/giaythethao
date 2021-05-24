@@ -9,9 +9,11 @@ class CategoryController extends FrontendController
 {
     public function getSearch(Request $request)
     {
+
         $url = $request->segment(2);
         $url = preg_split('/(-)/i',$url);
-       
+        
+        
         $products = Product::where('pro_active',Product::STATUS_PUBLIC);
         if($request->has('search'))
         {
@@ -40,7 +42,12 @@ class CategoryController extends FrontendController
                     $products->orderBy('id','DESC');
             }
         }
-       
+        // if($request->color)
+        // {
+        //     dd($request->color);
+        // }
+        // // $this->getSold($products,$request);
+        // // $this->getHot($products,$request);
         $products=$products->paginate(6);
       
         $viewData=[
@@ -49,19 +56,20 @@ class CategoryController extends FrontendController
         ];
         return view('product.index',$viewData);
     }
+    // bỏ request tra về mảng
     public function getSold(Request $request)
     {
       
         $products= Product::where(
             'pro_buy','>',0 
             )->inRandomOrder();
+        // dd($products);
            $products=$products->paginate(6);
            $viewData =[
               'products'=>$products,
               'query' =>$request->query()
            ];
            return view('product.index',$viewData);
-           
     }
     public function getHot(Request $request)
     {
@@ -70,7 +78,8 @@ class CategoryController extends FrontendController
                'pro_hot' => Product::HOT_ON,
                'pro_active' => Product::STATUS_PUBLIC
                  ])->inRandomOrder();
-          $products=$products->paginate(6);
+          // dd($products);
+           $products=$products->paginate(6);
            $viewData =[
               'products'=>$products,
               'query' =>$request->query()
@@ -82,6 +91,18 @@ class CategoryController extends FrontendController
     {
         $products= Product::where(
             'pro_sale','>',0 
+            )->inRandomOrder();
+            $products=$products->paginate(6);
+           $viewData =[
+              'products'=>$products,
+              'query' =>$request->query()
+           ];
+           return view('product.index',$viewData);
+    }
+     public function getOld(Request $request)
+    {
+        $products= Product::where(
+            'pro_sale','==',0 
             )->inRandomOrder();
             $products=$products->paginate(6);
            $viewData =[

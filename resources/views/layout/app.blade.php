@@ -28,6 +28,7 @@
         <!-- Main Css -->
         <link href="{{ asset('') }}css/style.css" rel="stylesheet" type="text/css" id="theme-opt" />
         <link href="{{ asset('') }}css/colors/default.css" rel="stylesheet" id="color-opt">
+        
     </head>
 
     <body>

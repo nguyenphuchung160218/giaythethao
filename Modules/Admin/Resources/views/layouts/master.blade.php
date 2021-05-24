@@ -5,16 +5,14 @@
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>FingerG - Trang quản lý</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('') }}theme_admin/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom CSS -->
     <link href="{{ asset('') }}theme_admin/css/sb-admin.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
@@ -22,6 +20,7 @@
 
     <link href="{{ asset('theme_admin/table-js/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
 
+     
 </head>
 
 <body>
@@ -143,6 +142,7 @@
           $('.dataTables_length').addClass('bs-select');
         });
     </script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     @yield('script')
 </body>
 

@@ -61,14 +61,16 @@
                                 <!-- color -->
                                 <div class="widget mt-4 pt-2">
                                     <h5 class="widget-title">Color</h5>
-                                    <ul class="list-unstyled mt-4 mb-0">
+                                   
+                                        <ul class="list-unstyled mt-4 mb-0" id="color" name="color">
                                         <li class="list-inline-item"><a href="{{ route('get.color.blue.product')}}" class="px-3 py-1 rounded-pill bg-primary" title="Selling"></a></li>
+                                        <!-- <li class="list-inline-item"><a href="{{ route('get.search.product')}}" class="px-3 py-1 rounded-pill bg-primary" title="Selling"></a></li> -->
                                         <li class="list-inline-item"><a href="{{ route('get.color.red.product')}}" class="px-3 py-1 rounded-pill bg-danger" title="Hot"></a></li>
                                         <li class="list-inline-item"><a href="{{ route('get.color.green.product')}} " class="px-3 py-1 rounded-pill bg-success" title="Sale"></a></li>
-                                         <li class="list-inline-item"><a href="" class="px-3 py-1 rounded-pill bg-warning" title="Feature"></a></li>
-                                    
+                                         <li class="list-inline-item"><a href="{{route('get.color.warning.product')}} "class="px-3 py-1 rounded-pill bg-warning" title="Feature"></a></li>                                    
                                     </ul>
-                                </div>
+                                  </div>
+                              
                                 <!-- COlor -->
 
                                 <!-- Top Products -->
@@ -113,7 +115,6 @@
                                           
                                           <form class="tree-most" method="get" id="form_order" action="{{ route('get.search.product')}}">
                                             <div class="orderby-wrapper pull-right">
-                                              
                                                 <select name="orderby" class="orderby">
                                                     <option {{ \Request::get('orderby') == 'md' || !Request::get('orderby') ? 'selected="selected"' : '' }} value="md" selected="selected">Mặc định</option>
                                                     <option {{ \Request::get('orderby') == 'desc' ? 'selected="selected"' : '' }} value="desc">Mới nhất</option>
@@ -134,7 +135,7 @@
                             @foreach($products as $product)
                             <div class="col-lg-4 col-md-6 col-12 mt-4 pt-2">
                                 <div class="card shop-list border-0 position-relative">
-                                      @if($product->pro_hot==1)
+                                      @if($product->pro_hot == 1)
                                       <div class="ribbon ribbon-left ribbon-danger overflow-hidden">
                                          <span class="text-center d-block shadow small h6">
                                           Hot
@@ -167,8 +168,8 @@
                                         <img src="{{ asset(pare_url_file($product->images[1]->i_avatar)) }}" class="img-fluid" alt="">
                                         </a>
                                         <ul class="list-unstyled shop-icons">
-                                            <li><a href="javascript:void(0)" class="btn btn-icon btn-pills btn-soft-danger"><i data-feather="heart" class="icons"></i></a></li>
-                                            <li class="mt-2"><a href="javascript:void(0)" data-toggle="modal" data-target="#productview" class="btn btn-icon btn-pills btn-soft-primary"><i data-feather="eye" class="icons"></i></a></li>
+                                            <li><a href="{{ route('get.like.product',$product->id)}}" class="btn btn-icon btn-pills btn-soft-danger"><i data-feather="heart" class="icons"></i></a></li>
+                                            <li class="mt-2"><a href="{{ route('get.view.product',$product->id)}}" data-id="{{ $product->id }}"  class="productview btn btn-icon btn-pills btn-soft-primary"><i data-feather="eye" class="icons"></i></a></li>
                                             <li class="mt-2"><a href="{{ route('add.cart',$product->id) }}" class="btn btn-icon btn-pills btn-soft-warning"><i data-feather="shopping-cart" class="icons"></i></a></li>
                                         </ul>
                                     </div>
@@ -209,6 +210,21 @@
                 </div><!--end row-->
             </div><!--end container-->
         </section><!--end section-->
+         <div class="modal fade" id="myModalOrder" role="dialog">
+      <div class="modal-dialog modal-lg">
+          <!-- Modal content-->
+          <div class="modal-content">
+              <div class="modal-header">
+                  
+                  <h4 class="modal-title">Thông tin sản phẩm</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+              <div class="modal-body" id="md_content">
+              </div>
+              
+          </div>
+      </div>
+  </div>
 @stop
 
 @section('script')
@@ -218,5 +234,26 @@
                 $("#form_order").submit();
             });
          });
+         $(function (){
+            $(".productview").click(function (event){
+                event.preventDefault();
+                let $this = $(this);
+                let url = $this.attr('href');
+                $("#md_content").html('')
+                $(".order_id").text($this.attr('data-id'));
+                $("#myModalOrder").modal('show');
+                $.ajax({
+                    url: url
+                }).done(function (result){
+                    // $("#md_content").html('').append($('div').html('<p>Nội dung html được thêm vào</p>'))
+                    $("#md_content").html('').append(result);
+
+                }).fail(function(x) {
+                    alert('fail'+ x);
+                });
+            });
+        });
     </script>
+
+
 @stop

@@ -348,8 +348,8 @@
                                         <img src="{{ asset(pare_url_file($product->images[1]->i_avatar)) }}" class="img-fluid" alt="">
                                     </a>
                                     <ul class="list-unstyled shop-icons">
-                                        <li><a href="javascript:void(0)" class="btn btn-icon btn-pills btn-soft-danger"><i data-feather="heart" class="icons"></i></a></li>
-                                        <li class="mt-2 list-inline-item"><a href="javascript:void(0)" data-toggle="modal" data-target="#productview" class="btn btn-icon btn-pills btn-soft-primary"><i data-feather="eye" class="icons"></i></a></li>
+                                        <li><a href="{{ route('get.like.product',$product->id)}}" class="btn btn-icon btn-pills btn-soft-danger"><i data-feather="heart" class="icons"></i></a></li>
+                                    <li class="mt-2"><a href="{{ route('get.view.product',$product->id)}}" data-id="{{ $product->id }}"  class="productview btn btn-icon btn-pills btn-soft-primary"><i data-feather="eye" class="icons"></i></a></li>
                                         <li class="mt-2"><a href="{{ route('add.cart',$product->id) }}" class="btn btn-icon btn-pills btn-soft-warning"><i data-feather="shopping-cart" class="icons"></i></a></li>
                                     </ul>
                                 </div>
@@ -377,6 +377,21 @@
                 </div><!--end row-->
             </div><!--end container-->
         </section><!--end section-->
+        <div class="modal fade" id="myModalOrder" role="dialog">
+      <div class="modal-dialog modal-lg">
+          <!-- Modal content-->
+          <div class="modal-content">
+              <div class="modal-header">
+                  
+                  <h4 class="modal-title">Thông tin sản phẩm</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+              <div class="modal-body" id="md_content">
+              </div>
+              
+          </div>
+      </div>
+  </div>
 @stop
 @section('script')
 <script>
@@ -390,5 +405,24 @@
             if ($(this).next().val() > 1) $(this).next().val(+$(this).next().val() - 1);
         }
     });
+    $(function (){
+            $(".productview").click(function (event){
+                event.preventDefault();
+                let $this = $(this);
+                let url = $this.attr('href');
+                $("#md_content").html('')
+                $(".order_id").text($this.attr('data-id'));
+                $("#myModalOrder").modal('show');
+                $.ajax({
+                    url: url
+                }).done(function (result){
+                    // $("#md_content").html('').append($('div').html('<p>Nội dung html được thêm vào</p>'))
+                    $("#md_content").html('').append(result);
+
+                }).fail(function(x) {
+                    alert('fail'+ x);
+                });
+            });
+        });
 </script>
 @stop

@@ -54,8 +54,8 @@
                                         <img src="{{ asset(pare_url_file($product->images[1]->i_avatar)) }}" class="img-fluid" alt="">
                                     </a>
                                     <ul class="list-unstyled shop-icons">
-                                        <li><a href="javascript:void(0)" class="btn btn-icon btn-pills btn-soft-danger"><i data-feather="heart" class="icons"></i></a></li>
-                                        <li class="mt-2 list-inline-item"><a href="{{ route('get.view.product',$product->id ) }}" data-toggle="modal" data-target="#exampleModalCenter" data-id="{{ $product->id }}" id="productview" class="btn btn-icon btn-pills btn-soft-primary"><i data-feather="eye" class="icons"></i></a></li>
+                                        <li><a href="{{ route('get.like.product',$product->id)}}" class="btn btn-icon btn-pills btn-soft-danger"><i data-feather="heart" class="icons"></i></a></li>
+                                        <li class="mt-2 list-inline-item"><a href="{{ route('get.view.product',$product->id ) }}" data-id="{{ $product->id }}"  class="productview btn btn-icon btn-pills btn-soft-primary"><i data-feather="eye" class="icons"></i></a></li>
                                         <li class="mt-2"><a href="{{ route('add.cart',$product->id) }}" class="btn btn-icon btn-pills btn-soft-warning"><i data-feather="shopping-cart" class="icons"></i></a></li>
                                     </ul>
                                 </div>
@@ -135,8 +135,8 @@
                                     <img src="{{ asset(pare_url_file($product->images[1]->i_avatar)) }}" class="img-fluid" alt="">
                                 </a>
                                 <ul class="list-unstyled shop-icons">
-                                    <li><a href="javascript:void(0)" class="btn btn-icon btn-pills btn-soft-danger"><i data-feather="heart" class="icons"></i></a></li>
-                                    <li class="mt-2"><a href="{{ route('get.view.product',$product->id)}}" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-icon btn-pills btn-soft-primary"><i data-feather="eye" class="icons"></i></a></li>
+                                    <li><a href="{{ route('get.like.product',$product->id)}}" class="btn btn-icon btn-pills btn-soft-danger"><i data-feather="heart" class="icons"></i></a></li>
+                                    <li class="mt-2"><a href="{{ route('get.view.product',$product->id)}}" data-id="{{ $product->id }}"  class="productview btn btn-icon btn-pills btn-soft-primary"><i data-feather="eye" class="icons"></i></a></li>
                                     <li class="mt-2"><a href="{{ route('add.cart',$product->id) }}" class="btn btn-icon btn-pills btn-soft-warning"><i data-feather="shopping-cart" class="icons"></i></a></li>
                                 </ul>
                             </div>
@@ -192,7 +192,7 @@
             
         </section><!--end section-->
 
-        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <!-- <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -202,33 +202,48 @@
                 </button>
               </div>
               <div class="modal-body">
-       
+                <p id="name"></p>
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
+    <div class="modal fade" id="myModalOrder" role="dialog">
+      <div class="modal-dialog modal-lg">
+          <!-- Modal content-->
+          <div class="modal-content">
+              <div class="modal-header">
+                  
+                  <h4 class="modal-title">Thông tin sản phẩm</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+              <div class="modal-body" id="md_content">
+              </div>
+              
+          </div>
+      </div>
+  </div>
 @stop
-@section('script')
-    <script>
-         $(function (){
-             $(".list-unstyled").change(function (){
-                $("#productview").onclick();
-                
+@section('script')  
+      <script>
+        $(function (){
+            $(".productview").click(function (event){
+                event.preventDefault();
                 let $this = $(this);
                 let url = $this.attr('href');
-                $("#modal-body").html('')
-                $(".transaction_id").text($this.attr('data-id'));
-                $("#exampleModalCenter").modal('show');
-
+                $("#md_content").html('')
+                $(".order_id").text($this.attr('data-id'));
+                $("#myModalOrder").modal('show');
                 $.ajax({
-                    url: url,
+                    url: url
                 }).done(function (result){
-                    if(result)
-                    {
-                        $("#modal-body").html('').append(result);
-                    }
+                    // $("#md_content").html('').append($('div').html('<p>Nội dung html được thêm vào</p>'))
+                    $("#md_content").html('').append(result);
+
+                }).fail(function(x) {
+                    alert('fail'+ x);
                 });
             });
-         });
+        });
     </script>
+
 @stop

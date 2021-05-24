@@ -32,6 +32,7 @@ class ArticleController extends FrontendController
     }
     public function getSearch()
     {
+
         return view('article.aside');
     }
     public function getSearchAjax()
@@ -51,6 +52,7 @@ class ArticleController extends FrontendController
            }
            $output .= '</ul>';
            echo $output;
+           return $output;
        }
     }
      
