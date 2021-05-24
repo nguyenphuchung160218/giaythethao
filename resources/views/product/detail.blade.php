@@ -114,13 +114,13 @@
                                 </a><!--end nav link-->
                             </li><!--end nav item-->
                             
-                            <li class="nav-item m-1">
+                            <!-- <li class="nav-item m-1">
                                 <a class="nav-link py-2 px-5 rounded" id="additional-info" data-toggle="pill" href="#additional" role="tab" aria-controls="additional" aria-selected="false">
                                     <div class="text-center">
                                         <h6 class="mb-0">Thông Tin</h6>
                                     </div>
-                                </a><!--end nav link-->
-                            </li><!--end nav item-->
+                                </a>
+                            </li> -->
 
                             <li class="nav-item m-1">
                                 <a class="nav-link py-2 px-5 rounded" id="review-comments" data-toggle="pill" href="#review" role="tab" aria-controls="review" aria-selected="false">
@@ -136,7 +136,7 @@
                                 <p class="text-muted mb-0">{!! $productDetail->pro_content !!}</p>
                             </div>
 
-                            <div class="card border-0 tab-pane fade" id="additional" role="tabpanel" aria-labelledby="additional-info">
+                            <!-- <div class="card border-0 tab-pane fade" id="additional" role="tabpanel" aria-labelledby="additional-info">
                                 <table class="table">
                                     <tbody>
                                         <tr>
@@ -155,7 +155,7 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                            </div>
+                            </div> -->
 
                             <div class="card border-0 tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-comments">
                                 <div class="row">

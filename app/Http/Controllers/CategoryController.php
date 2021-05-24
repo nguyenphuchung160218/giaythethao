@@ -9,11 +9,17 @@ class CategoryController extends FrontendController
 {
     public function getSearch(Request $request)
     {
+<<<<<<< HEAD
 
         $url = $request->segment(2);
         $url = preg_split('/(-)/i',$url);
         
         
+=======
+        // $url = $request->segment(2);
+        // $url = preg_split('/(-)/i',$url);
+       
+>>>>>>> 7f0db772915969b529b9817a8c5b2192d6fe11de
         $products = Product::where('pro_active',Product::STATUS_PUBLIC);
         if($request->has('search'))
         {
@@ -113,10 +119,9 @@ class CategoryController extends FrontendController
     }
     public function getProduct(Request $request)
     {
-    	
-         // $url = preg_split('/(-)/i',$url);
         $products = Product::where('pro_active',Product::STATUS_PUBLIC)->inRandomOrder();
         $url = $request->segment(2);
+        
         if($url!='')
         {
             $id = Category::where('c_name',$url)->select('id')->first();

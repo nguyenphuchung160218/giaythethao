@@ -6,11 +6,14 @@
       <div class="row">
           <div class="col-lg-12">
               <h1 class="page-header">
-                  Dashboard <small>Quản lý khách hàng</small>
+                  Quản Lý Khách Hàng
               </h1>
               <ol class="breadcrumb">
+                  <li class="">
+                      <i class="fa fa-dashboard"></i> Trang Chủ
+                  </li>
                   <li class="active">
-                      <i class="fa fa-dashboard"></i> Dashboard
+                      <i class="fa fa-dashboard"></i> Khách Hàng
                   </li>
               </ol>
           </div>

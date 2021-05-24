@@ -171,21 +171,27 @@
 
             <!-- Start CTA -->
             <div class="container-fluid mt-100 mt-60">
-                <div class="rounded py-5" style="background: url('images/shop/cta.jpg') fixed;">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="section-title">
-                                    <h2 class="font-weight-bold mb-4">End of Season Clearance <br> Sale upto 30%</h2>
-                                    <p class="para-desc para-white text-muted mb-0">Launch your campaign and benefit from our expertise on designing and managing conversion centered bootstrap4 html page.</p>
-                                    <div class="mt-4">
-                                        <a href="javascript:void(0)" class="btn btn-primary">Shop Now</a>
-                                    </div>
-                                </div>
-                            </div><!--end col-->
-                        </div><!--end row-->
-                    </div><!--end container-->
-                </div>
+                <div class="row py-5 justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <div id="owl-fade" class="owl-carousel owl-theme">
+                            <div class="customer-testi text-center mx-4">                              
+                                <p class="text-dark para-dark h5 font-weight-normal font-italic mt-4">“Hãy mang những giấc mơ của bạn lên đôi chân để dẫn lối giấc mơ đó thành hiện thực.”</p>
+                                <h6 class="text-dark title-dark">-- ShoesShop --</h6>
+                            </div><!--end customer testi-->
+                            
+                            <div class="customer-testi text-center mx-4">                              
+                                <p class="text-dark para-dark h5 font-weight-normal font-italic mt-4">“Bạn sẽ khó có nhiều thời gian để chăm chút cho sự lựa chọn giầy dép. Có quá nhiều phụ nữ nghĩ rằng giầy dép không quan trọng, nhưng toàn bộ sự tinh tế của phụ nữ toát ra chính từ đôi chân.”</p>
+                                <h6 class="text-dark title-dark">-- Christian Dior --</h6>
+                            </div><!--end customer testi-->
+                            
+                            <div class="customer-testi text-center mx-4">                                
+                                <p class="text-dark para-dark h5 font-weight-normal font-italic mt-4">“Tôi dành phần lớn thời gian của mình khoác lên những thứ bất tiện, vì vậy tôi chỉ nghĩ đến những đôi giầy thể thao.”</p>                               
+                                <h6 class="text-dark title-dark">-– Cara Delevingne --</h6>
+                            </div><!--end customer testi-->
+
+                        </div><!--end owl carousel-->
+                    </div><!--end col-->
+                </div><!--end row-->
             </div><!--end container-->
             <!-- End CTA -->
 

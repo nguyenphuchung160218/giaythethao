@@ -39,7 +39,7 @@
 
                                 <div class="media align-items-center justify-content-between pt-4 border-top">
                                     <h6 class="text-dark mb-0">Tổng Tiền:</h6>
-                                    <h6 class="text-dark mb-0">{{ Cart::subtotal(0,3) }}</h6>
+                                    <h6 class="text-dark mb-0">{{ Cart::subtotal(0,3) }} đ</h6>
                                 </div>
 
                                 <div class="mt-3 text-center">

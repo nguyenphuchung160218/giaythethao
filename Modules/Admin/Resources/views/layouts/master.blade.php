@@ -7,12 +7,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
     <meta name="author" content="">
+<<<<<<< HEAD
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>FingerG - Trang quản lý</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('') }}theme_admin/css/bootstrap.min.css" rel="stylesheet">
 
+=======
+
+    <title>ShoesShop - Trang quản lý</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{{ asset('') }}theme_admin/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="{{ asset('') }}images/logo.png">
+    <!-- Custom CSS -->
+>>>>>>> 7f0db772915969b529b9817a8c5b2192d6fe11de
     <link href="{{ asset('') }}theme_admin/css/sb-admin.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
@@ -37,7 +47,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ route('admin.home') }}">FingerG</a>
+                <a class="navbar-brand" href="{{ route('admin.home') }}">ShoesShop</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">

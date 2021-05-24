@@ -61,7 +61,7 @@
                                 </div>
                             </div>
                         </form> -->
-                        <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FFingerG72%2F&tabs=timeline&width=255&height=255&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="255" height="255" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                        <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FShoesShop-Gi%25C3%25A0y-Th%25E1%25BB%2583-Thao-100300708882499%2F%3Fref%3Dpages_you_manage&tabs=timeline&width=255&height=255&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=1267571153658728" width="255" height="255" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
                     </div><!--end col-->
                 </div><!--end row-->
             </div><!--end container-->
@@ -71,7 +71,7 @@
                 <div class="row align-items-center">
                     <div class="col-sm-6">
                         <div class="text-sm-left">
-                            <p class="mb-0">© 2019-20 ShoesShop. Design with <i class="mdi mdi-heart text-danger"></i> by <a href="" target="_blank" class="text-reset">FingerG</a>.</p>
+                            <p class="mb-0">© 2019-20 ShoesShop. Design with <i class="mdi mdi-heart text-danger"></i> by <a href="" target="_blank" class="text-reset">ShoesShop</a>.</p>
                         </div>
                     </div><!--end col-->
 
