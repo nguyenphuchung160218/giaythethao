@@ -9,7 +9,7 @@
                             <div class="card-body">
                                 <div class="row align-items-center">
                                     <div class="col-lg-2 col-md-3 text-md-left text-center">
-                                        <img src="{{ asset(pare_url_file(get_data_user('web','avatar'))) ? asset(pare_url_file(get_data_user('web','avatar'))) : asset('image/unnamed.png') }}" class="avatar avatar-large rounded-circle shadow d-block mx-auto" alt="">
+                                        <img src="{{ get_data_user('web','avatar')!=null ? asset(pare_url_file(get_data_user('web','avatar'))) : asset('image/unnamed.png') }}" class="avatar avatar-large rounded-circle shadow d-block mx-auto" alt="">
                                     </div><!--end col-->
     
                                     <div class="col-lg-10 col-md-9">
@@ -19,12 +19,12 @@
                                                
                                             </div><!--end col-->
                                             <div class="col-md-5 text-md-right text-center">
-                                                <ul class="list-unstyled social-icon social mb-0 mt-4">
+                                                <!-- <ul class="list-unstyled social-icon social mb-0 mt-4">
                                                     <li class="list-inline-item"><a href="javascript:void(0)" class="rounded" data-toggle="tooltip" data-placement="bottom" title="Add Friend"><i data-feather="user-plus" class="fea icon-sm fea-social"></i></a></li>
                                                     <li class="list-inline-item"><a href="javascript:void(0)" class="rounded" data-toggle="tooltip" data-placement="bottom" title="Messages"><i data-feather="message-circle" class="fea icon-sm fea-social"></i></a></li>
                                                     <li class="list-inline-item"><a href="javascript:void(0)" class="rounded" data-toggle="tooltip" data-placement="bottom" title="Notifications"><i data-feather="bell" class="fea icon-sm fea-social"></i></a></li>
                                                     <li class="list-inline-item"><a href="account-setting.html" class="rounded" data-toggle="tooltip" data-placement="bottom" title="Settings"><i data-feather="tool" class="fea icon-sm fea-social"></i></a></li>
-                                                </ul><!--end icon-->
+                                                </ul> --><!--end icon-->
                                             </div><!--end col-->
                                         </div><!--end row-->
                                     </div><!--end col-->
@@ -44,7 +44,7 @@
                     <div class="col-lg-4 col-md-6 col-12 d-lg-block d-none">
                         <div class="sidebar sticky-bar p-4 rounded shadow">                                             
                             <div class="widget">
-                                <h5 class="widget-title">Button :</h5>
+                                <h5 class="widget-title">Chức Năng :</h5>
                                 <div class="row">
                                     <div class="col-6 mt-4 pt-2">
                                         <a href="{{ route('get.user') }}" class="{{ \Request::route()->getName() == 'get.user' ? 'active' : '' }} accounts rounded d-block shadow text-center py-3">
@@ -55,8 +55,8 @@
 
                                     <div class="col-6 mt-4 pt-2">
                                         <a href="{{route('get.detail.order')}}" class="{{ \Request::route()->getName() == 'get.detail.order' ? 'active' : '' }} accounts rounded d-block shadow text-center py-3">
-                                            <span class="pro-icons h3 text-muted"><i class="uil uil-pen"></i></span>
-                                            <h6 class="title text-dark h6 my-0">Sản phẩm đã mua</h6>
+                                            <span class="pro-icons h3 text-muted"><i class="uil uil-shopping-cart"></i></span>
+                                            <h6 class="title text-dark h6 my-0">Đơn Hàng</h6>
                                         </a>
                                     </div><!--end col-->
 

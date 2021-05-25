@@ -10,8 +10,8 @@
                             <div class="page-next">
                                 <nav aria-label="breadcrumb" class="d-inline-block">
                                     <ul class="breadcrumb bg-white rounded shadow mb-0">
-                                        <li class="breadcrumb-item"><a href="index.html">Trang Chủ</a></li>
-                                        <li class="breadcrumb-item"><a href="index-shop.html">Sản Phẩm</a></li>
+                                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Trang Chủ</a></li>
+                                        <li class="breadcrumb-item"><a href="{{ route('get.list.product') }}">Sản Phẩm</a></li>
                                         <li class="breadcrumb-item active" aria-current="page">Chi Tiết</li>
                                     </ul>
                                 </nav>

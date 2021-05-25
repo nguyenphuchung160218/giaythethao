@@ -6,8 +6,8 @@
                 <div class="row">
                     <div class="col-12 text-center">
                         <div class="section-title mb-4 pb-2">
-                            <h4 class="title mb-4">Our Trusted Clients</h4>
-                            <p class="text-muted para-desc mx-auto mb-0">Start working with <span class="text-primary font-weight-bold">Landrick</span> that can provide everything you need to generate awareness, drive traffic, connect.</p>
+                            <h4 class="title mb-4">Liên Hệ Với Chúng Tôi</h4>
+                            <p class="text-muted para-desc mx-auto mb-0">Nói với chúng tôi những thắc mắc mà bạn gặp phải trên <span class="text-primary font-weight-bold">ShoesShop</span> để được hỗ trợ nhanh nhất.</p>
                         </div>
                     </div>
                     <div class="col-12 p-0">

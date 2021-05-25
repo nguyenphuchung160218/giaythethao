@@ -10,8 +10,8 @@
                             <div class="page-next">
                                 <nav aria-label="breadcrumb" class="d-inline-block">
                                     <ul class="breadcrumb bg-white rounded shadow mb-0">
-                                        <li class="breadcrumb-item"><a href="index.html">Trang Chủ</a></li>
-                                        <li class="breadcrumb-item"><a href="index-shop.html">Giỏ Hàng</a></li>
+                                        <li class="breadcrumb-item"><a href="{{route('home')}}">Trang Chủ</a></li>
+                                        <li class="breadcrumb-item"><a href="{{route('get.list.cart')}}">Giỏ Hàng</a></li>
                                         <li class="breadcrumb-item active" aria-current="page">Thanh Toán</li>
                                     </ul>
                                 </nav>
@@ -43,66 +43,25 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>Họ Và Tên <span class="text-danger">*</span></label>
-                                            <input name="name" id="firstname" type="text" class="form-control" value="{{ get_data_user('web','name') }}" placeholder="First Name :">
+                                            <input name="name" id="firstname" type="text" class="form-control" value="{{ get_data_user('web','name') }}" placeholder="First Name :" require>
                                         </div>
                                     </div><!--end col-->
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>Địa Chỉ <span class="text-danger">*</span></label>
-                                            <input type="text" name="address" id="address1" class="form-control" value="{{ get_data_user('web','address') }}" placeholder="House number and street name :">
+                                            <input type="text" name="address" id="address1" class="form-control" value="{{ get_data_user('web','address') }}" placeholder="House number and street name :" require>
                                         </div>
                                     </div><!--end col-->
-                                    <!-- <div class="col-12">
-                                        <div class="form-group">
-                                            <label>Apartment, suite, unit etc. <span class="text-muted">(Optional)</span></label>
-                                            <input type="text" name="address2" id="address2" class="form-control" placeholder="Apartment, suite, unit etc. :">
-                                        </div>
-                                    </div> --><!--end col-->
-                                    <!-- <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Town / City <span class="text-danger">*</span></label>
-                                            <input type="text" name="city" id="city" class="form-control" placeholder="City Name :">
-                                        </div>
-                                    </div> --><!--end col-->
-                                    <!-- <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Postal Code <span class="text-danger">*</span></label>
-                                            <input type="text" name="postcode" id="postcode" class="form-control" placeholder="Zip :">
-                                        </div>
-                                    </div> --><!--end col-->
-                                   <!--  <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>State <span class="text-danger">*</span></label>
-                                            <input type="text" name="state" id="state" class="form-control" placeholder="State Name :">
-                                        </div>
-                                    </div> --><!--end col-->
-                                    <!-- <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Country <span class="text-danger">*</span></label>
-                                            <select class="form-control custom-select">
-                                                <option selected="">India</option>
-                                                <option value="AF">Afghanistan</option>
-                                                <option value="AX">&Aring;land Islands</option>
-                                                <option value="AL">Albania</option>
-                                                <option value="DZ">Algeria</option>
-                                                <option value="AS">American Samoa</option>
-                                                <option value="AD">Andorra</option>
-                                                <option value="AO">Angola</option>
-                                                <option value="AI">Anguilla</option>
-                                                <option value="AQ">Antarctica</option>
-                                            </select>
-                                        </div>
-                                    </div> --><!--end col-->
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>Số Điện Thoại <span class="text-danger">*</span></label>
-                                            <input type="text" name="phone" id="phone" class="form-control" value="{{ get_data_user('web','phone') }}" placeholder="State Name :">
+                                            <input type="text" name="phone" id="phone" class="form-control" value="{{ get_data_user('web','phone') }}" placeholder="State Name :" require>
                                         </div>
                                     </div><!--end col-->
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>Email <span class="text-danger">*</span></label>
-                                            <input name="email" id="email" type="email" class="form-control" value="{{ get_data_user('web','email') }}" placeholder="Your email :">
+                                            <input name="email" id="email" type="email" class="form-control" value="{{ get_data_user('web','email') }}" placeholder="Your email :" require>
                                         </div> 
                                     </div><!--end col-->
                                     <div class="col-12">
@@ -113,15 +72,7 @@
                                     </div><!--end col-->
                                 </div><!--end row-->
                             </div>
-
-                            <div class="form-check form-check-inline my-4">
-                                <div class="form-group mb-0">
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="newaccount">
-                                        <label class="custom-control-label" for="newaccount">Tạo tài khoản ?</label>
-                                    </div>
-                                </div>
-                            </div>                            
+                            
                         </div><!--end col-->
                         <div class="col-lg-5 col-md-6 mt-4 mt-sm-0 pt-2 pt-sm-0">
                             <div class="rounded shadow-lg p-4">
@@ -147,49 +98,12 @@
                                         </tbody>
                                     </table>
 
-                                    <ul class="list-unstyled mt-4 mb-0">
-                                        <li>
-                                            <div class="custom-control custom-radio custom-control-inline">
-                                                <div class="form-group mb-0">
-                                                    <input type="radio" id="banktransfer" checked="checked" name="customRadio" class="custom-control-input">
-                                                    <label class="custom-control-label" for="banktransfer">Bank Transfer</label>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li class="mt-3">
-                                            <div class="custom-control custom-radio custom-control-inline">
-                                                <div class="form-group mb-0">
-                                                    <input type="radio" id="chaquepayment" name="customRadio" class="custom-control-input">
-                                                    <label class="custom-control-label" for="chaquepayment">Cheque Payment</label>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li class="mt-3">
-                                            <div class="custom-control custom-radio custom-control-inline">
-                                                <div class="form-group mb-0">
-                                                    <input type="radio" id="cashpayment" name="customRadio" class="custom-control-input">
-                                                    <label class="custom-control-label" for="cashpayment">Cash on Delivery</label>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li class="mt-3">
-                                            <div class="custom-control custom-radio custom-control-inline">
-                                                <div class="form-group mb-0">
-                                                    <input type="radio" id="paypal" name="customRadio" class="custom-control-input">
-                                                    <label class="custom-control-label" for="paypal">Paypal <a href="https://www.paypal.com/uk/webapps/mpp/paypal-popup" target="_blank" class="ml-2 text-primary">What is paypal?</a></label>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                    <div class="mt-4 mb-0">
+                                        <a href="{{route('get.form.pay.online')}}" class="ml-2 text-primary">Bạn muốn thanh toán online?</a>
+                                    </div>
 
                                     <div class="mt-4 pt-2">
                                         <button type="submit" class="btn btn-block btn-primary">Đặt Hàng</button>
-                                    </div>
-                                    <div class="mt-4 pt-2">
-                                        <a href="{{route('get.form.pay.online')}}" class="btn btn-block btn-primary">Thanh Toán Online</a>
                                     </div>
                                 </div>
                             </div>

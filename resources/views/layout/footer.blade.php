@@ -24,7 +24,7 @@
                                 @if(get_data_user('web'))
                                 <a href="{{route('get.user')}}" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Tài khoản</a>
                                 @else
-                                <a href="#" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Tài khoản</a>
+                                <a href="{{route('get.user')}}" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Tài khoản</a>
                                 @endif
                             </li>
                             <li><a href="{{route('get.login')}}" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Đăng nhập</a></li>

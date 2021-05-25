@@ -8,14 +8,14 @@
                         <div class="page-next-level">
                             <h2> {{ $article->a_name }} </h2>
                             <ul class="list-unstyled mt-4">
-                                <li class="list-inline-item h6 user text-muted mr-2"><i class="mdi mdi-account"></i> Calvin Carlo</li>
+                                <li class="list-inline-item h6 user text-muted mr-2"><i class="mdi mdi-account"></i> Admin</li>
                                 <li class="list-inline-item h6 date text-muted"><i class="mdi mdi-calendar-check"></i> {{ $article->created_at->format('d-m-Y') }}</li>
                             </ul>
                             <div class="page-next">
                                 <nav aria-label="breadcrumb" class="d-inline-block">
                                     <ul class="breadcrumb bg-white rounded shadow mb-0">
-                                        <li class="breadcrumb-item"><a href="index.html">Trang Chủ</a></li>
-                                        <li class="breadcrumb-item"><a href="#">Bài Viết</a></li>
+                                        <li class="breadcrumb-item"><a href="{{route('home')}}">Trang Chủ</a></li>
+                                        <li class="breadcrumb-item"><a href="{{route('get.list.article')}}">Bài Viết</a></li>
                                         <li class="breadcrumb-item active" aria-current="page">Chi Tiết</li>
                                     </ul>
                                 </nav>
@@ -50,8 +50,8 @@
 
                                 <div class="post-meta mt-3">
                                     <ul class="list-unstyled mb-0">
-                                        <li class="list-inline-item mr-2"><a href="javascript:void(0)" class="text-muted comments"><i class="mdi mdi-comment-outline mr-1"></i>08</a></li>
-                                        <li class="list-inline-item"><a href="javascript:void(0)" class="text-muted comments"><i class="mdi mdi-eye-outline mr-1"></i>{{ $article->a_view }}</a></li>
+                                        <!-- <li class="list-inline-item mr-2"><a href="javascript:void(0)" class="text-muted comments"><i class="mdi mdi-comment-outline mr-1"></i>08</a></li>
+ -->                                        <li class="list-inline-item"><a href="javascript:void(0)" class="text-muted comments"><i class="mdi mdi-eye-outline mr-1"></i>{{ $article->a_view }}</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -61,7 +61,7 @@
 
                         <div class="card shadow rounded border-0 mt-4">
                             <div class="card-body">
-                                <h5 class="card-title mb-0">Related Posts :</h5>
+                                <h5 class="card-title mb-0">Bài Viết Nổi Bật :</h5>
 
                                 <div class="row">
                                     @if(isset($articlesHot))

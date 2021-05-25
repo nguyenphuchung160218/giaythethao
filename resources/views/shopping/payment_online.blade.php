@@ -10,9 +10,9 @@
                             <div class="page-next">
                                 <nav aria-label="breadcrumb" class="d-inline-block">
                                     <ul class="breadcrumb bg-white rounded shadow mb-0">
-                                        <li class="breadcrumb-item"><a href="index.html">Trang Chủ</a></li>
-                                        <li class="breadcrumb-item"><a href="index-shop.html">Giỏ Hàng</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Thanh Toán</li>
+                                        <li class="breadcrumb-item"><a href="{{route('home')}}">Trang Chủ</a></li>
+                                        <li class="breadcrumb-item"><a href="{{route('get.list.cart')}}">Giỏ Hàng</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Thanh Toán Online</li>
                                     </ul>
                                 </nav>
                             </div>
@@ -111,15 +111,7 @@
                                     </div><!--end col-->
                                 </div><!--end row-->
                             </div>
-
-                            <div class="form-check form-check-inline my-4">
-                                <div class="form-group mb-0">
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="newaccount">
-                                        <label class="custom-control-label" for="newaccount">Tạo tài khoản ?</label>
-                                    </div>
-                                </div>
-                            </div>                            
+                           
                         </div><!--end col-->
                         <div class="col-lg-5 col-md-6 mt-4 mt-sm-0 pt-2 pt-sm-0">
                             <div class="rounded shadow-lg p-4">
@@ -144,44 +136,6 @@
                                             </tr>
                                         </tbody>
                                     </table>
-
-                                    <ul class="list-unstyled mt-4 mb-0">
-                                        <li>
-                                            <div class="custom-control custom-radio custom-control-inline">
-                                                <div class="form-group mb-0">
-                                                    <input type="radio" id="banktransfer" checked="checked" name="customRadio" class="custom-control-input">
-                                                    <label class="custom-control-label" for="banktransfer">Bank Transfer</label>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li class="mt-3">
-                                            <div class="custom-control custom-radio custom-control-inline">
-                                                <div class="form-group mb-0">
-                                                    <input type="radio" id="chaquepayment" name="customRadio" class="custom-control-input">
-                                                    <label class="custom-control-label" for="chaquepayment">Cheque Payment</label>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li class="mt-3">
-                                            <div class="custom-control custom-radio custom-control-inline">
-                                                <div class="form-group mb-0">
-                                                    <input type="radio" id="cashpayment" name="customRadio" class="custom-control-input">
-                                                    <label class="custom-control-label" for="cashpayment">Cash on Delivery</label>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li class="mt-3">
-                                            <div class="custom-control custom-radio custom-control-inline">
-                                                <div class="form-group mb-0">
-                                                    <input type="radio" id="paypal" name="customRadio" class="custom-control-input">
-                                                    <label class="custom-control-label" for="paypal">Paypal <a href="https://www.paypal.com/uk/webapps/mpp/paypal-popup" target="_blank" class="ml-2 text-primary">What is paypal?</a></label>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
 
                                     <div class="mt-4 pt-2">
                                         <button type="submit" class="btn btn-block btn-primary">Đặt Hàng</button>

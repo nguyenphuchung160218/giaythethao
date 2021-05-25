@@ -103,8 +103,9 @@
                         <div class="card explore-feature border-0 rounded text-center bg-white">
                             <div class="card-body">
                                 <div class="icon rounded-circle shadow-lg d-inline-block h2">
-                                    <i class="uil uil-user-md"></i>
+                                    <img src="images/category/{{$category->c_avatar}}" class="img-fluid" alt="">
                                 </div>
+                                
                                 <div class="content mt-3">
                                     <h6 class="mb-0"><a href="{{ route('get.product.category',$category->c_slug) }}" class="title text-dark">{{ $category->c_name }}</a></h6>
                                 </div>

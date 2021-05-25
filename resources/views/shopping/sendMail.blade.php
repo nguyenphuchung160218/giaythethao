@@ -34,7 +34,7 @@
             <tr>
                <td>Điện thoại </td>
                <td width="5px">:</td>
-               <td>{{ $transaction['o_address'] }}</td>
+               <td>{{ $transaction['o_phone'] }}</td>
             </tr>
             <tr>
                <td>Thanh toán</td>

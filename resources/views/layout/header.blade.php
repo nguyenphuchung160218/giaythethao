@@ -4,7 +4,7 @@
                 <!-- Logo container-->
                 <div>
                     <a class="logo" href="{{ route('home') }}">
-                        <img src="images/logo.png" height="50" alt="">
+                        <img src="{{ asset('') }}images/logo.png" height="50" alt="">
                     </a>
                 </div>                 
                 <ul class="buy-button list-inline mb-0">

@@ -7,12 +7,12 @@
         <meta charset="utf-8" />
         <title>Giày Thể Thao - ShoesShop</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Premium Bootstrap 4 Landing Page Template" />
-        <meta name="keywords" content="Saas, Software, multi-uses, HTML, Clean, Modern" />
+        <meta name="description" content="ShoesShop Chuyên Các Loại Giày Thể Thao" />
+        <meta name="keywords" content="ShoesShop, giay the thao, sneaker" />
         <meta name="author" content="Shreethemes" />
         <meta name="email" content="shreethemes@gmail.com" />
         <meta name="website" content="http://www.shreethemes.in" />
-        <meta name="Version" content="v2.6" />
+        <meta name="Version" content="v1.0" />
         <!-- favicon -->
         <link rel="shortcut icon" href="{{ asset('') }}images/logo.png">
         <!-- Bootstrap -->

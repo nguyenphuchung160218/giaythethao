@@ -31,7 +31,7 @@
                         </div><!--end row-->
                     </div><!--end container-->
                 </li>
-                <li class="bg-slider slider-rtl-3 d-flex align-items-center" style="background:url('images/shop/bg3.jpg') center center;">
+                <li class="bg-slider slider-rtl-3 d-flex align-items-center" style="background:url('images/shop/bg4.jpg') center center;">
                     <div class="container">
                         <div class="row align-items-center mt-5">
                             <div class="col-lg-7 col-md-7">
