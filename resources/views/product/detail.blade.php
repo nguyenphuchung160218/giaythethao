@@ -30,7 +30,7 @@
         </div>
         <!-- Hero End -->
 
-        <section class="section pb-0">
+        <section class="section">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-5">
@@ -47,6 +47,11 @@
                     </div><!--end col-->
 
                     <div class="col-md-7 mt-4 mt-sm-0 pt-2 pt-sm-0">
+                        <ul class="list-unstyled mb-0 text-center text-muted">
+                            <li class="list-inline-item mr-2"><i class="mdi mdi-heart-outline mr-1"></i>{{ $productDetail->pro_heart }} Lượt thích</li>
+                            <li class="list-inline-item mr-2"><i class="mdi mdi-comment-outline mr-1"></i>{{ $productDetail->pro_total_rating }} Đánh giá</li>
+                            <li class="list-inline-item"><i class="mdi mdi-eye-outline mr-1"></i>{{ $productDetail->pro_view }} Lượt xem</li>
+                        </ul>
                         <div class="section-title ml-md-4">
                             <form class="ml-lg-4" method="get" action="{{ route('get.buy.now',$productDetail->id)}}">
                             <h4 class="title">{{ $productDetail->pro_name }}</h4>
@@ -65,32 +70,11 @@
                             <p class="text-muted">{{ $productDetail->pro_title_seo }}</p>
                         
                             <ul class="list-unstyled text-muted">
-                                <li class="mb-0"><span class="text-primary h5 mr-2"><i class="uil uil-check-circle align-middle"></i></span> Digital Marketing Solutions for Tomorrow</li>
-                                <li class="mb-0"><span class="text-primary h5 mr-2"><i class="uil uil-check-circle align-middle"></i></span> Our Talented &amp; Experienced Marketing Agency</li>
-                                <li class="mb-0"><span class="text-primary h5 mr-2"><i class="uil uil-check-circle align-middle"></i></span> Create your own skin to match your brand</li>
+                                <li class="mb-0"><span class="text-primary h5 mr-2"><i class="uil uil-check-circle align-middle"></i></span> MIỄN PHÍ GIAO HÀNG TOÀN QUỐC</li>
+                                <li class="mb-0"><span class="text-primary h5 mr-2"><i class="uil uil-check-circle align-middle"></i></span> ĐỔI TRẢ DỄ DÀNG</li>
+                                <li class="mb-0"><span class="text-primary h5 mr-2"><i class="uil uil-check-circle align-middle"></i></span> TƯ VẤN MIỄN PHÍ</li>
                             </ul>
 
-                            <div class="row mt-4 pt-2">
-                                <div class="col-lg-6 col-12">
-                                    <div class="d-flex align-items-center">
-                                        <h6 class="mb-0">Your Size:</h6>
-                                        <ul class="list-unstyled mb-0 ml-3">
-                                            <li class="list-inline-item"><a href="javascript:void(0)" class="btn btn-icon btn-soft-primary">S</a></li>
-                                            <li class="list-inline-item ml-1"><a href="javascript:void(0)" class="btn btn-icon btn-soft-primary">M</a></li>
-                                            <li class="list-inline-item ml-1"><a href="javascript:void(0)" class="btn btn-icon btn-soft-primary">L</a></li>
-                                            <li class="list-inline-item ml-1"><a href="javascript:void(0)" class="btn btn-icon btn-soft-primary">XL</a></li>
-                                        </ul>
-                                    </div>
-                                </div><!--end col-->
-                                <div class="col-lg-6 col-md-12">
-                                    <input type="button" value="-" class="minus btn btn-icon btn-soft-primary font-weight-bold">
-                                    <input type="text" step="1" min="1" name="quantity" value="1" title="Qty" class="btn btn-icon btn-soft-primary font-weight-bold" max="">
-
-                                    <input type="button" value="+" class="plus btn btn-icon btn-soft-primary font-weight-bold">
-                                 
-                                </div>
-                                    
-                            </div>
                             <div class="mt-4 pt-2">
                                 <!-- <a href="{{ route('add.cart',$productDetail->id) }}" class="btn btn-primary">Mua Ngay</a> -->
                                 <button type="submit" class="btn btn-primary">Mua Ngay</button>
@@ -348,8 +332,8 @@
                                         <img src="{{ asset(pare_url_file($product->images[1]->i_avatar)) }}" class="img-fluid" alt="">
                                     </a>
                                     <ul class="list-unstyled shop-icons">
-                                        <li><a href="javascript:void(0)" class="btn btn-icon btn-pills btn-soft-danger"><i data-feather="heart" class="icons"></i></a></li>
-                                        <li class="mt-2 list-inline-item"><a href="javascript:void(0)" data-toggle="modal" data-target="#productview" class="btn btn-icon btn-pills btn-soft-primary"><i data-feather="eye" class="icons"></i></a></li>
+                                        <li><a href="{{ route('get.like.product',$product->id)}}" class="btn btn-icon btn-pills btn-soft-danger"><i data-feather="heart" class="icons"></i></a></li>
+                                    <li class="mt-2"><a href="{{ route('get.view.product',$product->id)}}" data-id="{{ $product->id }}"  class="productview btn btn-icon btn-pills btn-soft-primary"><i data-feather="eye" class="icons"></i></a></li>
                                         <li class="mt-2"><a href="{{ route('add.cart',$product->id) }}" class="btn btn-icon btn-pills btn-soft-warning"><i data-feather="shopping-cart" class="icons"></i></a></li>
                                     </ul>
                                 </div>
@@ -363,11 +347,16 @@
                                         @endif                                      
                                     </div>
                                     <ul class="list-unstyled text-warning mb-0">
-                                        <li class="list-inline-item"><i class="mdi mdi-star"></i></li>
-                                        <li class="list-inline-item"><i class="mdi mdi-star"></i></li>
-                                        <li class="list-inline-item"><i class="mdi mdi-star"></i></li>
-                                        <li class="list-inline-item"><i class="mdi mdi-star"></i></li>
-                                        <li class="list-inline-item"><i class="mdi mdi-star"></i></li>
+                                        <?php
+                                            $averageStar=0;
+                                            if($product->pro_total_rating>0)
+                                            {
+                                                $averageStar = round($product->pro_total_number / $product->pro_total_rating,2);
+                                            }
+                                        ?>
+                                        @for($i = 1;$i <=5; $i++)
+                                        <li class="list-inline-item"><i class="mdi mdi-star{{ $i > $averageStar ? '-outline' : ''}}"></i></li>
+                                        @endfor
                                     </ul>
                                 </div>
                             </div>
@@ -377,18 +366,24 @@
                 </div><!--end row-->
             </div><!--end container-->
         </section><!--end section-->
+
 @stop
-@section('script')
-<script>
-    $('.plus').click(function () {
-        if ($(this).prev().val() < 999) {
-            $(this).prev().val(+$(this).prev().val() + 1);
-        }
-    });
-    $('.minus').click(function () {
-        if ($(this).next().val() > 1) {
-            if ($(this).next().val() > 1) $(this).next().val(+$(this).next().val() - 1);
-        }
-    });
-</script>
+@section('script')  
+      <script>
+        $(function (){
+            $(".productview").click(function (event){
+                event.preventDefault();
+                let $this = $(this);
+                let url = $this.attr('href');
+                $("#productview").modal('show');
+                $.ajax({
+                    url: url
+                }).done(function (result){
+                    $("#productContent").html('').append(result);
+                }).fail(function(x) {
+                    alert('fail'+ x);
+                });
+            });
+        });
+    </script>
 @stop

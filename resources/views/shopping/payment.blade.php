@@ -43,25 +43,25 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>Họ Và Tên <span class="text-danger">*</span></label>
-                                            <input name="name" id="firstname" type="text" class="form-control" value="{{ get_data_user('web','name') }}" placeholder="First Name :" require>
+                                            <input name="name" id="firstname" type="text" class="form-control" value="{{ get_data_user('web','name') }}" placeholder="First Name :" required="">
                                         </div>
                                     </div><!--end col-->
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>Địa Chỉ <span class="text-danger">*</span></label>
-                                            <input type="text" name="address" id="address1" class="form-control" value="{{ get_data_user('web','address') }}" placeholder="House number and street name :" require>
+                                            <input type="text" name="address" id="address1" class="form-control" value="{{ get_data_user('web','address') }}" placeholder="House number and street name :" required="">
                                         </div>
                                     </div><!--end col-->
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>Số Điện Thoại <span class="text-danger">*</span></label>
-                                            <input type="text" name="phone" id="phone" class="form-control" value="{{ get_data_user('web','phone') }}" placeholder="State Name :" require>
+                                            <input type="text" name="phone" id="phone" class="form-control" value="{{ get_data_user('web','phone') }}" placeholder="State Name :" required="">
                                         </div>
                                     </div><!--end col-->
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>Email <span class="text-danger">*</span></label>
-                                            <input name="email" id="email" type="email" class="form-control" value="{{ get_data_user('web','email') }}" placeholder="Your email :" require>
+                                            <input name="email" id="email" type="email" class="form-control" value="{{ get_data_user('web','email') }}" placeholder="Your email :" required="">
                                         </div> 
                                     </div><!--end col-->
                                     <div class="col-12">

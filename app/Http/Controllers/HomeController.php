@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Str;
+use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Routing\Controller;
 
 class HomeController extends FrontendController
 {
@@ -18,14 +20,23 @@ class HomeController extends FrontendController
         ];
     	return view('home',$viewData);
     }
-    public function viewProduct($id)
+    public function viewProduct(Request $request,$id)
     {
-        if ($request->ajax())
+      if ($request->ajax())
         {
-            $product = Product::where('id','=',$id )->get();
-            $html = view('layout.viewproduct',compact('product'))->render();
+            $product = Product::find($id);
+            $product->pro_view +=1;
+            $product->save();
+            $html = view('layout.viewProduct',compact('product'))->render();
             return \response()->json($html);
         }
-       
+
     }
+     public function LikeProduct($id)
+        {
+            $product = Product::find($id);
+            $product->pro_heart+=1;
+            $product->save();
+            return redirect()->back()->with('success','Sản phẩm đã được bạn yêu thích');
+        }
 }

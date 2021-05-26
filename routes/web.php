@@ -44,26 +44,27 @@ Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');
 
 //product
 
-
-Route::get('danh-muc/{slug}','App\Http\Controllers\CategoryController@getProduct')->name('get.product.category');
-Route::get('san-pham/search', 'App\Http\Controllers\CategoryController@getSearch')->name('get.search.product');
-Route::get('san-pham', 'App\Http\Controllers\CategoryController@getProduct')->name('get.list.product');
-Route::get('san-pham/color/blue', 'App\Http\Controllers\CategoryController@getSold')->name('get.color.blue.product');
-Route::get('san-pham/color/red', 'App\Http\Controllers\CategoryController@getHot')->name('get.color.red.product');
-Route::get('san-pham/color/green', 'App\Http\Controllers\CategoryController@getNew')->name('get.color.green.product');
+Route::get('danh-muc/{slug}','App\Http\Controllers\CategoryController@getListProduct')->name('get.product.category');
+Route::post('san-pham/search', 'App\Http\Controllers\CategoryController@getSearch')->name('get.search.product');
+Route::get('san-pham', 'App\Http\Controllers\CategoryController@getListProduct')->name('get.list.product');
 Route::get('san-pham/{slug}', 'App\Http\Controllers\ProductDetailController@productDetail')->name('get.detail.product');
-Route::get('san-pham-other', 'App\Http\Controllers\CategoryController@productOther')->name('get.other.product');
-Route::get('san-pham-nam', 'App\Http\Controllers\CategoryController@productMale')->name('get.male.product');
-Route::get('san-pham-nu', 'App\Http\Controllers\CategoryController@productFemale')->name('get.female.product');
+
+Route::get('san-pham/sold/{type}', 'App\Http\Controllers\CategoryController@getType')->name('get.color.blue.product');
+Route::get('san-pham/hot/{type}', 'App\Http\Controllers\CategoryController@getType')->name('get.color.red.product');
+Route::get('san-pham/sale/{type}', 'App\Http\Controllers\CategoryController@getType')->name('get.color.green.product');
+Route::get('san-pham/default/{type}', 'App\Http\Controllers\CategoryController@getType')->name('get.color.warning.product');
+
+Route::get('san-pham/other/{type}', 'App\Http\Controllers\CategoryController@getType')->name('get.other.product');
+Route::get('san-pham/male/{type}', 'App\Http\Controllers\CategoryController@getType')->name('get.male.product');
+Route::get('san-pham/female/{type}', 'App\Http\Controllers\CategoryController@getType')->name('get.female.product');
 
 Route::get('view-san-pham/{id}', 'App\Http\Controllers\HomeController@viewProduct')->name('get.view.product');
+Route::get('like-san-pham/{id}', 'App\Http\Controllers\HomeController@LikeProduct')->name('get.like.product');
+
 
 //article
 Route::get('bai-viet','App\Http\Controllers\ArticleController@getArticle')->name('get.list.article');
 Route::get('bai-viet/{slug}','App\Http\Controllers\ArticleController@getDetail')->name('get.detail.article');
-Route::get('danh-muc/bai-viet/{slug}','App\Http\Controllers\ArticleController@getArticleCategory')->name('get.article.category');
-Route::get('bai-viet/search', 'App\Http\Controllers\ArticleController@getSearch');
-Route::post('bai-viet/search/name', 'App\Http\Controllers\ArticleController@getSearchAjax')->name('search');
 
 //info
 // Route::get('lien-he','ContactController@getContact')->name('get.contact');

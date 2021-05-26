@@ -20,7 +20,7 @@
       </div>
       <!-- /.row -->
       <div class="table-responsive">
-          <h3>Quản lý danh mục <a href="" ><i class="fa fa-plus-circle"></i></a> </h3>
+          <h3>Quản lý đánh giá <a href="" ><i class="fa fa-plus-circle"></i></a> </h3>
           <table id="dtBasicExample" class="table table-striped table-sm" cellspacing="0" width="100%">
               <thead>
               <tr>

@@ -116,7 +116,7 @@
                                 </div>
                                 <div class="media-body content">
                                     <h5 class="title font-weight-bold mb-0">Vị Trí</h5>
-                                    <a href="https://goo.gl/maps/sWN8LCX43WVaaTPg7" class="video-play-icon text-primary">Xem trên bản đồ Google</a>
+                                    <a href="https://goo.gl/maps/sWN8LCX43WVaaTPg7" target="_blank" class="video-play-icon text-primary">Xem trên bản đồ Google</a>
                                 </div>
                             </div>
                         </div>

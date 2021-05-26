@@ -4,7 +4,7 @@
 
     <head>
         <meta charset="utf-8" />
-        <title>FingerG - Đăng Nhập</title>
+        <title>ShoesShop - Đăng Nhập</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Premium Bootstrap 4 Landing Page Template" />
         <meta name="keywords" content="Saas, Software, multi-uses, HTML, Clean, Modern" />
@@ -25,6 +25,7 @@
     </head>
 
     <body>     
+        @include('layout.notification')
         <!-- Hero Start -->
         <section class="bg-home bg-circle-gradiant d-flex align-items-center">
             <div class="bg-overlay bg-overlay-white"></div>
@@ -57,7 +58,7 @@
                                             </div>
                                         </div><!--end col-->
 
-                                        <div class="col-lg-12">
+                                        <!-- <div class="col-lg-12">
                                             <div class="d-flex justify-content-between">
                                                 <div class="form-group">
                                                     <div class="custom-control custom-checkbox">
@@ -67,7 +68,7 @@
                                                 </div>
                                                 <p class="forgot-pass mb-0"><a href="auth-re-password-three.html" class="text-dark font-weight-bold">Forgot password ?</a></p>
                                             </div>
-                                        </div><!--end col-->
+                                        </div> --><!--end col-->
 
                                         <div class="col-lg-12 mb-0">
                                             <button type="submit" class="btn btn-primary btn-block">Đăng Nhập</button>

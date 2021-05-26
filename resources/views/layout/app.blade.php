@@ -29,6 +29,7 @@
         <!-- Main Css -->
         <link href="{{ asset('') }}css/style.css" rel="stylesheet" type="text/css" id="theme-opt" />
         <link href="{{ asset('') }}css/colors/default.css" rel="stylesheet" id="color-opt">
+        
     </head>
 
     <body>
@@ -37,34 +38,17 @@
         @yield('content')
         @include('layout.notification')      
         @include('layout.footer')
-        <!-- Product View End -->
-        <!-- Wishlist Popup Start -->
-        <div class="modal fade" id="wishlist" tabindex="-1" role="dialog" aria-labelledby="wishlist-title" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content rounded shadow-lg border-0 overflow-hidden">
-                    <div class="modal-body py-5">
-                        <div class="text-center">
-                            <div class="icon d-flex align-items-center justify-content-center bg-soft-danger rounded-circle mx-auto" style="height: 95px; width:95px;">
-                                <h1 class="mb-0"><i class="uil uil-heart-break align-middle"></i></h1>
-                            </div>
-                            <div class="mt-4">
-                                <h4>Your wishlist is empty.</h4>
-                                <p class="text-muted">Create your first wishlist request...</p>
-                                <div class="mt-4">
-                                    <a href="javascript:void(0)" class="btn btn-outline-primary">+ Create new wishlist</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <!-- Modal Content Start -->
+        <div class="modal fade" id="productview" tabindex="-1" role="dialog" aria-labelledby="productview-title" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered" id="productContent" role="document">
             </div>
         </div>
-        <!-- Wishlist Popup End -->
-
+        <!-- Modal Content End -->
+        
         <!-- Back to top -->
         <a href="#" class="btn btn-icon btn-primary back-to-top"><i data-feather="arrow-up" class="icons"></i></a>
         <!-- Back to top -->
-
+       
         <!-- javascript -->
         <script src="{{ asset('') }}js/jquery-3.5.1.min.js"></script>
         <script src="{{ asset('') }}js/bootstrap.bundle.min.js"></script>
@@ -84,7 +68,6 @@
         <!-- Main Js -->
         <script src="{{ asset('') }}js/app.js"></script>
         <!-- Load Facebook SDK for JavaScript -->
-        @yield('script')
-        
+         @yield('script')
     </body>
 </html>

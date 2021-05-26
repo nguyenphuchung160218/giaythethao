@@ -1,11 +1,13 @@
 @extends('admin::layouts.master')
 @section('content')
-   <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/data.js"></script>
     <script src="https://code.highcharts.com/modules/drilldown.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+   
+
     <div class="container-fluid">
 
         <!-- Page Heading -->
@@ -102,12 +104,12 @@
                                 <i class="fa fa-support fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge"></div>
+                                <div class="huge">{{$countContact}}</div>
                                 <div>Hỗ trợ!</div>
                             </div>
                         </div>
                     </div>
-                    <a href="{{ route('get.support')}}">
+                    <a href="{{ route('admin.get.list.contact')}}">
                         <div class="panel-footer">
                             <span class="pull-left">Xem chi tiết</span>
                             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -237,11 +239,48 @@
                     </div>
                 </div>
             </div>
+           
         </div>
-
+         
     </div>
+     <div class="container p-5">
+        <h3 class="text-center">Biểu đồ thống kê sản phẩm bán chạy</h3>
+        <div id="piechart" style="height: 500px;width: auto"></div>
+    </div>
+   
+    </div>
+
+
 @stop
 @section('script')
+ <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+            ['Tên sản phẩm', 'Đã mua'],
+
+                @php
+                foreach($products as $product) {
+                    echo '["'.$product->pro_name.'",'.$product->pro_buy.'],';
+                }
+                @endphp
+        ]);
+
+          var options = {
+            title: 'Biểu Đồ',
+            is3D: true,
+          };
+
+          var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+          chart.draw(data, options);
+        }
+      </script>
+
     <script>
         // Create the chart
         let data = "{{ $dataMoney }}";
@@ -295,4 +334,7 @@
             ],
         });
     </script>
+  
+
+
 @stop

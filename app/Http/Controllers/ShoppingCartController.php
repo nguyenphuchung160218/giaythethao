@@ -16,11 +16,17 @@ class ShoppingCartController extends FrontendController
     private $vnp_HashSecret = "EBAHADUGCOEWYXCMYZRMTMLSHGKNRPBN"; //Chuỗi bí mật
     private $vnp_Url = "http://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
     private $vnp_Returnurl = "http://localhost:81/giaythethao/public/gio-hang/thanh-toan-online";
+    //test
+    // Ngân hàng: NCB
+    // Số thẻ: 9704198526191432198
+    // Tên chủ thẻ:NGUYEN VAN A
+    // Ngày phát hành:07/15
+    // Mật khẩu OTP:123456
 
     //them gio hang
     public function addProduct(Request $request,$id)
     {
-        $product = Product::select('pro_name','id','pro_price','pro_sale','pro_number')->find($id);
+        $product = Product::select('pro_name','id','pro_price','pro_sale','pro_number','pro_slug')->find($id);
         if(!$product) return redirect('/');
 
         $price = $product->pro_price;
@@ -33,7 +39,7 @@ class ShoppingCartController extends FrontendController
             return redirect()->back()->with('warning','Sản phẩm đã hết hàng');
         }
         foreach (\Cart::content() as $key => $value) {
-            if($value->id==$id && $value->options->number >= $product->pro_number){
+            if($value->id==$id && $value->qty > $product->pro_number){
                 return redirect()->back()->with('warning','Sản phẩm đã hết hàng');
             }
         }
@@ -48,7 +54,9 @@ class ShoppingCartController extends FrontendController
                 'sale'=> $product->pro_sale,
                 'price_old'=> $product->pro_price, 
                 'size' =>40, 
-                'number' => $product->pro_number,   
+                'number' => $product->pro_number, 
+                'slug' => $product->pro_slug,
+                'img' => asset(pare_url_file($product->images[0]->i_avatar)),
             ],
         ]);
 
@@ -151,14 +159,14 @@ class ShoppingCartController extends FrontendController
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ];
-            $orderId = Transaction::insertGetId($order);
+            $orderId = Order::insertGetId($order);
             if ($orderId)
             {
                 $products =\Cart::content();
                 foreach ($products as $product)
                 {
-                    Order::insert([
-                        'od_transaction_id' => $orderId,
+                    OrderDetail::insert([
+                        'od_order_id' => $orderId,
                         'od_product_id' => $product->id,
                         'od_qty' => $product->qty,
                         'od_price' => $product->options->price_old,

@@ -12,8 +12,15 @@ class ArticleController extends FrontendController
     }
     public function getArticle(Request $request)
     {
+
     	$articles = Article::paginate(6);
     	$articlesHot =Article::where('a_hot',1)->limit(3)->get();
+
+        //search
+        if($request->search){
+            $articles = Article::where(['a_active' => Article::STATUS_PUBLIC])->where('a_name','like','%'.$request->search.'%')->paginate(6);
+        }
+        
     	$viewData=[
     		'articles' =>$articles,
     		'articlesHot'=>$articlesHot,
@@ -23,6 +30,8 @@ class ArticleController extends FrontendController
     }
     public function getDetail($slug){
     	$article = Article::where('a_slug',$slug)->first();
+        $article->a_view +=1;
+        $article->save();
     	$articlesHot =Article::where('a_hot',1)->limit(3)->get();
     	$viewData=[
     		'article' =>$article,
@@ -30,28 +39,4 @@ class ArticleController extends FrontendController
     	];
     	return view('article.detail',$viewData);
     }
-    public function getSearch()
-    {
-        return view('article.aside');
-    }
-    public function getSearchAjax()
-    {
-        if($request->get('query'))
-        {
-            $query = $request->get('query');
-            $data = DB::table('articles')
-            ->where('a_name', 'LIKE', "%{$query}%")
-            ->get();
-            $output = '<ul class="dropdown-menu" style="display:block; position:relative">';
-            foreach($data as $row)
-            {
-               $output .= '
-               <li><a href="data/'. $row->id .'">'.$row->a_name.'</a></li>
-               ';
-           }
-           $output .= '</ul>';
-           echo $output;
-       }
-    }
-     
 }

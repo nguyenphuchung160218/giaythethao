@@ -8,10 +8,10 @@
                         </a>
                         <p class="mt-4">Công ty được thành lập ngày 12-8-2020 với mong muốn mang lại nhưng sản phẩm tốt nhất cho khách hàng.</p>
                         <ul class="list-unstyled social-icon social mb-0 mt-4">
-                            <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="facebook" class="fea icon-sm fea-social"></i></a></li>
-                            <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="instagram" class="fea icon-sm fea-social"></i></a></li>
-                            <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="twitter" class="fea icon-sm fea-social"></i></a></li>
-                            <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="linkedin" class="fea icon-sm fea-social"></i></a></li>
+                            <li class="list-inline-item"><a href="https://www.facebook.com/ShoesShop-Gi%C3%A0y-Th%E1%BB%83-Thao-100300708882499/" class="rounded"><i data-feather="facebook" class="fea icon-sm fea-social"></i></a></li>
+                            <li class="list-inline-item"><a href="https://www.facebook.com/ShoesShop-Gi%C3%A0y-Th%E1%BB%83-Thao-100300708882499/" class="rounded"><i data-feather="instagram" class="fea icon-sm fea-social"></i></a></li>
+                            <li class="list-inline-item"><a href="https://www.facebook.com/ShoesShop-Gi%C3%A0y-Th%E1%BB%83-Thao-100300708882499/" class="rounded"><i data-feather="twitter" class="fea icon-sm fea-social"></i></a></li>
+                            <li class="list-inline-item"><a href="https://www.facebook.com/ShoesShop-Gi%C3%A0y-Th%E1%BB%83-Thao-100300708882499/" class="rounded"><i data-feather="linkedin" class="fea icon-sm fea-social"></i></a></li>
                         </ul><!--end icon-->
                     </div><!--end col-->
                     
@@ -75,7 +75,7 @@
                         </div>
                     </div><!--end col-->
 
-                    <div class="col-sm-6 mt-4 mt-sm-0 pt-2 pt-sm-0">
+                    <!-- <div class="col-sm-6 mt-4 mt-sm-0 pt-2 pt-sm-0">
                         <ul class="list-unstyled text-sm-right mb-0">
                             <li class="list-inline-item"><a href="javascript:void(0)"><img src="images/payments/american-ex.png" class="avatar avatar-ex-sm" title="American Express" alt=""></a></li>
                             <li class="list-inline-item"><a href="javascript:void(0)"><img src="images/payments/discover.png" class="avatar avatar-ex-sm" title="Discover" alt=""></a></li>
@@ -83,7 +83,7 @@
                             <li class="list-inline-item"><a href="javascript:void(0)"><img src="images/payments/paypal.png" class="avatar avatar-ex-sm" title="Paypal" alt=""></a></li>
                             <li class="list-inline-item"><a href="javascript:void(0)"><img src="images/payments/visa.png" class="avatar avatar-ex-sm" title="Visa" alt=""></a></li>
                         </ul>
-                    </div><!--end col-->
+                    </div> -->
                 </div><!--end row-->
             </div><!--end container-->
         </footer><!--end footer-->

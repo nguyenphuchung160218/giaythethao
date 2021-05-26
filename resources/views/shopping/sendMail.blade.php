@@ -50,6 +50,7 @@
       <thead style="background:#e7e7e7;line-height:12px">
          <tr>
             <th width="30">Stt</th>
+            <th width="50">Hình ảnh</th>
             <th>Tên sản phẩm</th>
             <th width="117">Size</th>
             <th width="117">Giá</th>
@@ -62,16 +63,21 @@
       	<?php $stt=1 ?>
          <tr>
             <td align="center"><strong><?php echo $stt ?></strong><br></td>
-            <td><a href="">{{ $product->name }}</a></td>
+            <td><img src="{{$product->options->img}}" height="50" width="auto"></td>
+            <td>
+               <a href="{{ route('get.detail.product',$product->options->slug) }}">
+                  <strong>{{ $product->name }}</strong>
+               </a>
+            </td>
             <td><strong>{{ $product->options->size }}</strong></td>
             <td><strong>{{ number_format($product->price,0,',','.') }} đ</strong></td>
             <td><strong>{{ $product->qty }}</strong></td>
-            <td><span>{{ number_format($product->price*$product->qty,0,',','.') }} đ</span></td>
+            <td><strong>{{ number_format($product->price*$product->qty,0,',','.') }} đ</strong></td>
          </tr>
         <?php $stt++ ?>
         @endforeach
          <tr>
-            <td colspan="5" align="right"><strong>Tổng:</strong></td>
+            <td colspan="6" align="right"><strong>Tổng:</strong></td>
             <td><strong>{{ number_format($transaction['o_total'],0,',','.') }} đ</strong></td>
          </tr>
       </tbody>

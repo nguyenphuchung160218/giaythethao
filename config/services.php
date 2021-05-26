@@ -33,12 +33,12 @@ return [
      'facebook' => [
         'client_id'     => env('FB_ID'),
         'client_secret' => env('FB_SECRET'),
-        'redirect'      => 'http://localhost:81/shoessport/public/oauth/facebook/callback',
+        'redirect'      => 'http://localhost:81/giaythethao/public/oauth/facebook/callback',
     ],
     'google' => [
         'client_id'     => env('GL_ID'),
         'client_secret' => env('GL_SECRET'),
-        'redirect'      => 'http://localhost:81/shoessport/public/oauth/google/callback',
+        'redirect'      => 'http://localhost:81/giaythethao/public/oauth/google/callback',
     ],
 
 ];

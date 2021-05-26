@@ -12,12 +12,15 @@ use Gloudemans\Shoppingcart\Cart;
 
 class ProductDetailController extends FrontendController
 {
-    public function productDetail($slug)
+    public function productDetail($slug='')
     {
         $productDetail = Product::where([
         	'pro_active' => Product::STATUS_PUBLIC,
         	'pro_slug' => $slug,
         ])->first();
+
+        $productDetail->pro_view +=1;
+        $productDetail->save();
         
         $id = $productDetail->pro_category_id;
         $products = Product::where(
@@ -40,7 +43,7 @@ class ProductDetailController extends FrontendController
     }
     public function buyNow(Request $request,$id)
     {            
-        $product = Product::select('pro_name','id','pro_price','pro_sale','pro_number')->find($id);
+        $product = Product::select('pro_name','id','pro_price','pro_sale','pro_number','pro_slug')->find($id);
         $number = $product->pro_number;
         if(!$product) return redirect('/');
 
@@ -65,6 +68,8 @@ class ProductDetailController extends FrontendController
                 'price_old'=> $product->pro_price, 
                 'size' =>40, 
                 'number' => $product->pro_number,   
+                'slug' => $product->pro_slug,
+                'img' => asset(pare_url_file($product->images[0]->i_avatar)),
             ],
         ]);
         return redirect()->route('get.list.cart');

@@ -49,9 +49,9 @@
                             </div>
                         </div>
                     </li>
-                    <li class="list-inline-item mb-0 pr-1">
+                    <!-- <li class="list-inline-item mb-0 pr-1">
                         <a href="#" class="btn btn-icon btn-primary" data-toggle="modal" data-target="#wishlist"><i class="uil uil-heart align-middle icons"></i></a>
-                    </li>
+                    </li> -->
                     <li class="list-inline-item mb-0">
                         <div class="dropdown dropdown-primary">
                             <button type="button" class="btn btn-icon btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="uil uil-user align-middle icons"></i></button>

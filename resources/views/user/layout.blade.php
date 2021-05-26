@@ -9,7 +9,18 @@
                             <div class="card-body">
                                 <div class="row align-items-center">
                                     <div class="col-lg-2 col-md-3 text-md-left text-center">
-                                        <img src="{{ get_data_user('web','avatar')!=null ? asset(pare_url_file(get_data_user('web','avatar'))) : asset('image/unnamed.png') }}" class="avatar avatar-large rounded-circle shadow d-block mx-auto" alt="">
+                                        <img src="
+                                        <?php                            
+                                        if(substr($user->avatar,0,4)=='http'){
+                                            echo $user->avatar;                                    
+                                        }
+                                        elseif($user->avatar==null){
+                                            echo asset('image/unnamed.png');
+                                        }
+                                        else{
+                                            echo asset(pare_url_file($user->avatar));
+                                        }
+                                        ?>" class="avatar avatar-large rounded-circle shadow d-block mx-auto" alt="">
                                     </div><!--end col-->
     
                                     <div class="col-lg-10 col-md-9">
@@ -76,7 +87,7 @@
                                 </div><!--end row-->
                             </div>
 
-                            <div class="widget mt-4 pt-2">
+                            <!-- <div class="widget mt-4 pt-2">
                                 <h5 class="widget-title">Follow me :</h5>
                                 <ul class="list-unstyled social-icon mb-0 mt-4">
                                     <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="facebook" class="fea icon-sm fea-social"></i></a></li>
@@ -86,8 +97,8 @@
                                     <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="github" class="fea icon-sm fea-social"></i></a></li>
                                     <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="youtube" class="fea icon-sm fea-social"></i></a></li>
                                     <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i data-feather="gitlab" class="fea icon-sm fea-social"></i></a></li>
-                                </ul><!--end icon-->
-                            </div>
+                                </ul>
+                            </div> -->
                         </div>
                     </div><!--end col-->
                     @yield('content_user')
